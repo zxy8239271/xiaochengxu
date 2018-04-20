@@ -1,0 +1,223 @@
+.supplier-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+}
+
+/*头部开始  */
+
+.common-header {
+  height: 88rpx;
+  width: 100%;
+  float: left;
+  text-align: center;
+  padding: 0px 20rpx;
+  background: #f4f4f4;
+  line-height: 88rpx;
+}
+
+/* .common-header-left {
+  float: left;
+  width: 20%;
+  text-align: left;
+} */
+
+.common-header-left  image {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  /*IE*/
+  filter: FlipH;
+  width: 20rpx;
+  height: 35rpx;
+}
+
+/* .common-header-center {
+  float: left;
+  width: 60%;
+  color: #000;
+} */
+
+.common-header-right {
+  display: flex;
+  height: 100%;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.common-header-right  image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/*tab切换  */
+
+.tabbar {
+  border-bottom: 1rpx solid #e1e1e1;
+  display: flex;
+  width: 100%;
+  padding: 0 26rpx;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  background: #fff;
+}
+
+.swiper-tab {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  line-height: 80rpx;
+  background: #fff;
+}
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.on {
+  color: #00954d;
+  border-bottom: 5rpx solid #00954d;
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box view {
+  text-align: center;
+}
+
+.supplier-list-content {
+  width: 100%;
+  /* display: flex; */
+  overflow: scroll;
+}
+
+.supplier-ul {
+  width: 100%;
+  /* padding: 0rpx 20rpx; */
+}
+
+.supplier-li {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 20rpx;
+  border-bottom: 1px solid #e1e1e1;
+  background: #fff;
+}
+
+.supplier-li:last-child {
+  border-bottom: none;
+}
+
+.supplier-img-left {
+  flex: 2;
+}
+
+.supplier-img-left image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.supplier-right {
+  flex: 8;
+}
+
+.supplier-right-top {
+  display: flex;
+  align-items: center;
+}
+
+.mg38 {
+  margin-top: 20rpx;
+}
+
+.supplier-right-top-left {
+  font-size: 28rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.supplier-right-top-left image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 14rpx;
+  margin-top: 5rpx;
+}
+
+.supplier-right-top-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 28rpx;
+  justify-content: flex-end;
+}
+
+.supplier-right-top-right image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 8rpx;
+}
+
+.supplier-border {
+  border: 1rpx solid #e1e1e1;
+  font-size: 28rpx;
+  color: #666;
+  padding: 1rpx 8rpx;
+}
+
+.tips {
+  display: flex;
+  justify-content: center;
+  font-size: 34rpx;
+  padding-top: 30rpx;
+}
+
+.addSupplier image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*右上角添加符号的内容 */
+
+.addMain {
+  position: fixed;
+  right: 61rpx;
+  top: 0;
+  /* height: 84rpx; */
+  background: red;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fafafa;
+  font-size: 28rpx;
+}
+
+.addMain view {
+   padding: 15rpx 30rpx; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add {
+  border-bottom: 1px solid #999;
+}

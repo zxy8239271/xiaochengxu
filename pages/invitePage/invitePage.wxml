@@ -1,0 +1,26 @@
+<!--pages/invitePage/invitePage.wxml-->
+<view class="chooseCompany">
+   
+  <view class="mainInfo">
+    <view data-id='0' bindtap="toQRcode">
+      <!-- <image class="house" src="../../images/house.png"></image> -->
+      <text class="lineTitle">邀请供应商</text>
+      <!-- <text class="textDetail">{{my_job}}</text> -->
+      <image class="skipLinks" src="../../images/youjiantou.png"></image>
+    </view>
+    <view data-id='1' bindtap="toQRcode">
+      <!-- <image class="client" src="../../images/client.png"></image> -->
+      <text class="lineTitle">邀请员工</text>
+      <!-- <text class="textDetail">{{client_total}}</text> -->
+      <image class="skipLinks" src="../../images/youjiantou.png"></image>
+    </view>
+    <view data-id='2' bindtap="toQRcode">
+      <!-- <image class="staff" src="../../images/staff.png"></image> -->
+      <text class="lineTitle">邀请客户</text>
+      <!-- <text class="textDetail">{{staff_total}}</text> -->
+      <image class="skipLinks" src="../../images/youjiantou.png"></image>
+    </view>
+
+
+  </view>
+</view>

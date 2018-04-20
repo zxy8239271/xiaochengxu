@@ -1,0 +1,21 @@
+<!--pages/codePage/codePage.wxml-->
+<view class='codePage'  wx:if='{{isShow}}'>
+  <view class='w60'>
+    <view wx:if='{{id==0}}'>
+      <view>发给我的供应商</view>
+      <view>让供应商使用采购宝为我供货</view>
+    </view>
+    <view wx:if='{{id==1}}'>
+      发送给我的员工
+    </view>
+    <view wx:if='{{id==2}}'>
+      <view>发给我的客户</view>
+      <view>让客户使用采购宝下单</view>
+    </view>
+    <view class='qrCode'>
+      <image src='{{imgUrl}}'></image>
+    </view>
+     <!-- <view bindtap='btn'  send-message-path=''>发送</view>  -->
+  </view>
+
+</view>

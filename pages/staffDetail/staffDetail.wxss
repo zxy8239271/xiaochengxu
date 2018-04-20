@@ -1,0 +1,199 @@
+/* pages/staffDetail/staffDetail.wxss */
+
+/*大盒子  */
+
+.staffDetail {
+  width: 100%;
+  font-size: 32rpx;
+  /*padding: 20rpx 30rpx 0 30rpx;*/
+  background: #efeff4;
+  padding-top: 16rpx;
+}
+
+/*头部总盒子  */
+
+.staffDetailHeader {
+  height: 174rpx;
+  background: #fff;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #e1e1e1;
+  border-top: 1px solid #e1e1e1;
+  margin-bottom: 16rpx;
+  align-items: center;
+  padding: 0 26rpx;
+}
+
+/*员工图片*/
+
+.staffPictureBox image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+/*姓名 电话  */
+
+.nameAndPhoneNumber {
+  height: 100%;
+  margin-left: 20rpx;
+  flex: 1;
+  align-items: center;
+}
+
+.mainName {
+  padding-top: 20rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.mainPhone {
+  line-height: 20rpx;
+  font-size: 26rpx;
+  display: flex;
+  height: 30%;
+  align-items: center;
+}
+
+.mainPhone image {
+  width: 32rpx;
+  height: 32rpx;
+  padding-left: 20rpx;
+}
+
+/*二维码*/
+
+.twoDimensionCode {
+  display: flex;
+  align-items: center;
+}
+
+.twoDimensionCode image {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+/*中间详细信息部分*/
+
+.detailBody {
+  border-top: 1px solid #e1e1e1;
+}
+
+.detailBody>view {
+  border-bottom: 1px solid #e1e1e1;
+  height: 99rpx;
+  line-height: 99rpx;
+  padding: 0 26rpx;
+  display: flex;
+  color: #666;
+  background: #fff;
+  font-size: 30rpx;
+}
+
+.firstText {
+  flex: 1;
+  color: #000;
+}
+
+/*操作 删除 设为离职*/
+
+.operate {
+  display: flex;
+  align-items: center;
+  background: red;
+  height: 99rpx;
+  padding: 0 26rpx;
+  background: #fff;
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 16rpx;
+}
+
+.delBtn {
+  background: #fff;
+  width: 128rpx;
+  height: 56rpx;
+  border: 1px solid #00954d;
+  border-radius: 5rpx;
+  color: #00954d;
+  line-height: 56rpx;
+  font-size: 26rpx;
+  padding: 0;
+  text-align: center;
+  margin-right: 18rpx;
+}
+
+.setBtn {
+  width: 150rpx;
+  height: 56rpx;
+  background: #fff;
+  border: 1px solid #00954d;
+  border-radius: 5rpx;
+  color: #00954d;
+  line-height: 56rpx;
+  font-size: 26rpx;
+  padding: 0;
+  text-align: center;
+}
+
+/* 设置权限 */
+
+.setAuthority {
+  font-size: 30rpx;
+  color: #666;
+  background: #fff;
+}
+
+.setAuthority .title {
+  color: #000;
+  height: 80rpx;
+  background: #fff;
+  line-height: 60rpx;
+  padding: 0 26rpx;
+}
+
+.setAuthority>view {
+  font-size: 26rpx;
+  padding: 10rpx 26rpx;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  
+}
+ .setAuthority .border{
+ margin-left: 100rpx;
+  border-bottom: 1px solid #e1e1e1; 
+  color: #000;
+ }
+.setAuthority text {
+  flex: 1;
+}
+
+/*已离职  */
+
+.isStop {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 26rpx;
+  background: #fff;
+  border-bottom: 1px solid #e1e1e1;
+  color: #00954d;
+  font-size: 30rpx;
+  height: 99rpx;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.alreadyStop {
+  width: 150rpx;
+  height: 56rpx;
+  background: #eee;
+  border: 1px solid #e1e1e1;
+  border-radius: 5rpx;
+  color: #999;
+  line-height: 56rpx;
+  font-size: 26rpx;
+  padding: 0;
+  text-align: center;
+}

@@ -1,0 +1,45 @@
+<!--message.wxml  -->
+<view class='message'>
+  <!--tab  -->
+  <view class='message-tab'>
+    <view class="weui-navbar">
+      <block wx:for="{{tabs}}" wx:key="index">
+        <view class="weui-navbar__item {{currentTab == item.id ? 'weui-bar__item_on' : ''}}" data-id='{{item.id}}' bindtap="tabClick">
+          <view class="weui-navbar__title">{{item.name}}<text  wx:if='{{item.id==0}}'> ({{messageData.unreadTotal}})</text></view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; width:{{tabWidth}}px;transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+  </view>
+  <!--tab切换结束  -->
+  <!--消息列表  -->
+  <view class='message-ul'>
+    <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" lower-threshold='50'>
+
+
+      <view class='message-li' wx:for='{{messageData.rows}}' wx:key='key' w:for-item='item'   data-item='{{item}}' bindtap='readMessage'>
+        <view class='message-img'>
+          <image src='../../images/purch.png' bindtap='bindViewTap'></image>
+          <text class='pointRed' wx:if='{{item.status=="0"}}'></text>
+        </view>
+        <view class='message-center'>
+          <view class='message-center-p'>
+            <text>{{item.title}}</text>
+            <!-- <text>18610374679</text> -->
+            <text class='message-time'>{{item.sendtime}}</text>
+          </view>
+          <view class='message-center-sure'>{{item.content}}</view>
+        </view>
+      </view>
+      <view class="tips1">
+        <view wx:if="{{hasMore}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+          <text>玩命的加载中...</text>
+        </view>
+        <view wx:else>
+          <text>没有更多内容了</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--消息列表结束  -->
+</view>

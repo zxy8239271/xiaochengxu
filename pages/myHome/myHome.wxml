@@ -1,0 +1,52 @@
+<!--pages/chooseCompany/chooseCompany.wxml-->
+<view class="chooseCompany">
+    <view class="topInfo" bindtap="toPersonal">
+        <image class="headSculpture" src="{{photo}}"></image>
+        <view class="nameAndPhone">
+            <text class="name">{{nick}}</text>
+            <text class="phone">手机号：{{phone}}</text>
+        </view>
+        <!-- <image class="twoCode" src="../../images/twoDimensionCode.png"></image> -->
+        <image class="skipLinks" src="../../images/youjiantou.png"  ></image>
+    </view>
+    <view class="mainInfo">
+        <view  bindtap="toChooseUnit">
+            <image class="house" src="../../images/house.png"></image>
+            <text class="lineTitle" >我工作的单位</text>
+            <text class="textDetail">{{my_job}}</text>
+            <image class="skipLinks" src="../../images/youjiantou.png" data-id='1' ></image>
+        </view>
+        <view bindtap="toMyClient">
+            <image class="client" src="../../images/client.png"></image>
+            <text class="lineTitle">我销售的客户</text>
+             <text class="textDetail">{{client_total}}</text>
+            <image class="skipLinks" src="../../images/youjiantou.png" data-id='2' ></image>
+        </view>
+        <view bindtap="toStaffList" >
+            <image class="staff" src="../../images/staff.png"></image>
+            <text class="lineTitle">我的员工</text>
+             <text class="textDetail">{{staff_total}}</text>
+            <image class="skipLinks" src="../../images/youjiantou.png" data-id='3'></image>
+        </view>
+        <view wx:if="{{isShow}}">
+            <image class="purchase" src="../../images/purchase.png"></image>
+            <text class="lineTitle">我的采购模版</text>
+             <text class="textDetail">12</text>
+            <image class="skipLinks" src="../../images/youjiantou.png" data-id='4' ></image>
+        </view>
+          <view bindtap="toYaoQing">
+            <image class="staff" src="../../images/staff.png"></image>
+            <text class="lineTitle">邀请</text>
+             <text class="textDetail"></text>
+            <image class="skipLinks" src="../../images/youjiantou.png" data-id='3'></image>
+        </view>
+
+        <!--临时添加的清除本地缓存  -->    
+        <!-- <view bindtap="clearStorage">
+            <image class="staff" src="../../images/staff.png"></image>
+            <text class="lineTitle">清除所有本地数据缓存</text>
+            <text class="textDetail"></text>
+           </view> -->
+
+    </view>
+</view>

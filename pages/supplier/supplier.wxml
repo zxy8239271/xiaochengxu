@@ -1,0 +1,72 @@
+<!--logs.wxml-->
+<view class="supplier-list" wx:if='{{auth}}'>
+  <!--FIXED  -->
+  <view class='header'>
+    <!--头部开始  -->
+    <!-- <view class='common-header'> 
+       <view class='common-header-left'>
+        <image src='../../images/youjiantou.png'></image>
+      </view> 
+       <view class='common-header-center'>
+        <text>供应商</text>
+      </view> 
+      <view class='common-header-right'>
+        <image src='../../images/header_jia.png' bindtap='supplierAdd'></image>
+      </view>
+    </view> -->
+    <!--头部结束  -->
+    <!--tab切换开始  -->
+    <view class='tabbar'>
+      <view class="swiper-tab">
+        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">合作中</view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已暂停</view>
+
+      </view>
+      <view class='addSupplier' bindtap='supplierAdd'>
+        <image src='../../images/add.png'></image>
+      </view>
+      <view class='addMain' wx:if="{{isShowAddMain}}">
+        <view class='add' catchtap="addIcon">扫码添加</view>
+        <button open-type='share' class='share'>发邀请给供应商</button>
+        <!-- <view>发邀请给客户</view> -->
+      </view>
+    </view>
+    <!--tab切换结束  -->
+  </view>
+  <!--fixed结束 -->
+  <!--供应商列表  -->
+  <view class='supplier-list-content'>
+    <view class='supplier-ul'>
+      <view wx:if='{{supplierData.length==0}}' class='tips'>暂无数据</view>
+      <view class='supplier-li' wx:for="{{supplierData}}" wx:for-item='item' wx:key='{{key}}'>
+        <view class='supplier-img-left' data-id='{{item.supplier_id}}' bindtap='goSupplierDetail'>
+          <image src='{{item.logo}}'></image>
+        </view>
+        <view class='supplier-right'>
+          <view class='supplier-right-top'>
+            <view class='supplier-right-top-left' data-id='{{item.supplier_id}}' bindtap='goSupplierDetail'>
+              <text>{{item.name}}</text>
+            </view>
+            <view class='supplier-right-top-right' data-phone='{{item.contacts_info}}' bindtap='callPhone'>
+              <image src='../../images/phone.png'></image>
+              <text>{{item.contacts_info}}</text>
+            </view>
+          </view>
+          <view class='supplier-right-top mg38'>
+            <view class='supplier-right-top-left'>
+              <text class='supplier-border'>当日</text>
+              <image src='../../images/zheng.png'></image>
+            </view>
+            <view class='supplier-right-top-right'>
+              <!-- <image src='../../images/phone.png'></image>/ -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='addSupplier' bindtap='supplierAdd'>新增供应商</view>     -->
+  </view>
+</view>
+<view wx:else class=' quanxian'>
+  暂无权限查看
+</view>

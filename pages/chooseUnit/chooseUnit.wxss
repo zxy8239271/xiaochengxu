@@ -1,0 +1,67 @@
+/* pages/chooseUnit/chooseUnit.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+}
+
+.chooseUnit {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 18rpx solid #efeff4;
+}
+
+.topChoose {
+  flex: 1;
+  /* border-bottom: 16rpx solid #e1e1e1; */
+  /* margin-bottom: 80rpx; */
+  overflow: scroll;
+}
+
+.topChoose label {
+  /* min-height: 88rpx; */
+  border-bottom: 1px solid #e1e1e1;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 20rpx;
+}
+
+.tradeName {
+  flex: 2;
+}
+
+.jobName {
+  flex: 1;
+}
+
+.bottomCreate {
+  /* position: fixed;
+  bottom: 0;
+  left: 0; */
+  font-size: 34rpx;
+  width: 100%;
+  height: 80rpx;
+  background: #00954d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.bottomCreate text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editUnit{
+  font-size: 26rpx;
+padding:0rpx 10rpx;
+border:1px solid #00954d;
+border-radius: 2px;
+color:#00954d;
+
+}

@@ -1,0 +1,9 @@
+<!--pages/codeWeChat/codeWeChat.wxml-->
+<view class='codeWeChat'>
+  <view>路上采供宝</view>
+  <image src='../../images/erweima.jpg'></image>
+  <view class='btn'>请手机截屏</view> 
+  <view  style='font-size:30rpx;'>您还没有关注 <text style='color:#00954d'>"路上采供宝"</text>公众号，请先关注，以方便您的使用。</view>
+   <!-- <view class='btn' bindtap='btnEvent'>保存图片</view>  -->
+   
+</view>

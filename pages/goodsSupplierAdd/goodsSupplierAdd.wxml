@@ -1,0 +1,138 @@
+<!--pages/addSupplier/addSupplier.wxml-->
+<view class="addSupplier">
+  <view class="header">
+    {{name}}
+  </view>
+
+  <view class='form-list'>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">*选择供应商:</view>
+        </view>
+
+        <view class="weui-cell__bd" wx:if="{{supplierArray.length==0}}" bindtap='toCodePage'>
+        暂无供应商，去邀请
+        </view>
+        <view wx:else class="weui-cell__bd">
+          <picker  mode="selector" bindchange="bindSupplierChange" bindcolumnchange="bindSupplierColumnChange" value="{{supplierIndex}}" range="{{supplierArray}}" range-key='name'>
+            <view class="picker">
+              {{selSupplierPid.name}}
+              <!-- {{classArray[0][classIndex[0]].name}} {{classArray[1][classIndex[1]].name}}  -->
+              <!-- {{}} -->
+            </view>
+          </picker>
+        </view>
+        <view class='weui-cell__right'>
+          <image src='../../images/youjiantou.png'></image>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd ">
+          <view class="weui-label">*供应商价格:</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type='text' placeholder='请输入价格' value='{{price}}' bindblur='priceBlur'  bindinput='priceInput'></input>
+        </view>
+        <!-- <view class='weui-cell__right'>
+          <image src='../../images/youjiantou.png'></image>
+        </view> -->
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">*单位:</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" bindchange="bindUnitChange" bindcolumnchange="bindUnitColumnChange" value="{{unitIndex}}" range="{{unitArray}}" range-key='name'>
+            <view class="picker">
+              {{selUnitPid[0].name}} {{selUnitPid[1].name}}
+              <!-- {{unitArray[0][unitIndex[0]].name}} {{unitArray[1][unitIndex[1]].name}} -->
+            </view>
+          </picker>
+        </view>
+        <view class='weui-cell__right'>
+          <image src='../../images/youjiantou.png'></image>
+        </view>
+      </view>
+
+
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">高级控制（辅助采购）</view>
+        <view class="weui-cell__ft">
+          <switch checked='{{showMore}}' color='#00954d' bindchange="switchChange" />
+        </view>
+      </view>
+      <block wx:if='{{showMore}}'>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">采购系统单位:</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="multiSelector" bindchange="systemUnitChange" bindcolumnchange="systemUnitColumnChange" value="{{systemUnitIndex}}" range="{{systemUnitArray}}" range-key='name'>
+              <view class="picker">
+                {{sysUnitPid[0].name}} {{sysUnitPid[1].name}}
+                <!-- {{systemUnitArray[0][systemUnitIndex[0]].name}} {{systemUnitArray[1][systemUnitIndex[1]].name}} -->
+              </view>
+            </picker>
+          </view>
+          <view class='weui-cell__right'>
+            <image src='../../images/youjiantou.png'></image>
+          </view>
+        </view>
+
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">收货单位:</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="multiSelector" bindchange="receiptUnitChange" bindcolumnchange="receiptUnitColumnChange" value="{{receiptIndex}}" range="{{receiptArray}}" range-key='name'>
+              <view class="picker">
+                {{selReceiptPid[0].name}} {{selReceiptPid[1].name}}
+              </view>
+            </picker>
+          </view>
+          <view class='weui-cell__right'>
+            <image src='../../images/youjiantou.png'></image>
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd ">
+            <view class="weui-label">规格描述:</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input type='text' placeholder='请输入规格大小' value='{{standard}}' bindblur='standardBlur'></input>
+          </view>
+
+          <!-- <view class='weui-cell__right'>
+          <image src='../../images/youjiantou.png'></image>
+        </view> -->
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label beizhu">备注:</view>
+          </view>
+          <view class="weui-cell__bd">
+            <textarea class="weui-input" placeholder="备注" value='{{remarks}}' bindblur='remarksBlur' />
+          </view>
+        </view>
+      </block>
+
+    </view>
+  </view>
+  <view class="btn-area" bindtap='saveBtn'>
+    保存
+    <!-- <button formType="submit">保存</button> -->
+    <!-- <button formType="reset">Reset</button> -->
+  </view>
+
+
+
+
+
+
+</view>

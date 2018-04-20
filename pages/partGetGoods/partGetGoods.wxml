@@ -1,0 +1,53 @@
+<!--pages/partGetGoods/partGetGoods.wxml-->
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class='partGetGoods'>
+  <!--顶部提示  -->
+  <view class='topMesg' wx:if="{{Module=='wapSupplier'}}">
+    请修改订单，可以减少数量或者删除无法供应产品
+  </view>
+  <!--列表部分  -->
+  <view class="container">
+    <view class='mainLists' wx:for="{{lists.data}}" wx:key="index" wx:fot-item="item">
+      <!-- left小图  -->
+      <view class='caiImg'>
+        <image src='{{item.product_pic}}'></image>
+      </view>
+      <!--right详情  -->
+      <view class="rightDetail">
+        <view class='top'>
+          <view class='caiName'>
+            <text>{{item.product_name}}</text>
+          </view>
+          <view class='buyNum'>
+            <text>订购量：{{item.num}}</text>
+          </view>
+        </view>
+        <view class='middle'>
+          <text> ￥{{item.real_price}}元/{{item.receiveUnit_name}}</text>
+        </view>
+        <view class='bottom'>
+          <text>{{Module=='wapUser'?'实际到货':'接单量'}}</text>
+          <view class='addNum'>
+            <!-- 如果后面的按钮是已确认则不出现加号和减号的按钮 -->
+            <image data-id="{{item.id}}" bindtap="delNumFn" wx:if="{{!item.is_sure}}" src="../../images/jian.png"></image>
+          </view>
+          <input disabled="{{item.is_sure}}" data-id="{{item.id}}" bindinput="valueChangeFn" class='editNum' type='text' value="{{item.real_num}}" />
+          <view class='delNum'>
+            <image data-id="{{item.id}}" bindtap="addNumFn" wx:if="{{!item.is_sure &&item.real_num<=item.num}}" src="../../images/jia.png"></image>
+          </view>
+          <button class="isSure" wx:if="{{item.composite_status=='received' && Module=='wapUser'}}" type="default">已确认</button>
+          <button class="notSure" wx:if="{{item.composite_status=='receiving' &&Module=='wapUser'}}" type="default" bindtap="sureNumFn" data-id="{{item.id}}">确认数量</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 底部 -->
+  <view class="footer" >
+    <view class="left">
+      <text class="allNum">共{{lists.data.length}}件商品</text>
+      <text class="allMoney">(￥{{filters.toFix(lists.price)}})</text>
+    </view>
+    <view class="sureBtn" bindtap='sureGoodsTake' wx:if="{{Module=='wapSupplier'}}">{{textBtn}}</view>
+  </view>
+
+</view>

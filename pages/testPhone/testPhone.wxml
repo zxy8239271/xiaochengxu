@@ -1,0 +1,26 @@
+<!--pages/testPhone/testPhone.wxml-->
+<view class='login'>
+  <!--input开始  -->
+  <view class='login-input'>
+    <!--真实姓名  -->
+    <view class='login-phone line'>
+      <input placeholder-style="color:#999;font-size:30rpx;" placeholder="请输入真实姓名"  bindblur='nameBlur' />
+    </view>
+    <!--输入手机号  -->
+    <view class='login-phone line'>
+      <input bindblur='phoneBlur' placeholder-style="color:#999;font-size:30rpx;" placeholder="请输入手机号"  bindinput='phoneInput' />
+    </view>
+    <view class='line login-phone'>
+      <input bindinput="codeBlur" placeholder-style="color:#999;font-size:30rpx;" placeholder="请输入验证码" />
+      <button bindtap="getCode" disabled='{{disabled}}'>{{btnText}}</button>
+    </view>
+    <view class='line-btn'>
+      <view class='zuc'  bindtap='submit'>提交</view>
+    </view>
+  </view>
+  <!--input结束  -->
+  <view class='login-fixed'>
+    <view>V1.0.2</view>
+    <view>新疆路上创客信息技术有限责任公司</view>
+  </view>
+</view>

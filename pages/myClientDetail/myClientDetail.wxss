@@ -1,0 +1,110 @@
+/* pages/myClientDetail/myClientDetail.wxss */
+
+.myClientDetail {
+  height: 100%;
+  width: 100%;
+  background: #efeff4;
+  padding: 16rpx 0 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topInfo {
+  padding: 0 26rpx;
+  width: 100%;
+  height: 174rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-top: 1rpx solid #e1e1e1;
+  margin-bottom: 16rpx;
+}
+
+.headSculpture {
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
+}
+
+.headSculpture image {
+  width: 100%;
+}
+
+.nameAndPhone {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rpx;
+  flex: 1;
+}
+
+.nameAndPhone .name {
+  font-size: 32rpx;
+}
+
+.nameAndPhone .phone {
+  font-size: 26rpx;
+}
+
+.twoCode {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.skipLinks {
+  width: 13rpx;
+  height: 24rpx;
+  margin-left: 28rpx;
+}
+
+/*mainInfo开始*/
+
+.mainInfo {
+  overflow: scroll;
+  width: 100%;
+  background: #fff;
+  flex: 1;
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+}
+
+.mainInfoList {
+  padding: 30rpx 26rpx;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+/*bottom  */
+
+.bottom {
+  height: 100rpx;
+  background: #00954d;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/*删除 设为优选 暂停合作按钮  */
+
+.btns {
+  float: right;
+  display: flex;
+}
+
+.btns view {
+  padding: 0 20rpx;
+  border: 1rpx solid #00954d;
+  color: #00954d;
+  border-radius: 5rpx;
+  margin-left: 20rpx;
+}
+
+.clearfix::after{
+  content:"";
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height:0;
+
+}

@@ -1,0 +1,89 @@
+/* pages/myAddress/myAddress.wxss */
+
+
+.myAddress {
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  padding: 18rpx 0 0 0;
+  font-size: 28rpx;
+}
+
+/*选择地区部分  */
+
+.addressIcon {
+  width: 38rpx;
+  height: 50rpx;
+}
+
+.youjiantouIcon {
+  width: 13rpx;
+  height: 24rpx;
+  margin-left: 20rpx;
+}
+
+.addressTop {
+  width: 100%;
+  padding: 0 26rpx;
+  background: #fff;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.defaultTitle {
+  flex: 1;
+  color: #999;
+}
+
+.title {
+  margin-right: 20rpx;
+}
+
+/*详情地址部分  */
+
+.editAddress {
+  
+  padding:20rpx 26rpx 20rpx 26rpx;
+  background: #fff;
+  height: 184rpx;
+  display: flex;
+  margin-bottom:263rpx;
+  border-bottom:1px solid #e1e1e1;
+}
+
+textarea {
+  margin-left: 15rpx;
+  flex: 1;
+  height: 90%;
+  padding:5rpx;
+}
+
+
+/*按钮  */
+.saveBtn{
+  width:606rpx;
+  height:80rpx;
+  background: #00954d;
+  border-radius:0;
+  color:#fff;
+  font-size: 34rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+
+/*选择后的地区信息  */
+
+
+
+.filterResult>view{
+  margin-right:20rpx;
+  color:#000;
+}
+
+
+.weui-cell__bd{
+flex: 1;
+}

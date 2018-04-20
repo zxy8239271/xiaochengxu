@@ -1,0 +1,32 @@
+<!--pages/managSupplier/manageSupplier.wxml-->
+<view class="manageSupplier" >
+    <!-- 表头 -->
+    <view class="topTitle">
+        <text>供应商</text>
+        <text>报价</text>
+        <text>是否默认</text>
+        <text>操作</text>
+    </view>
+    <!-- 表体内容 -->
+    <radio-group class="radio-group" wx:if='{{supplierArray.length>0}}' bindchange="radioChange" >
+        <label class="radio" wx:for="{{supplierArray}}" wx:for-item='item' wx:key='index'>
+            <text class="name">{{item.supplier_name}}</text>
+            <text class="price">{{item.offer_price}}元/{{item.offer_name}}</text>
+            <view class="radioCircle">
+                <radio value="{{item.id}}" checked="{{item.is_default=='1'?true:false}}"  color='#00954d' />
+            </view>
+            <view class="delBtn">
+                <button data-item="{{item}}" type="primary" bindtap="delFn">删除</button>
+            </view>
+        </label>
+    </radio-group>
+    <view  wx:else  class='goods-tips'>该商品暂无供应商，请先添加</view>
+    <!-- footer部分 -->
+   
+    <view class="footerAdd" bindtap="toAddSupplier">
+        <view>
+            <image src="../../images/jiatouming.png"></image>
+        </view>
+        <text class="dis">管理商品供应商</text>
+    </view>
+</view>

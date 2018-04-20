@@ -1,0 +1,136 @@
+.message {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.message-tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90rpx;
+  background: #fafafa;
+  text-align: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+.weui-navbar {
+  width: 60%;
+  border-bottom: none
+}
+
+.swiper-tab {
+  width: 100%;
+  padding: 0rpx 70rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 33.33%;
+  color: #000;
+}
+
+.on {
+  color: #00954d;
+  border-bottom: 5rpx solid #00954d;
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box view {
+  text-align: center;
+}
+.refesh {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  font-size: 13px;
+  padding: 20rpx 0rpx;
+  background: rgb(0, 0, 0,0)
+}
+/*消息列表  */
+.message-ul {
+  flex: 1;
+  /* padding-bottom: 40rpx; */
+  overflow: scroll;
+  
+}
+.message-ul, .message-li {
+  width: 100%;
+
+}
+
+.message-li {
+  background: #fff;
+  display: flex;
+  padding: 20rpx;
+  border-bottom: 1px solid #e1e1e1;
+}
+.message-img{
+  position: relative
+}
+
+.message-li:last-child {
+  border-bottom: none;
+}
+
+/* .message-img {
+  float: left;
+  width: 20%;
+} */
+
+.message-img image {
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.message-center {
+  font-size: 30rpx;
+ flex: 1;
+ padding-left: 28rpx;
+}
+
+.message-center-sure, .message-center-p {
+  float: left;
+  width: 100%;
+  line-height: 2;
+}
+
+.message-center-p text {
+  float: left;
+  margin-right: 20rpx;
+}
+
+.message-center-sure {
+  color: #858585;
+}
+
+.message-center-p text.message-time {
+  float: right;
+}
+
+.tips1 {
+  width: 100%;
+  padding-top: 12rpx;
+  float: left;
+  font-size: 30rpx;
+  text-align: center;
+  color: #858585;
+}
+
+/* .tips1 icon{
+  width: 40rpx;
+  height: 40rpx;
+} */

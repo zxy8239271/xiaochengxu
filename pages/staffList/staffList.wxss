@@ -1,0 +1,241 @@
+.message {
+  height: 100%;
+  width: 100%;
+  /*float: left;*/
+  display: flex;
+  flex-direction: column;
+}
+
+.staffList {
+  height: 100%;
+}
+
+.message-tab {
+  position: fixed;
+  top: 0rpx;
+  width: 100%;
+  /* height: 90rpx; */
+  background: #fafafa;
+  border-bottom: 1rpx solid #e1e1e1;
+  z-index: 999;
+}
+
+.swiper-tab {
+  display: flex;
+  width: 100%;
+  padding: 0 26rpx 0 70rpx;
+  text-align: center;
+ line-height:  80rpx;
+  align-items: center;
+}
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  /* width: 33.33%; */
+  color: #000;
+}
+
+.on {
+  color: #00954d;
+  border-bottom: 5rpx solid #00954d;
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box view {
+  text-align: center;
+}
+
+/*消息列表  */
+
+.message-ul {
+  position: relative;
+  top: 95rpx;
+  padding-bottom: 40rpx;
+  height: calc(100%-90rpx);
+  background: #fafafa;
+}
+
+.message-ul, .message-li {
+  width: 100%;
+  float: left;
+}
+
+.message-li {
+  background: #fff;
+  padding: 20rpx;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.message-li:last-child {
+  border-bottom: none;
+}
+
+.message-img {
+  float: left;
+  width: 20%;
+}
+
+.message-img image {
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.message-center {
+  float: left;
+  font-size: 30rpx;
+  width: 80%;
+}
+
+.message-center-sure, .message-center-p {
+  float: left;
+  width: 100%;
+  line-height: 2;
+}
+
+.message-center-p text {
+  float: left;
+  margin-right: 20rpx;
+}
+
+.message-center-sure {
+  color: #858585;
+}
+
+.message-center-p text.message-time {
+  float: right;
+}
+
+.tips1 {
+  width: 100%;
+  padding-top: 12rpx;
+  float: left;
+  font-size: 30rpx;
+  text-align: center;
+  color: #858585;
+}
+
+/*下来加载更多的提示  */
+
+.container {
+  /* flex:1; */
+  height: calc(100% - 100rpx);
+  margin-top: 90rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .header {
+  height: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+  background: #fafafa;
+}
+
+.container scroll-view {
+  /* flex: 1;  */
+  height: 100%;
+}
+
+.bottom>view {
+  line-height: 60rpx;
+  font-size: 28rpx;
+  background: #fff;
+  text-align: center;
+}
+
+/*右侧小加号 */
+
+.addIcon {
+  width: 61rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addIcon image {
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.swiper-tab-list {
+  flex: 1;
+  height: 100%;
+}
+
+.swiper-tab-list text {
+  display: flex;
+  width: 200rpx;
+  justify-content: center;
+}
+
+.oneTab {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*右上角添加符号的内容 */
+
+.addMain {
+  position: fixed;
+  right: 61rpx;
+  top: 0;
+  /* height: 84rpx; */
+  background: red;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fafafa;
+  font-size: 28rpx;
+}
+
+.addMain view {
+  /* padding: 15rpx 30rpx; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add {
+  border-bottom: 1px solid #999;
+}
+
+.sharebtn {
+  background: #00954d;
+  color: white;
+  width: 70%;
+  margin-top: 100rpx;
+  font-size: 34rpx;
+  border-radius: 0px;
+}
+
+
+/*没有数据，展示图片时  */
+
+.emptyData {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 28rpx;
+}
+
+.emptyData image {
+  width: 340rpx;
+  height: 202rpx;
+  margin-bottom: 44rpx;
+}
+

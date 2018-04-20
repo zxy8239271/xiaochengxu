@@ -1,0 +1,94 @@
+<!--pages/myClient/myClient.wxml-->
+<view class='myClient'>
+  <!--tab切换开始  -->
+  <view class='tabbar'>
+    <view class="swiper-tab">
+      <view class="swiper-tab-list listOne" data-current="0" bindtap="swichNav">
+        <view class="{{currentTab==0 ? 'on' : ''}}">合作中</view>
+      </view>
+      <view class="swiper-tab-list " data-current="1" bindtap="swichNav">
+        <view class="{{currentTab==1 ? 'on' : ''}}">已暂停</view>
+      </view>
+      <!--右边小加号  -->
+      <view class='addIcon' bindtap="showAddMain">
+        <image src='../../images/add.png'></image>
+      </view>
+      <view class='addMain' wx:if="{{isShowAddMain}}">
+        <view class='add' catchtap="addIcon">扫码添加</view>
+        <!-- <view>发邀请给客户</view>  -->
+        <button open-type='share' class='share'>发邀请给客户</button>
+      </view>
+    </view>
+  </view>
+  <!--tab切换结束  -->
+  <!--lists开始  -->
+  <view class="section">
+
+    <!--刷新提示  -->
+    <!--主体内容  -->
+    <scroll-view wx:if="{{dataLists.length!=0 || dataLists.length==0 && currentTab==1 }}" scroll-y class="listsUl" style="" scroll-into-view="{{'index'+toView}}" scroll-with-animation="true" bindscroll='cusScroll' scroll-top='{{top}}'>
+      <view class="listsContain" wx:for="{{dataLists}}" wx:key="index" wx:for-item="item" id="'index'+{{dataLists[index].zimu!=dataLists[index-1].zimu?item.zimu:''}}" data-letter="{{item.name}}">
+        <view class="zimu" wx:if="{{dataLists[index].zimu!=dataLists[index-1].zimu}}">{{item.zimu}}</view>
+        <view class="main">
+          <!--左图  -->
+          <view class='left' bindtap="toMyClientDetail" data-id="{{item.company_id}}">
+            <image src="{{item.logo}}"></image>
+          </view>
+          <!--中间名称  -->
+          <view class='center'>
+            <view class='name'>{{item.name}}</view>
+            <!-- <view class='way' wx:if="{{isShowPay}}">
+              <text>现结</text>
+            </view> -->
+          </view>
+          <!--右边电话  -->
+          <view class='right'>
+            <view wx:if="{{item.phone!=''}}" class='rightTop' bindtap="call" data-phoneNum="{{item.contacts_info}}">
+              <image src='../../images/phone.png'></image>
+              <view class='phone'>{{item.contacts_info}}</view>
+            </view>
+            <!-- 五角星和分数部分 -->
+            <!-- <view wx:if="{{isShowStar}}" class='rightBottom'>
+              <view class='star'>
+                <image src='../../images/emptyStar.png'></image>
+                <image src='../../images/emptyStar.png'></image>
+                <image src='../../images/emptyStar.png'></image>
+                <image src='../../images/emptyStar.png'></image>
+                <image src='../../images/emptyStar.png'></image>
+              </view>
+              <view class='fraction'>4.7</view>
+            </view> -->
+
+          </view>
+        </view>
+      </view>
+      <!--底部加载中和没有更多数据了 -->
+      <view class="bottom">
+        <view hidden="{{!isShowloading}}">加载中...</view>
+        <view wx:if="{{isShowMore}}">没有更多数据了</view>
+      </view>
+
+
+    </scroll-view>
+
+    <!--显示小人  -->
+    <view class='emptyData' wx:else>
+      <image src='../../images/clientEmpty.png'></image>
+      <view class='text1'>亲，您的客户还未现身哟~</view>
+      <view class='text1'>快快邀请吧！</view>
+    </view>
+
+
+  </view>
+  <!--lists结束  -->
+  <!-- 点击哪个字母就在正中间展示哪个字母 -->
+  <block wx:if="{{isShowLetter}}">
+    <view class="showSlectedLetter">
+      {{toView}}
+    </view>
+  </block>
+  <!--右边的字母检索部分-->
+  <view class="searchLetter touchClass" wx:if='{{dataLists.length>0}}'>
+    <view wx:for="{{searchLetter}}" wx:key="index" wx:for-item="item" data-letter="{{item}}" catchtap="tapZimu">{{item}}</view>
+  </view>
+</view>

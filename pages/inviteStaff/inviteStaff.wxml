@@ -1,0 +1,23 @@
+<view class='invite'>
+  <view>
+    <image src='{{logo}}' class='img'></image>
+    <view class="section"  wx:if='{{array.length>0}}'>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key='company_name'>
+        <view class="picker">
+          当前选择：{{ array[index].company_name  }}
+        </view>
+      </picker>
+    <icon type='success' size='15' color='#00954d' style='margin-left:30rpx;'></icon>
+    </view>
+    <view class='tips' wx:if='{{status==0}}'>确认成为 "
+      <text>{{company_name}}</text> "的供应商，为他/她销售产品?</view>
+    <view class='tips' wx:if='{{status==2}}'>确认 "
+      <text>{{company_name}}</text> "成为我的供应商，为我提供产品?</view>
+    <view class='tips' wx:if='{{status==1}}'>确认加入 "
+      <text>{{company_name}}</text> "成为团队成员?</view>
+    <view class='invite-btn'>
+      <text class='cancle' bindtap='cancleBtn'>取消</text>
+      <text class='sure ' bindtap='sureBtn'>确认</text>
+    </view>
+  </view>
+</view>

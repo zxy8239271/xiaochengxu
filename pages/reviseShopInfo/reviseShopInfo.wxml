@@ -1,0 +1,119 @@
+<!--pages/createShop/createShop.wxml-->
+
+<view class="createShop">
+  <view class="mainBox">
+    <!--店铺logo  -->
+    <view class='haveImg'>
+      <view class='left logo'>
+        *店铺logo：</view>
+      <view class='zhanwei'></view>
+      <view class='imgBox' bindtap='chooseLogoImg'>
+        <image src='{{shopInfo.logo}}'></image>
+      </view>
+    </view>
+    <!--店铺名称  -->
+    <view class='line88'>
+      <view class='left'>
+        <text>* 店铺名称：</text>
+      </view>
+      <input placeholder='请输入店铺名称' type='text' value='{{shopInfo.name}}'  bindinput='nameInput' bindblur='nameBlur' />
+    </view>
+    <!--手机号  -->
+    <!-- <view class='line88 phone'>
+      <view class='left'>
+        <text>手机号：</text>
+      </view>
+      <input type='text' placeholder='请输入手机号' value='{{shopInfo.phone}}' bindblur='phoneBlur' bindinput='phoneInput' />
+      <view wx:if="{{disabled}}" class='getCode' bindtap='getCode'>获取验证码</view>
+      <view wx:else class='getCode alreadySend'>{{count}}s后重新发送</view>
+    </view> -->
+
+
+    <!--手机号,只展示,不操作  -->
+    <view class='line88 phone'>
+      <view class='left'>
+        <text>手机号：</text>
+      </view>
+      <input type='text' disabled='true' placeholder='请输入手机号' value='{{shopInfo.phone}}' bindtap='showFloatBox'/>
+        </view>
+
+    <!--请输入获取的验证码  -->
+    <!-- <view class='line88 phone'>
+      <view class='left'>
+        <text>验证码：</text>
+      </view>
+      <input type='text' placeholder='请输入获取的验证码' value='{{shopInfo.code}}' bindinput='codeInput'   bindblur='codeBlur' /> -->
+            <!--验证码输入完毕后开始校验验证码是否正确  -->
+       <!-- <view bindtap='testCode' wx:if="{{!isCheck}}" class='getCode'>校验验证码</view>
+       <view wx:else class='getCode passCode'>验证已通过</view>
+       
+
+    
+    </view> -->
+
+
+    <!--备用手机号  -->
+    <view class='line88'>
+      <view class='left'>
+        <text>备用手机号：</text>
+      </view>
+      <input type='text' placeholder='建议预留，防止接不到电话' value="{{shopInfo.phone_bak}}" bindblur='phoneBakBlur' bindinput='phoneBakInput' />
+ 
+    </view>
+    <!-- address部分 -->
+    <view class="changeAddress">
+      <view class="dis">
+        <text>选择地区：</text>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="bindRegionColumnChange" value="{{regionIndex}}" range="{{regionPageArray}}" range-key='region_name'>
+          <view class="picker">
+            {{regionResult[0].region_name}} {{regionResult[1].region_name}} {{regionResult[2].region_name}}
+          </view>
+        </picker>
+      </view>
+
+    </view>
+    <view class="line88">
+      <view class='left'>
+        <text>店铺地址：</text>
+      </view>
+
+      <input type='text' class='textarea' bindinput='addressInput' bindblur="addressBlur" value="{{shopInfo.address}}" placeholder='请输入详细地址'></input>
+
+    </view>
+  </view>
+
+
+  <!--按钮  -->
+  <view class="btnBox">
+    <view bindtap="saveChange">保存修改</view>
+  </view>
+
+      <!--fixed部分,遮罩盒子验证手机号 -->
+    <view class='floatBox' wx:if="{{isShowFloatBox}}">
+      <view class='floatMainBox'>
+        <view class='floatContent'>
+          <view class='floatTitle'>手机号验证</view>
+          <view class='floatPhone'>
+            <view>手机号:</view>
+            <input type='text' placeholder='请输入手机号' value='{{floatPhone}}' bindblur='floatPhoneBlur' bindinput='floatPhoneInput'  />
+          </view>
+          <view class='floatTestCode'>
+            <view>验证码:</view>
+            <input type='text' value='{{code}}' bindinput='codeInput' bindblur='codeBlur' />
+            <view wx:if="{{disabled}}" class='getCode' bindtap='getCode'>获取验证码</view>
+            <view wx:else class='getCode alreadySend'>{{count}}s后重新发送</view>
+          </view>
+
+          <view class='tishi' wx:if="{{msg!=''}}">
+            <icon type="warn" size="12" color="red" />{{msg}}
+          </view>
+
+          <view class='floatBtn' catchtap='testCode'>确  认</view>
+        </view>
+        <!--关闭按钮  -->
+        <view class="floatClose" catchtap='closeFloatBox'>X</view>
+      </view>
+    </view>
+</view>

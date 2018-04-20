@@ -1,0 +1,28 @@
+<!--pages/myAddress/myAddress.wxml-->
+
+<view class='myAddress'>
+  <!--选择地区部分  -->
+  <view class='addressTop'>
+    <text class='title'>选择地区：</text>
+    <view class="weui-cell__bd">
+      <picker mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="bindRegionColumnChange" value="{{regionIndex}}" range="{{regionPageArray}}" range-key='region_name'>
+        <view class="picker">
+          {{regionResult[0].region_name}} {{regionResult[1].region_name}} {{regionResult[2].region_name}}
+        </view>
+      </picker>
+    </view>
+    <image class='addressIcon' src='../../images/address.png'></image>
+    <image class='youjiantouIcon' src='../../images/youjiantou.png'></image>
+  </view>
+
+  <!--详情地址部分  -->
+  <view class='editAddress'>
+    <view>
+      <text>详情地址：</text>
+    </view>
+    <textarea placeholder="街道门牌信息" bindinput="addressInput" bindblur='addressBlur' value="{{myAddress}}"></textarea>
+  </view>
+
+  <button class='saveBtn' bindtap="saveAddressFn">保存</button>
+
+</view>

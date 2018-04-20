@@ -1,0 +1,298 @@
+.myorder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f4f4f4;
+}
+
+.refesh {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  font-size: 13px;
+  padding: 20rpx 0rpx;
+  background: rgb(0, 0, 0, 0);
+}
+
+.myorder-header {
+  width: 100%;
+  background: #fff;
+}
+
+.myorder-title {
+  background: #f4f4f4;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 34rpx;
+  padding: 0px 20rpx;
+}
+
+.myorder-title image {
+  height: 40rpx;
+  width: 40rpx;
+  float: right;
+  margin-top: 24rpx;
+}
+
+.myorder-title image.jiantou {
+  float: left;
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  /*IE*//* filter: FlipH; */
+  width: 20rpx;
+  height: 35rpx;
+}
+
+.myorder-tab {
+  width: 100%;
+  position: relative;
+}
+
+.swiper-tab {
+  width: 100%;
+  padding: 0rpx 26rpx;
+  text-align: center;
+  line-height: 73rpx;
+}
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 20%;
+  color: #000;
+}
+
+.on {
+  color: #00954d;
+  border-bottom: 5rpx solid #00954d;
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box view {
+  text-align: center;
+}
+
+/*消息列表  */
+
+.myorder-ul {
+  /* background: #eee; */
+  overflow: scroll;
+  flex: 1;
+}
+
+.myorder-ul, .myorder-li {
+  width: 100%;
+}
+
+.myorder-li:first-child {
+  margin-top: 18rpx;
+}
+
+.myorder-li {
+  /* background: #fff; */
+  /* padding: 20rpx; */
+  /* border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 18rpx; */
+}
+.myorder-li-list {
+  background: #fff;
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 18rpx;
+}
+
+.myorder-li:last-child {
+  border-bottom: none;
+}
+
+.tips1 {
+  width: 100%;
+  padding-top: 12rpx;
+  float: left;
+  font-size: 30rpx;
+  text-align: center;
+  color: #858585;
+}
+
+/*列表的样式  */
+
+.myorder-li-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 76rpx;
+  padding: 0px 26rpx;
+}
+
+.myorder-li-title image {
+  width: 31rpx;
+  height: 31rpx;
+  margin-left: 30rpx;
+}
+
+.myorder-li-title-left {
+  display: flex;
+  align-items: center;
+  flex: 7;
+  height: 100%;
+}
+
+.myorder-li-title-left text {
+  font-size: 30rpx;
+  color: #000;
+}
+
+.myorder-li-title-right {
+  font-size: 28rpx;
+  flex: 3;
+  text-align: right;
+}
+
+.myorder-img-list {
+  width: 100%;
+  padding: 22rpx 26rpx;
+  border-top: 1px solid #e1e1e1;
+}
+
+.myorder-li-img {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+  border: 1px solid #e1e1e1;
+  border-radius: 100rpx;
+}
+
+.myorder-price {
+  width: 100%;
+  line-height: 70rpx;
+  font-size: 26rpx;
+  padding: 0rpx 26rpx;
+  border-top: 1px solid #e1e1e1;
+}
+
+.price {
+  margin-left: 22rpx;
+}
+
+.time-right {
+  float: right;
+}
+
+.myorder-btn-list {
+  width: 100%;
+  padding: 16rpx 26rpx;
+}
+
+.myorder-btn-list {
+  text-align: right;
+  padding: 16rpx 26rpx;
+  border-top: 1px solid #e1e1e1;
+}
+
+.myorder-btn-list  text {
+  font-size: 28rpx;
+  border: 1px solid #000;
+  border-radius: 10rpx;
+  padding: 10rpx 24rpx;
+  margin-left: 30rpx;
+}
+
+.myorder-btn-list .greenBorder {
+  border: 1px solid #00954d;
+  color: #00954d;
+}
+
+.pos-img {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+  background: #fff;
+  right: 50rpx;
+  bottom: 50rpx;
+  z-index: 9999;
+}
+
+.pos-img image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.noOrder {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.rejectimg {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.reject-li {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 12rpx 26rpx;
+  margin-top: 18rpx;
+  background: #fff;
+}
+
+.reject-li-top {
+  display: flex;
+  align-items: center;
+    padding: 10rpx 0rpx;
+}
+
+.reject-li-bottom {
+  border-top: 1px solid #e1e1e1;
+  
+  width: 100%;
+   display: flex; 
+   align-items: center; 
+  padding: 15rpx 0rpx;
+}
+.reject-li-bottom-right{
+  flex: 1;
+  font-size: 26rpx;
+}
+.reject-li-bottom .greenBorder{
+  border: 1px solid #00954d;
+  color: #00954d;
+}
+
+.reject-right {
+  padding-left: 30rpx;
+  font-size: 30rpx;
+}
+.reject-li-bottom .btn {
+  font-size: 28rpx;
+  border: 1px solid #00954d;
+  border-radius: 10rpx;
+  padding: 10rpx 24rpx;
+  margin-left: 30rpx;
+}
+.order-num{
+  font-size: 28rpx;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 10rpx 0px;
+  display: flex;
+  align-items: center;
+}
+.order-num-left{
+  flex: 1;
+}

@@ -1,0 +1,82 @@
+<!--personal.wxml-->
+<view class='personal'>
+  <!-- 头像开始 -->
+  <view class='personal-li line124'>
+    <view class='personal-left'>
+      头像
+    </view>
+    <view class='personal-center'>
+      <image class='personal-center' src='{{photo}}'></image>
+    </view>
+    <!-- <view class='personal-right'>
+      <image src='../../images/youjiantou.png'></image>
+    </view> -->
+  </view>
+  <!--头像结束  -->
+  <!--中间部分开始  -->
+  <view class='personal-li '>
+    <view class='line100'>
+      <view class='personal-left'>
+        姓名
+      </view>
+      <view class='personal-center'>
+        <text>{{name}}</text>
+      </view>
+      <!-- <view class='personal-right'>
+        <image src='../../images/youjiantou.png'></image>
+      </view> -->
+    </view>
+
+    <view class='line100'>
+      <view class='personal-left'>
+        手机号
+      </view>
+      <view class='personal-center'>
+        <text>{{phone}}</text>
+      </view>
+      <!-- <view class='personal-right'>
+        <image src='../../images/youjiantou.png'></image>
+      </view> -->
+    </view>
+
+    <!-- <view class='line100'>
+      <view class='personal-left'>
+        备用手机号
+      </view>
+      <view class='personal-center'>
+        <text>{{phone_bak}}</text>
+      </view> -->
+      <!-- <view class='personal-right'>
+        <image src='../../images/youjiantou.png'></image>
+      </view> -->
+    <!-- </view> -->
+
+    <!-- <view class='line100'>
+      <view class='personal-left'>
+        二维码名片
+      </view>
+      <view class='personal-center'>
+        <text>{{qrurl}}</text>
+      </view>
+       <view class='personal-right'>
+        <image src='../../images/youjiantou.png'></image>
+      </view> 
+    </view> -->
+  </view>
+  <!--我的地址  -->
+  <view class='bottomAddress '>
+    <view class='address' bindtap="toMyAddress">
+      <view class='addressText'>
+        <text>我的地址</text>
+      </view>
+      <view class='addressMain'>
+      {{provinces_name}} {{city_name}} {{county_name}} {{address}}
+        <!-- {{address}} -->
+      </view>
+      <view class='addressRight'>
+        <image src='../../images/youjiantou.png'></image>
+      </view>
+    </view>
+  </view>
+  <!--中间部分结束  -->
+</view>

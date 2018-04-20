@@ -1,0 +1,28 @@
+/* pages/codeWeChat/codeWeChat.wxss */
+
+.codeWeChat {
+  padding: 150rpx 30rpx 0rpx 30rpx;
+  display: flex;
+  align-items: center;
+  /* padding-top:; */
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.codeWeChat image {
+  width: 450rpx;
+  height: 450rpx;
+}
+
+.btn {
+  margin-bottom: 30rpx;
+  font-size: 30rpx;
+  display: flex;
+  /* height: 88rpx; */
+  width: 70%;
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  color: #00954d;
+}

@@ -1,0 +1,69 @@
+/**app.wxss**/
+@import 'style/weui.wxss';
+
+view, black {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.tab-item {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 49px;
+}
+
+.tab-ul {
+  padding-top: 5px;
+  width: 100%;
+  float: left;
+  border-top: 1px solid #b2b2b2;
+}
+
+.tab-li {
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+
+.img-tab {
+  width: 20px;
+  height: 20px;
+}
+
+.quanxian {
+  padding-top: 30rpx;
+  height: 100%;
+  width: 100%;
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+}
+
+.pointRed {
+  display: inline-block;
+  height: 25rpx;
+  width: 25rpx;
+  background: red;
+  position: absolute;
+  right: 5rpx;
+  top: 5rpx;
+  border-radius: 25rpx;
+}
+
+.share {
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  font-size: 28rpx;
+}

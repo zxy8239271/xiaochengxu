@@ -1,0 +1,91 @@
+/* pages/addSupplier/addSupplier.wxss */
+
+page{
+  width:100%;
+  height: 100%;
+}
+.addSupplier {
+    width: 100%;
+    height: 100%;
+    font-size: 28rpx;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    height: 88rpx;
+    background: #f4f4f4;
+    padding: 0 20rpx;
+    font-size: 34rpx;
+    align-items: center;
+}
+
+.weui-cells {
+  font-size: 32rpx;
+}
+.weui-input{
+padding-left:10px;
+height: 88rpx;
+
+}
+.form-list {
+ flex: 1;
+}
+.weui-select_in-select-after{
+padding-left:10px;
+}
+.btn-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00954d;
+  color: white;
+  height: 88rpx;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  z-index: 999
+}
+
+.weui-cell {
+  padding: 20rpx ;
+  border-bottom: 1px solid #e1e1e1;
+  display: flex;
+  align-items: center;
+}
+
+.weui-cell__bd_in-select-before, .weui-cell__hd_in-select-after {
+  padding-left: 0px;
+}
+
+.weui-cell:before {
+  width: 100%;
+  border-top: none;
+  content: '';
+}
+
+.weui-label {
+  width: auto;
+  /* color: #666; */
+  padding-right: 20rpx;
+}
+.weui-cell__right image{
+  width: 20rpx;
+  height: 30rpx;
+}
+
+
+.beizhu{
+  width:100rpx;
+height:88rpx;
+
+}
+
+
+
+
+
+

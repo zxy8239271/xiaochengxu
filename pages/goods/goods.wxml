@@ -1,0 +1,125 @@
+<!--logs.wxml-->
+<view class="supplier-list" wx:if='{{isShow}}'>
+  <!--FIXED  -->
+  <view class='supp-header'>
+    <!--头部开始  -->
+    <view class='common-header'>
+      <view class='common-header-left'>
+        <text bindtap='changeClass'>全部分类</text>
+        <image wx:if="{{showClass}}" src='../../images/xiajiantou.png' bindtap='changeClass'></image>
+        <image wx:else src='../../images/shangjiantou.png' bindtap='changeClass'></image>
+      </view>
+      <!-- <view  > -->
+        <!--做个标记data-id="add" 证明是从顶部加号进去的  -->
+        <image src='../../images/add.png' bindtap='toGoodsAdd' class='common-header-right' ></image>
+      <!-- </view> -->
+
+    </view>
+
+    <!--头部结束  -->
+    <!--tab切换开始  -->
+    <view class='tabbar'>
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; width:{{tabWidth}}px;transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+    </view>
+    <!--tab切换结束  -->
+  </view>
+  <!--fixed结束 -->
+  <!--rose分类列表  -->
+  <view class='classList' wx:if='{{showClass}}'>
+    <view class='item checkAll' catchtap="checkAll">
+      <text class='text'>选择全部</text>
+      <icon class='icon' type="success_no_circle" size="24" color="green" wx:if="{{checkAllClass}}" />
+    </view>
+
+    <view class='listItem' wx:for='{{goodClassData}}' wx:key='index' wx:for-item='item'>
+      <view class='item' catchtap="checkPic" data-item='{{item}}'>
+        <text class='text'>{{item.name}}</text>
+        <icon class='icon' type="success_no_circle" size="24" color="green" wx:if="{{item.name==linshiPidObj.name}}" />
+      </view>
+      <!--内部循环子集,父级被选中时才展示子级 -->
+      <view class='item ItemSon' wx:for="{{item.son}}" wx:key='key' wx:for-item='itemSon' data-item='{{itemSon}}' catchtap="checkCid" wx:if="{{item.name==linshiPidObj.name}}">
+        <text class='text'>{{itemSon.name}}</text>
+        <icon class='icon' type="success_no_circle" size="22" color="green" wx:if="{{itemSon.name==linshiCidObj.name}}" />
+      </view>
+    </view>
+
+    <!--下方的点击确认  -->
+    <view class='sup-btn'>
+      <view class='sup-left' bindtap='supClassCancle'>取消</view>
+      <view class='sup-right' bindtap='supClassSure'>确定</view>
+    </view>
+  </view>
+
+
+
+
+  <!--rose分类列表结束  -->
+
+
+
+  <!--供应商列表  -->
+
+  <scroll-view scroll-y='isScroll' style="height:100%" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-top="100">
+    <view class='supplier-ul'>
+      <view class='supplier-li' animation="{{touchStartId==item.id? animationData : animationDataDefault}}" wx:for="{{goodsData}}" wx:key="{{i}}" wx:for-item='item' bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchhEnd" data-id="{{item.id}}">
+        <view class='swipeLeft'>
+          <!--左边图片  -->
+          <view class='supplier-left' bindtap='toGoodsEdit' data-id='{{item.id}}' data-item="{{item}}">
+            <image src='{{item.thumb}}'></image>
+          </view>
+          <!--中间  -->
+          <view class='supplier-center'>
+            <view class='supplier-center-top'>
+              <text>{{item.title}}</text>
+            </view>
+            <view class='supplier-center-bottom'>
+              <text wx:if='{{item.is_supplier>0}}'>￥{{item.offer_price}}元/{{item.offer_name}}</text>
+            </view>
+          </view>
+
+          <!--右边  -->
+          <view class='supplier-right' wx:if="{{item.is_supplier==0}}">
+            <text>暂无供应商</text>
+          </view>
+
+        </view>
+
+        <view class='swipeRight'>
+          <view wx:if="{{item.is_down==0}}" class='xiajia' data-is_down="1" data-id="{{item.id}}" bindtap="isDownFn">
+            <text>下架</text>
+          </view>
+          <view wx:if="{{item.is_down==1}}" class='xiajia' data-is_down="0" data-id="{{item.id}}" bindtap="isDownFn">
+            <text>上架</text>
+          </view>
+          <view class='gonyingshang' bindtap="toEditSupplier" data-id="{{item.id}}" data-code="{{item.code}}" data-goodsName="{{item.title}}">
+            <text>供应商</text>
+          </view>
+        </view>
+
+
+      </view>
+
+
+
+    </view>
+    <!--最底部没有更多内容  -->
+    <view class="tips1">
+      <view style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+        <!-- <icon type="waiting" size="45" /> -->
+        <text wx:if="{{loadMore}}">玩命的加载中...</text>
+        <text wx:else>没有更多内容了</text>
+      </view>
+      <!-- <view wx:if="{{notMore}}" class='notMore'>
+        
+      </view> -->
+    </view>
+  </scroll-view>
+</view>
+<view class='quanxian' wx:else>暂无权限查看</view>

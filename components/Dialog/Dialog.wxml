@@ -1,0 +1,14 @@
+<!--components/Dialog/Dialog.wxml-->
+<view class='wx_dialog_container' hidden="{{!isShow}}">
+  <view class='wx-mask'></view>
+  <view class='wx-dialog'>
+    <!-- <view class='wx-dialog-title'>路上优选采购平台</view> -->
+    <view class='wx-dialog-content'> <image src='../../images/erweima.jpg' ></image>
+    <view>请关注"路上优选采购平台"公众号，以方便您的使用</view>
+    </view>
+     <view class='wx-dialog-footer'>
+       <view class='wx-dialog-btn' catchtap='_cancelEvent'>{{ cancelText }}</view> 
+      <!-- <view class='wx-dialog-btn' catchtap='_confirmEvent'>{{ confirmText }}</view> -->
+    </view> 
+  </view>
+</view>

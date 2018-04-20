@@ -1,0 +1,123 @@
+/* pages/managSupplier/manageSupplier.wxss */
+
+.manageSupplier {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topTitle {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  font-size: 30rpx;
+  height: 89rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+
+.topTitle text {
+  flex: 1;
+  text-align: center;
+}
+
+/*列表*/
+
+.radio {
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0;
+  /* line-height: 88rpx; */
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+
+.radioCircle {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+button {
+  width: 136rpx;
+  height: 64rpx;
+  font-size: 28rpx;
+  border-radius: 5rpx;
+}
+
+.name, .price, .radioCircle, .delBtn {
+  flex: 1;
+  text-align: center;
+}
+
+.delBtn, .radioCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*footerAdd*/
+
+.footerAdd {
+  width: 100%;
+  height: 88rpx;
+  background: #00954d;
+  /* position: fixed;
+    bottom: 0;
+    left: 0; */
+  display: flex;
+  align-items: center;
+}
+
+.footerAdd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerAdd view {
+  display: flex;
+  align-items: center;
+}
+
+.footerAdd image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 12rpx;
+}
+
+.footerAdd text {
+  line-height: 80rpx;
+  font-size: 34rpx;
+  color: #fff;
+}
+
+button::after {
+  border: none;
+}
+
+button[type="primary"] {
+  color: #fff;
+  background-color: #00954d;
+}
+
+.goods-tips {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+  font-size: 34rpx;
+  color: #666;
+}
+
+.radio-group {
+  width: 100%;
+  flex: 1;
+  overflow: scroll;
+  padding-bottom: 30rpx;
+}

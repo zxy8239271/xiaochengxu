@@ -1,0 +1,129 @@
+<!--supplierDetail.wxml-->
+<view class="supplierDetail-list">
+  <!-- 头像开始 -->
+  <view class='supplierDetail-ul'>
+    <view class='supplierDetail-li line124'>
+      <!-- <view class='supplierHeader-left'> -->
+        <image src='{{supplierDetail.logo}}'></image>
+      <!-- </view> -->
+      <view class='supplierHeader-center'>
+        <view class='supplierHeader-div'>
+          <view class='supplierHeader-p'>
+            <text>{{supplierDetail.name}}</text>
+          </view>
+          <view class='supplierHeader-p font26'  data-phone='{{supplierDetail.contacts_info}}' bindtap='call'>
+            <text>手机号:{{supplierDetail.contacts_info}}</text>
+          </view>
+        </view>
+        <!-- <image src='../../images/songhuo.png' class='img-we'></image> -->
+      </view>
+      <!-- <view class='supplierHeader-right'>
+        <image src='../../images/youjiantou.png'></image>
+      </view> -->
+    </view>
+    <!--头像结束  -->
+    <!--中间部分开始  -->
+    <view class='supplierDetail-li '>
+      <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>联系人姓名:</text>
+        </view>
+        <view class='supplierDetail-center'>
+          <text>{{supplierDetail.contacts}}</text>
+        </view>
+
+      </view>
+
+      <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>公司名称:</text>
+        </view>
+        <view class='supplierDetail-center'>
+          <text>{{supplierDetail.name}}</text>
+        </view>
+
+      </view>
+
+      <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>库房地址:</text>
+        </view>
+        <view class='supplierDetail-center'>
+          <text>{{supplierDetail.stock_addr}}</text>
+        </view>
+
+      </view>
+
+      <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>备用手机号:</text>
+        </view>
+        <view class='supplierDetail-center'  data-phone='{{supplierDetail.phone_bak}}'  bindtap='call'>
+          <text>{{supplierDetail.phone_bak}}</text>
+        </view>
+      </view>
+
+      <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>成为我的供应商日期:</text>
+        </view>
+        <view class='supplierDetail-center'>
+          <text>{{supplierDetail.create_time}}</text>
+        </view>
+      </view>
+
+      <!-- <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>合作次数:</text>
+        </view>
+        <view class='supplierDetail-center'>
+          <text>{{supplierDetail.trade_total}}</text>
+        </view>
+      </view> -->
+
+      <!-- <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>好评率:</text>
+        </view>
+        <view class='supplierDetail-center'>
+          <block wx:for="{{stars}}" wx:key='{{key}}'>
+            <image class="star-image" style="left: {{item*100}}rpx" src="{{key > item ?(key-item == 0.5?halfSrc:selectedSrc) : normalSrc}}">
+            </image>
+
+          </block>
+          {{key}}
+        </view>
+      </view> -->
+
+      <!-- <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>特色服务:</text>
+        </view>
+        <view class='supplierDetail-center textright'>
+          <text class='dangri'>当日</text>
+          <image src='../../images/zheng.png' class='zheng'></image>
+        </view>
+      </view> -->
+
+      <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>操作:</text>
+        </view>
+        <view class='supplierDetail-center textright'>
+          <text class='supplier-btn' data-item='{{supplierDetail}}' bindtap='delSupplier'>删除</text>
+          <!-- <text class='supplier-btn' data-item='{{supplierDetail}}' bindtap='selSupplier'>设为优选</text> -->
+          <text class='supplier-btn' data-item='{{supplierDetail}}'  bindtap='stopSupplier'  >{{supplierDetail.is_black==0?'暂停合作':'恢复合作'}}</text>
+          <!-- <text class='supplier-btn stop'   wx:if='{{supplierDetail.is_black==1}}' ></text> -->
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+  <!-- <view class='footer-supplierDetail'>
+    <text class=''> 管理此供应链可供商品 </text>
+    <text class='footer-right' >给他/她下单</text>
+  </view> -->
+  <!--中间部分结束  -->
+</view>

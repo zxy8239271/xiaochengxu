@@ -1,0 +1,225 @@
+<!--homePage.wxml-->
+<view class=" homePage-list">
+  <!--banner开始  -->
+
+  <!-- <view wx:if='{{isShow}}' class='erweima'>
+    <image src='../../images/erweima.jpg' bindlongtap='downImg'></image>
+    <view style='font-size:30rpx;'>为了您的使用方便，请先关注此公众号</view>
+  </view> -->
+  <view class='list-home'>
+    <view class='banner'>
+      <image src='../../images/banner.png'></image>
+      <view class='banner-top' bindtap='changeUnit' wx:if='{{loginData.company_name}}'>
+        <!-- {{loginData}} -->
+        <!-- <text>{{loginData.company_name}}</text> -->
+        <!-- <text  wx:if='{{loginData.store_name}}'> -> </text> -->
+        <!-- <text>{{loginData.company_name}}</text> -->
+        <view class='shopName'>[切换单位] {{loginData.company_name}}
+        </view>
+
+        <image src='../../images/youjiantouWhite.png'></image>
+        <!-- <view class='topJiantou'> > </view>   -->
+
+
+      </view>
+      <view class='banner-middle'>免费试用</view>
+    </view>
+    <!--banner结束  -->
+    <view class='home-content'>
+      <!--我是卖家  -->
+      <view class='home-content-top'>
+        <view class='content-line'>
+          <image src='../../images/songhuo.png' class='songhuo'></image>
+          <!-- <text class='fontSize'>我是卖家</text> -->
+          <view class='fontSize' bindtap='toggleSellShow'>
+            <text>我是卖家</text>
+            <image wx:if="{{isShowSellContent}}" src='../../images/xiajiantou.png'></image>
+            <image wx:else src='../../images/shangjiantou.png'></image>
+          </view>
+          <view class='zhanwei'></view>
+
+
+          <view class='content-line-right' data-id='wapSupplier' data-status='' bindtap='goMyOrder'>
+            <!-- <text class='fontSize rightFontSize' >更多</text> -->
+            <view class='fontSize'>
+              <text>更多</text>
+            </view>
+
+            <image src='../../images/youjiantou.png' class='youjiantou'></image>
+          </view>
+        </view>
+        <view class='content-card' wx:if="{{isShowSellContent}}">
+          <!-- <view class='content-card-w20' data-id='wapSupplier'   bindtap='goMyOrder'>
+          <view>
+            <image src='../../images/keq.png'></image>
+            <text class='circle' wx:if='{{qaingdan>0}}'>{{qaingdan}}</text>
+          </view>
+          <view>
+            <text>可抢单 </text>
+          </view>
+        </view> -->
+
+          <view class='content-card-w20' data-id='wapSupplier' data-status='taking' bindtap='goMyOrder'>
+            <view>
+              <image src='../../images/weijie.png'></image>
+              <text class='circle' wx:if='{{weijie>0}}'>{{weijie}}</text>
+            </view>
+            <view>
+              <text>待接单</text>
+            </view>
+          </view>
+
+          <view class='content-card-w20' data-id='wapSupplier' data-status='preparing' bindtap='goMyOrder'>
+            <view>
+              <image src='../../images/daipeihuo.png'></image>
+              <text class='circle' wx:if='{{daipeihuo>0}}'>{{daipeihuo}}</text>
+            </view>
+            <view>
+              <text>待配货</text>
+            </view>
+          </view>
+
+          <view class='content-card-w20' data-id='wapSupplier' data-status='receiving' bindtap='goMyOrder'>
+            <view>
+              <image src='../../images/daiqueren.png'></image>
+              <text class='circle' wx:if='{{daiqueren>0}}'>{{daiqueren}}</text>
+            </view>
+            <view>
+              <text>待收货</text>
+
+            </view>
+          </view>
+
+          <view class='content-card-w20' data-id='wapSupplier' data-status='reject' bindtap='goMyOrder'>
+            <view>
+              <image src='../../images/daipingjia.png'></image>
+              <text class='circle' wx:if='{{daipingjia>0}}'>{{daipingjia}}</text>
+            </view>
+            <view>
+              <text>退换/售后</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--我是卖家  -->
+      <!--买家开始  -->
+      <view class='home-content-top'>
+        <!--contenline开始  -->
+        <view class='content-line'>
+          <image src='../../images/maijia.png' class='songhuo'></image>
+          <!-- <text class='fontSize'>我是买家</text> -->
+          <view class='fontSize' bindtap='toggleBuyShow'>
+            <text>我是买家</text>
+            <image wx:if="{{isShowBuyContent}}" src='../../images/xiajiantou.png'></image>
+            <image wx:else src='../../images/shangjiantou.png'></image>
+          </view>
+          <view class='zhanwei'></view>
+
+
+          <view class='content-line-right' data-id='wapUser' data-status='' bindtap='goMyOrder'>
+            <!-- <text class='fontSize' data-id='wapUser'>更多</text> -->
+
+            <view class='fontSize'>
+              <text data-id='wapUser'>更多</text>
+            </view>
+            <image src='../../images/youjiantou.png' class='youjiantou'></image>
+          </view>
+        </view>
+        <!--contenline结束  -->
+        <view class='content-card' wx:if="{{isShowBuyContent}}">
+          <view class='content-card-w20' data-id='wapUser' data-status='taking' bindtap='goMyOrder'>
+            <view>
+              <image src='../../images/daijiedan.png'></image>
+              <text class='circle' wx:if='{{bulldaijie>0}}'>{{bulldaijie}}</text>
+            </view>
+            <view>
+              <text>待卖家接单</text>
+            </view>
+          </view>
+
+          <view class='content-card-w20' data-id='wapUser' data-status='preparing' bindtap='goMyOrder'>
+            <view>
+              <image src='../../images/chongxinxiadan.png'></image>
+              <text class='circle' wx:if='{{bullchongxia>0}}'>{{bullchongxia}}</text>
+            </view>
+            <view>
+              <text>待发货</text>
+            </view>
+          </view>
+
+          <view class='content-card-w20' data-id='wapUser' data-status='receiving' bindtap='goMyOrder'>
+            <view>
+              <image src='../../images/daishouhuo.png'></image>
+              <text class='circle' wx:if='{{bulldaishou>0}}'>{{bulldaishou}}</text>
+            </view>
+            <view>
+              <text>待收货</text>
+            </view>
+          </view>
+          <view class='content-card-w20' data-id='wapUser' data-status='reject' bindtap='goMyOrder'>
+            <view>
+              <image src='../../images/shouhou.png'></image>
+              <text class='circle' wx:if='{{bulldaishouhou>0}}'>{{bulldaishouhou}}</text>
+            </view>
+            <view>
+              <text>退换/售后</text>
+            </view>
+          </view>
+          <!-- <view class='content-card-w20'>
+          <view>
+            <image src='../../images/daipingjia.png'></image>
+            <text class='circle' wx:if='{{bulldaipingjia>0}}'>{{bulldaipingjia}}</text>
+          </view>
+          <view>
+            <text>待评价</text>
+          </view>
+        </view> -->
+
+
+        </view>
+      </view>
+      <!--买家结束  -->
+      <!--  消息开始-->
+      <view class='home-content-top'>
+        <!--contenline开始  -->
+        <view class='content-line'>
+          <image src='../../images/xiaoxi.png' class='songhuo'></image>
+          <view class='fontSize' data-id='0' bindtap='goMessage'>
+            <text>消息</text>
+            <text class='message-weidu'>{{messageData.unreadTotal>0?'('+messageData.unreadTotal+'条消息未读)':''}}</text>
+          </view>
+
+          <view class='zhanwei'></view>
+
+
+          <view class='content-line-right' data-id='quanbu' bindtap='goMessage'>
+            <text class='fontSize'>更多</text>
+            <image src='../../images/youjiantou.png' class='youjiantou'></image>
+          </view>
+        </view>
+        <!--contenline结束 -->
+        <view class='message-list' wx:if='{{messageData.unreadTotal !=0}}'>
+          <view class='message-li' wx:for='{{messageData.rows}}' wx:for-item='item' wx:key='index' data-item='{{item}}' bindtap='readMessage'>
+            <view class='message-imgLeft'>
+              <text class='pointRed' wx:if='{{item.status=="0"}}'></text>
+              <image src='../../images/purch.png'></image>
+            </view>
+            <view class='message-right'>
+              <view class='message-title'>
+                <text>{{item.title}}</text>
+              </view>
+              <view class='message-content'>
+                <text>{{item.content}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!--查看更多  -->
+        <view wx:if='{{messageData.unreadTotal>5}}' class='more' data-id='0' bindtap='goMessage'>点击查看更多</view>
+        <view wx:if='{{messageData.unreadTotal==0}}' class='more'>暂无消息</view>
+      </view>
+      <!--消息结束  -->
+    </view>
+  </view>
+
+</view>

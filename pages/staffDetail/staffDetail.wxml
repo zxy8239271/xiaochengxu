@@ -1,0 +1,62 @@
+<!--pages/staffDetail/staffDetail.wxml-->
+<view class='staffDetail'>
+  <!-- 姓名电话部分 -->
+  <view class='staffDetailHeader'>
+    <view class='staffPictureBox'>
+      <image src='{{staffData.photo}}'></image>
+    </view>
+    <view class='nameAndPhoneNumber'>
+      <view class="mainName">{{staffData.nick}}</view>
+      <view class="mainPhone" wx:if='{{staffData.phone}}' data-phone='{{staffData.phone}}' bindtap='callPhone'>
+        <text>{{staffData.phone}}</text>
+        <image src='../../images/phone.png'></image>
+      </view>
+      <view wx:else class="mainPhone" style='color:red'>暂无联系方式</view>
+    </view>
+    <view class='twoDimensionCode'>
+      <!-- <image src='../../images/twoDimensionCode.png'></image> -->
+    </view>
+  </view>
+  <view class="detailBody">
+    <view>
+      <text class="firstText">姓名：</text>
+      <text>{{staffData.nick}}</text>
+    </view>
+    <view>
+      <text class="firstText">职务：</text>
+      <picker  value="{{index}}" range="{{array}}" range-key='role_name'  bindchange="bindPickerChange">
+        <view class="picker">
+          {{staffData.role_name}}
+        </view>
+      </picker>
+      
+    </view>
+
+    <view>
+      <text class="firstText">性别：</text>
+      <text>{{staffData.sex=='1'?'男':'女'}}</text>
+    </view>
+    <view>
+      <text class="firstText">加入团队日期：{{staffData.create_time}}</text>
+    </view>
+  </view>
+  <view class="operate">
+    <text class="firstText"> 操作</text>
+    <view wx:if="{{staffData.is_del==0}}" class="delBtn" bindtap="delStaff">删除</view>
+
+    <view wx:if="{{staffData.is_departure==0}}" class="setBtn" bindtap="setStop">设为离职</view>
+    <view wx:if="{{staffData.is_departure==1}}" class="alreadyStop">已离职</view>
+  </view>
+
+
+
+
+  <!--设置权限模块暂时不用先隐藏  -->
+  <view  class="setAuthority">
+    <view class="title">设置权限</view>
+    <view class="orderForGoods   border"  wx:for='{{aclsData}}'  wx:for-item='item' wx:key='index'>
+      <text>{{item.name}}</text>
+      <switch checked="{{ item.type=='1'?true:false}}"   data-item='{{item}}'  bindchange='changeSwitch'/>
+    </view>
+  </view>
+</view>

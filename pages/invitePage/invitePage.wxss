@@ -1,0 +1,103 @@
+/* pages/invitePage/invitePage.wxss */
+.chooseCompany {  
+    height: 100%;
+    width: 100%;
+    background: #efeff4;
+    padding:16rpx 0 0 0;
+}
+
+.topInfo {
+    padding: 0 26rpx;
+    width: 100%;
+    height: 174rpx;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-top: 1rpx solid #e1e1e1;
+    margin-bottom: 16rpx;
+}
+
+.headSculpture {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.nameAndPhone {
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 15rpx;
+    flex: 1;
+}
+
+.nameAndPhone .name {
+    font-size: 32rpx;
+}
+
+.nameAndPhone .phone {
+    font-size: 26rpx;
+}
+
+
+.twoCode {
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.skipLinks {
+    width: 13rpx;
+    height: 24rpx;
+    margin-left: 28rpx;
+}
+
+
+/*mainInfo开始*/
+
+.mainInfo {
+    width: 100%;
+    background: #fff;
+ }
+
+.mainInfo>view {
+    width: 100%;
+    height: 99rpx;
+    border-bottom: 1rpx solid #e1e1e1;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    padding:0 26rpx;
+}
+
+.lineTitle{
+	flex: 1;
+	color:#000;
+}
+
+.house {
+    width: 36rpx;
+    height: 34rpx;
+    margin-right: 24rpx;
+}
+
+.client {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 24rpx;
+}
+
+.staff {
+    width: 40rpx;
+    height: 33rpx;
+    margin-right: 24rpx;
+}
+
+.purchase {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 24rpx;
+}
+
+.skipLinks {
+    font-size: 32rpx;
+    color: #666;
+}

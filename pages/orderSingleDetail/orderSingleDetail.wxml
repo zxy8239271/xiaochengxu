@@ -1,0 +1,98 @@
+<view class='orderSingle'>
+  <view class='order-single-list'>
+    <!--客戶信息  -->
+    <view class='orderSingle-ul mg18' wx:if="{{action !='reject'}}">
+      <view class='orderSingle-li'>
+        <!-- <view class='orderSingle-li-header'> -->
+        <image src='{{orderSigleData.avatar}}' class='orderSingle-li-header'></image>
+        <!-- </view> -->
+        <view class='orderSingle-li-center'>
+          <view class='orderSingle-li-p'>收货公司：{{orderSigleData.company_name}}</view>
+          <view class='orderSingle-li-p'>下单人：{{orderSigleData.username}}</view>
+          <view class='orderSingle-li-p'>手机号：{{orderSigleData.phone}}</view>
+        </view>
+        <!-- <view class='orderSingle-li-right' > -->
+        <image src='../../images/phone.png' bindtap='call' class='orderSingle-li-right'></image>
+        <!-- </view> -->
+      </view>
+    </view>
+    <!--客戶信息  -->
+    <!--订单信息  -->
+    <view class='orderSingle-ul' wx:if="{{action !='reject'}}">
+      <view class='orderSingle-ul-cnter'>
+        <text>订单编号</text>
+        <text class='order-right'>{{orderSigleData.order_sn}}</text>
+      </view>
+      <view class='orderSingle-ul-cnter'>
+        <text>共{{orderSigleData.data.length}}件商品</text>
+        <!-- <text style='margin-left:20rpx;'>jwqifh</text> -->
+        <text class='order-right'>{{orderSigleData.price}}元</text>
+      </view>
+      <view class='orderSingle-ul-cnter'>
+        <text>期望送达时间</text>
+        <text class='order-right' style='color:#009d4d'>{{orderSigleData.expect_time}} </text>
+      </view>
+      <view class='orderSingle-ul-cnter'>
+        <text>收货地址</text>
+        <text class='order-right'>{{orderSigleData.receive_address}} </text>
+      </view>
+      <view class='orderSingle-ul-cnter'>
+        <text>备注</text>
+        <text class='order-right' style='color:#009d4d'>{{orderSigleData.remarks}} </text>
+      </view>
+    </view>
+    <!--订单信息结束  -->
+    <!--订单菜品展示  -->
+    <view class='orderSingle-ul-list'>
+      <view class='order-list'>
+        <view class='order-list-li' wx:for='{{orderSigleData.data}}' wx:for-item='item' wx:key='index'>
+          <view class='order-list-li-left'>
+            <image src='{{item.product_pic}}'></image>
+          </view>
+          <view class='order-list-li-center'>
+            <view>{{item.product_name}}</view>
+            <!-- <view class='order-list-bottom'>
+              <text>{{item.real_price}}元/{{item.receiveUnit_name}}</text>
+              <text class=' color-block'>x{{item.num}}</text>
+            </view>  -->
+            <!--下单数量 实收数量  -->
+            <view class='order-list-bottom'>
+              <text>下单数量：{{item.num}}</text>
+              <text wx:if="{{item.is_receive_order==1}}" class=' color-block'>实收数量：{{item.real_num}}</text>
+            </view>
+            <view style='color:#00954d'>
+              {{item.remarks}}
+            </view>
+          </view>
+          <!-- <view class='order-list-li-right'>
+            <text></text> -->
+          <!-- <view>{{item.real_price}}元/{{item.receiveUnit_name}}</view>
+            <view class='order-list-bottom color-block'>x{{item.num}}</view> -->
+          <!-- </view> -->
+          <!--买家  -->
+          <view class='order-list-li-right'>
+            <!--价格部分  -->
+            <view class='order-list-price'>
+              <text>{{item.real_price}}元/{{item.receiveUnit_name}}</text>
+              <!-- <text class='price-color-block'>x{{item.num}}</text> -->
+            </view>
+
+            <view class='order-list-li-right-bottom' wx:if="{{Module=='wapUser'}}">
+              <text class='tuihuo ' wx:if='{{item.operate_list}}' style='{{item.operate_list[0].class}}' data-item='{{item}}' bindtap='tuiHuoBtn'>{{item.operate_list[0].name}}</text>
+            </view>
+            <!--卖家  -->
+            <view class='order-list-li-right-bottom' wx:if="{{Module=='wapSupplier'}}">
+              <text class='tuihuo ' wx:if="{{item.composite_status=='reject'||item.composite_status=='rejecting'||item.composite_status=='disagree'}}" data-item='{{item}}' bindtap='tuiHuoBtn'>退货详情</text>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <!--订单菜品展示结束  -->
+  </view>
+  <view class='order-footer' wx:if="{{orderSigleData.operate_list.length>0 && action!='reject'}}">
+    <view class='footer-left' wx:for='{{orderSigleData.operate_list}}' wx:for-item='val' wx:key='i' data-val='{{val}}' bindtap='singleBtn' wx:if="{{val.isShow=='1' }}">{{val.name}}
+    </view>
+  </view>
+</view>

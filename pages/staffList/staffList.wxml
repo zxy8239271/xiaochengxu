@@ -1,0 +1,63 @@
+<!--message.wxml  -->
+<!--tab  -->
+<view class="staffList">
+  <view class='message'>
+    <view class='message-tab'>
+      <view class="swiper-tab">
+        <view class="swiper-tab-list oneTab">
+          <text data-current="0" bindtap="swichNav" class='{{currentTab==0 ? "on" : "" }}'>在职</text> </view>
+        <view class="swiper-tab-list">
+          <text data-current="1" bindtap="swichNav" class='{{currentTab==1 ? "on" : "" }}'>离职</text>
+        </view>
+
+        <!--新加的加号  -->
+        <!--右边小加号  -->
+        <view class='addIcon' bindtap="showAddMain">
+          <image src='../../images/add.png'></image>
+        </view>
+        <view class='addMain' wx:if="{{isShowAddMain}}">
+          <view class='add' catchtap="addIcon">扫码添加</view>
+          <button open-type='share' class='share'>发邀请给员工</button>
+          <!-- <view>发邀请给客户</view> -->
+        </view>
+      </view>
+    </view>
+    <!--tab切换结束  -->
+    <!--消息列表  -->
+    <view class="container">
+      <scroll-view wx:if="{{dataLists.length!=0 || dataLists.length==0 && currentTab==1}}" class="list" scroll-y="true" bindscrolltolower='loadMore'>
+        <view class='message-li' wx:for='{{dataLists}}' wx:key='key' wx:for-item="item">
+          <view class='message-img'>
+            <image data-id="{{item.id}}" src='{{item.photo}}' bindtap='toStaffDetail'></image>
+          </view>
+          <view class='message-center'>
+            <view class='message-center-p'>
+              <text>{{item.nick}}</text>
+              <text></text>
+              <text class='message-time' data-id='{{item. phone}}' bindtap='call'>{{item. phone}}</text>
+            </view>
+            <view class='message-center-sure'>{{item.role_name}}</view>
+          </view>
+        </view>
+        <view class="bottom" >
+          <view wx:if="{{isLoading}}">上拉加载更多</view>
+          <view wx:else>没有更多数据了</view>
+        </view>
+        <!-- <view wx:else>
+          <button open-type='share' class='sharebtn' wx:if='{{currentTab==0 && !isShow}}'>发邀请给员工</button>
+          <view wx:if='{{currentTab==1&& !isShow}}'>暂无离职人员</view>
+        </view> -->
+      </scroll-view>
+
+      <view wx:else class='emptyData'>
+   <image src='../../images/staffEmpty.png'></image>
+   <view class='text1'>亲，您的店铺还没有员工~</view>
+   <view class='text1'>快快招募吧！</view>
+</view>
+      
+    </view>
+
+
+    <!--消息列表结束  -->
+  </view>
+</view>

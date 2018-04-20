@@ -1,0 +1,273 @@
+.orderList {
+  width: 100%;
+  height: 100%;
+  border-top: 18rpx solid #fafafa;
+  background: #fafafa;
+  position: fixed;
+}
+
+.orderList-content {
+  background: #fff;
+  float: left;
+  width: 100%;
+  height: calc(100% - 100rpx);
+}
+
+.order-left {
+  width: 20%;
+  float: left;
+  height: calc(100% - 120rpx);
+  border-right: 1px solid #e1e1e1;
+  position: fixed;
+  overflow: scroll;
+}
+
+.order-right {
+  position: fixed;
+  right: 0rpx;
+  width: 80%;
+  height: calc(100% - 120rpx);
+  float: left;
+  overflow: scroll;
+}
+
+/*左边  */
+
+.order-left-ul {
+  width: 100%;
+}
+
+.order-left-li {
+  width: 100%;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.order-left-li:last-child {
+  border-bottom: none;
+}
+
+.order-left-li-title {
+  font-size: 30rpx;
+  padding: 20rpx 0px 20rpx 15rpx;
+}
+
+.order-left-li-list {
+  display: none;
+  color: #000;
+  text-align: center;
+}
+
+.order-left-menu {
+  padding: 20rpx 0rpx 20rpx 10rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.order-left-menu-select {
+  color: white;
+  background: #00954d;
+}
+
+.fontColor {
+  color: #00954d;
+  font-size: 30rpx;
+}
+
+.active {
+  display: block;
+}
+
+.order-right-header {
+  float: left;
+  position: fixed;
+  top: 0rpx;
+  right: 0rpx;
+  width: 80%;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  background: #fafafa;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.order-right-header-title {
+  color: #00954d;
+  font-size: 30rpx;
+}
+
+.order-right-img {
+  position: absolute;
+  right: 20rpx;
+  top: 23rpx;
+  height: 30rpx;
+  width: 25rpx;
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  /*IE*/
+  filter: FlipH;
+}
+
+/*右边菜品展示的样式  */
+
+.order-right-content {
+  /* padding-top: 79rpx; */
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow-y: scroll;
+}
+
+.order-right-ul {
+  width: 100%;
+  float: left;
+  padding: 0rpx 0rpx 0rpx 20rpx;
+}
+
+.order-right-li {
+  padding: 20rpx 10rpx 20rpx 0rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.order-right-content-img {
+  /* flex: 2; */
+}
+
+.order-right-content-img image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.order-right-center {
+  padding-left: 22rpx;
+  flex: 1;
+  font-size: 26rpx;
+}
+
+.order-right-center .lineh {
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.lineh-left {
+  flex: 1;
+}
+
+.order-right-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.jian {
+  margin-top: 5rpx;
+  /* float: left; */
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.jia {
+  /* float: left; */
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.num {
+  margin-top: 5rpx;
+  /* float: left; */
+}
+
+/*脚部  */
+
+.order-footer {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  height: 100rpx;
+  width: 100%;
+  bottom: -1px;
+}
+
+.footer-cart {
+  position: absolute;
+  top: -30rpx;
+  left: 50rpx;
+  z-index: 999;
+}
+
+.footer-cart image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.footer-cart-num {
+  position: absolute;
+  top: -5rpx;
+  right: -10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 40rpx;
+  font-size: 20rpx;
+  background: #00954d;
+  color: white;
+  border: 1px solid white;
+}
+
+.footer-price {
+  position: relative;
+  float: left;
+  width: 65%;
+  font-size: 30rpx;
+  color: white;
+  height: 100%;
+  padding-left: 178rpx;
+  background: #575656;
+  line-height: 88rpx;
+  padding-right: 75rpx;
+  z-index: 555;
+}
+
+.saoyisao {
+  position: absolute;
+  right: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
+  top: 25rpx;
+}
+
+.footer-right {
+  width: 35%;
+  float: left;
+  height: 100%;
+  line-height: 100rpx;
+  text-align: center;
+  background: #00954d;
+  color: white;
+}
+
+.footer-right-black {
+  width: 35%;
+  float: left;
+  height: 100%;
+  line-height: 100rpx;
+  text-align: center;
+  background: #666;
+  color: white;
+  font-size: 34rpx;
+}
+
+.cart-black .footer-cart-num {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.tips1 {
+  padding-top: 30rpx;
+  text-align: center;
+  color: #666;
+  font-size: 30rpx;
+}

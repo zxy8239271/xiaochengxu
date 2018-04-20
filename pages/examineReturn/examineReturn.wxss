@@ -1,0 +1,187 @@
+.returnGoods {
+  background: #eee;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.good-list {
+  overflow: scroll;
+}
+
+.list {
+  margin-bottom: 18rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 26rpx;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.goods-img {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.good-right {
+  padding-left: 30rpx;
+  font-size: 30rpx;
+  flex: 1;
+}
+
+.goods-top {
+  margin-bottom: 20rpx;
+}
+
+.weui-cell {
+  display: flex;
+  width: 100%;
+  padding: 0px;
+}
+
+.weui-label {
+  color: #666;
+  font-size: 30rpx;
+  text-align: left;
+  width: auto;
+}
+
+/* .weui-cell__hd {
+} */
+
+.weui-input {
+  font-size: 30rpx;
+}
+
+.weui-cell__right {
+  font-size: 30rpx;
+}
+
+.returnNum {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 28rpx;
+  font-size: 30rpx;
+}
+
+.changeText {
+  color: #959595;
+}
+
+.returnNum input {
+  width: 200rpx;
+  border: 1px solid #00954d;
+  text-align: center;
+}
+
+.teshu {
+  display: block;
+}
+
+.teshu .weui-input {
+  border: 1px solid #666;
+  min-height: 200rpx;
+}
+
+.shangchaun {
+  border: 1px solid #e1e1e1;
+  height: 160rpx;
+  width: 160rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.shangchaun image {
+  height: 80rpx;
+  width: 90rpx;
+  margin-bottom: 24rpx;
+}
+
+.good-footer {
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  font-size: 36rpx;
+  background: #00954d;
+  width: 100%;
+  color: #fff;
+  justify-content: center;
+  /* position: fixed;
+  bottom: 0px; */
+}
+.good-footer view{
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #e1e1e1;
+}
+.good-footer view:last-child{
+  border-right: none
+}
+.weui-cell__rigth image {
+  width: 20rpx;
+  height: 30rpx;
+}
+
+.change-tips {
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.change-list {
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.yuanyin {
+  padding: 26rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.yuanyin-list {
+  padding: 0rpx 26rpx 26rpx 26rpx;
+}
+
+.yuanyin-btn {
+  background: #00954d;
+  color: #fff;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yuanyin-list-li {
+  display: flex;
+  padding: 10rpx 0px;
+  align-items: center;
+}
+
+.yuanyin-list-right {
+  flex: 1;
+  font-size: 30rpx;
+}
+
+.yuanyin-list-li image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.ping-img image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}

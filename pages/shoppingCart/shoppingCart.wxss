@@ -1,0 +1,358 @@
+.shoppingCart {
+  height: 100%;
+  /* float: left; */
+  width: 100%;
+}
+
+.kong {
+  margin-top: 100rpx;
+  width: 100%;
+  padding-top: 50rpx;
+  height: calc(100% - 210rpx);
+  font-size: 30rpx;
+  text-align: center;
+  color: #666;
+}
+
+.kong .text-tips {
+  padding-top: 26rpx;
+  font-size: 28rpx;
+  padding-bottom: 110rpx;
+}
+
+.kong image {
+  margin: 0 auto;
+  display: flex;
+  width: 286rpx;
+  height: 326rpx;
+}
+
+.kong .gocai {
+  margin: 0rpx auto;
+  display: flex;
+  align-items: center;
+  background: #00954d;
+  color: white;
+  justify-content: center;
+  height: 90rpx;
+  width: 60%;
+}
+
+.shoppingCart-ul {
+  margin-top: 100rpx;
+  width: 100%;
+  height: calc(100% - 210rpx);
+  float: left;
+  overflow: scroll;
+}
+
+/*头部*/
+
+.shop-header {
+  position: fixed;
+  top: 0px;
+  z-index: 999;
+  width: 100%;
+  height: 98rpx;
+  padding: 0rpx 20rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #fafafa;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.shoppingCart-li {
+  /* float: left; */
+  width: 100%;
+}
+
+.shoppingCart-li-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fafafa;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+
+.jiantou {
+  width: 30rpx;
+  height: 18rpx;
+  /*IE*/
+  filter: FlipH;
+  /* float: left; */
+ margin-right:10rpx; 
+}
+
+.jiantouS {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  /*IE*/
+  filter: FlipH;
+}
+
+@keyframes mymove {
+  from {
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    /*IE*/
+    filter: FlipH;
+  }
+
+  to {
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    /*IE*/
+    filter: FlipH;
+  }
+}
+
+.cai {
+  margin-top: 5rpx;
+  margin-right: 20rpx;
+  height: 35rpx;
+  width: 35rpx;
+  /* float: left; */
+}
+
+.name {
+  font-size: 30rpx;
+  color: #000;
+}
+
+.num {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.del {
+  /* position: absolute;
+  right: 30rpx;
+  top: 25rpx; *//* float: right; */
+  font-size: 34rpx;
+  margin-right: 20rpx;
+  color: #666;
+}
+.wancheng {
+  /* position: absolute;
+  right: 30rpx;
+  top: 25rpx; */
+  font-size: 34rpx;
+  color: #666;
+}
+
+/*每类菜品下的菜单 */
+
+.shopping-content {
+  width: 100%;
+  /* float: left; */
+  display: none;
+}
+
+.shopping-list-li {
+  width: 100%;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.shopping-list {
+  width: 100%;
+  /* float: left; */
+  position: relative;
+}
+
+/* .shopping-list-img {
+} */
+
+.shopping-list-img  {
+  width: 120rpx;
+  height: 120rpx;
+  padding-right: 22rpx;
+  
+}
+
+.shopping-list-center {
+  flex:1;
+}
+
+.shopping-list-name {
+  display: flex;
+  font-size: 26rpx;
+}
+
+.shopping-list-price {
+  font-size: 26rpx;
+  width: 100%;
+}
+
+.shopping-list-price image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.price-shop {
+  display: flex;
+  padding: 10rpx 0rpx;
+  flex: 1;
+  margin-right: 12rpx;
+}
+
+.shop-supplier {
+  margin-right: 30rpx;
+}
+
+.shopping-list-edit {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+/*加减  */
+
+.order-right-right {
+  display: flex;
+  align-items: center;
+/* width: 130rpx; */
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.jian {
+
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.jia {
+  float: left;
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.order-num {
+  margin-top: 8rpx;
+  float: left;
+  padding: 0px 12rpx;
+}
+
+/*点击下拉按钮 弹出供应商该列表  */
+
+.shoppingCartList {
+  display: block;
+}
+
+.supplier-list {
+  display: none;
+  width: 100%;
+  position: absolute;
+  /* height: 500rpx; */
+  top: 90rpx;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
+
+.showSupplierClass {
+  display: block;
+}
+
+.supplier-one {
+  background: #fff;
+}
+
+.supplier-ul {
+  padding: 0px 40rpx;
+}
+
+.supplier-ul, .supplier-li {
+  position: relative;
+  width: 100%;
+  float: left;
+  /* background: #fff; */
+}
+
+
+
+.supplier-li {
+  padding: 10rpx 20rpx;
+  border-bottom: 1px solid #e1e1e1;
+    display: flex;
+  background: #fff;
+  align-items: center;
+}
+
+.supplier-logo {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.supplier-logo image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.supplier-center {
+  flex: 5;
+  padding-left: 15rpx;
+  font-size: 26rpx;
+}
+.supplier-center .name-supplier {
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp:2;
+overflow: hidden;
+}
+.supplier-price {
+  flex: 3;
+  font-size: 26rpx;
+}
+
+.supplier-price  text {
+  font-size: 26rpx;
+}
+
+.supplier-img {
+  /* position: absolute; */
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/*脚部  */
+
+.shop-footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+}
+
+.shop-left {
+  float: left;
+  width: 70%;
+  font-size: 34rpx;
+}
+
+.shop-right {
+  float: left;
+  width: 30%;
+  font-size: 30rpx;
+  background: #00954d;
+}
+
+.shop-left .footer-price {
+  font-size: 28rpx;
+  padding-left: 10rpx;
+}

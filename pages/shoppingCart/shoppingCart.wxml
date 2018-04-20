@@ -1,0 +1,125 @@
+<!--shoppingCart.wxml  -->
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class='shoppingCart'>
+  <view class='shop-header' wx:if='{{shopData.length>0}}'>
+    <text class='del' bindtap='allShopDel' wx:if='{{!showdel}}'>清空</text>
+    <text class='wancheng' bindtap='editBtn' wx:else>完成</text>
+  </view>
+  <view class='kong' wx:if='{{shopData.length<=0}}'>
+    <image src='../../images/cart_kong.png'></image>
+    <view class='text-tips'>一件商品都没有呢</view>
+    <view class='gocai' bindtap='goOrderList'>去采购</view>
+  </view>
+  <view class='shoppingCart-ul' wx:else>
+    <!--购物车为空时  -->
+
+    <!--分类的渲染li  -->
+    <view class='shoppingCart-li' wx:for='{{shopData}}' wx:for-item="item" wx:key='index' wx:for-index="index">
+      <!--分类的标题  -->
+      <view class='shoppingCart-li-title' data-id='{{index}}' bindtap='showList'>
+        <image src='../../images/xiajiantou.png' class="jiantou {{item.showList?'jiantouS':''}}"></image>
+        <image src='../../images/cai.png' class='cai'></image>
+        <text class='name'>{{item.name}}</text>
+        <text class='num'>({{filters.toFix(item.price)}})</text>
+      </view>
+      <!--分类标题的结束  -->
+      <!--分类下的列表  -->
+      <view class="shopping-content {{item.showList?'shoppingCartList':''}}">
+        <view class='shopping-list' wx:for='{{item.son}}' wx:for-item="value" wx:key='i' wx:for-index="i">
+          <!-- 每个菜品开始 -->
+          <view class='shopping-list-li'>
+            <!--图片  -->
+            <image src='{{value.thumb}}' class='shopping-list-img'></image>
+            <!--图片  -->
+            <!--菜名  -->
+            <view class='shopping-list-center '>
+              <view class='shopping-list-name'>{{value.title}}</view>
+              <view class='shopping-list-price'>
+                <view class='price-shop'>￥{{value.offer_price}}元/{{value.offer_name}}</view>
+                <view class='shopping-list-edit'>
+                  <image src='../../images/chakansupplier.png' data-item='{{value}}' bindtap='changeSupplier' wx:if='{{value.is_supplier>1}}'></image>
+                  <text class='shop-supplier' data-item='{{filters.toFix(value)}}' wx:if="{{value.is_supplier>1}}" bindtap='changeSupplier'> 供应商</text>
+                  <!-- <image src='../../images/edit.png'></image> -->
+                  <image src='../../images/del.png' data-code='{{value.code}}' bindtap='shopDel'></image>
+                </view>
+              </view>
+            </view>
+            <!--菜名结束  -->
+            <!--加减  -->
+            <view class='order-right-right'>
+              <image src='../../images/jian.png' class='jian' data-item='{{value}}' bindtap='shopJian' data-flg='0' wx:if="{{value.nums>=1}}"></image>
+              <view class='order-num'>
+                <input type="digit" value='{{filters.toFix(value.nums)}}' data-item='{{value}}' style='width:130rpx;text-align:center; ' data-flg='0' bindblur='changeShop' />
+              </view>
+              <image src='../../images/jia.png' class='jia' data-item='{{value}}' data-flg='0' bindtap='shopJia'></image>
+            </view>
+            <!--加减  -->
+          </view>
+          <!--每个菜品 结束 -->
+        </view>
+        <!-- 每个菜品的结束 -->
+      </view>
+      <!--分类下列表的结束  -->
+    </view>
+    <!--分类li的结束  -->
+  </view>
+  <view class='shop-footer' wx:if='{{shopData.length>0}}'>
+    <view class='shop-left'>
+      <text>共计{{shopAllNum}}种商品</text>
+      <text class='footer-price'>(￥{{filters.toFix(allPrice)}})</text>
+    </view>
+    <view class='shop-right' bindtap='submitOrder'>结算</view>
+  </view>
+  <!--每个菜品的供应商 开始 -->
+  <view class="supplier-list {{showSupplier?'showSupplierClass':''}}">
+    <view class='supplier-one'>
+      <view class='shopping-list-li'>
+        <!--图片  -->
+        <image src='{{oneData.thumb}}' class='shopping-list-img'></image>
+        <!--图片  -->
+        <!--菜名  -->
+        <view class='shopping-list-center '>
+          <view class='shopping-list-name'>{{oneData.title}}</view>
+          <view class='shopping-list-price'>
+            <view class='price-shop'>￥{{oneData.offer_price}}元/{{oneData.offer_name}}</view>
+            <view class='shopping-list-edit'>
+              <image src='../../images/del.png' data-code='{{oneData.code}}' bindtap='shopDel'></image>
+            </view>
+          </view>
+        </view>
+        <!--菜名结束  -->
+        <!--加减  -->
+        <view class='order-right-right'>
+          <image src='../../images/jian.png' class='jian' data-item='{{oneData}}' data-flg='1' bindtap='shopJian' wx:if="{{oneData.nums>0}}"></image>
+          <view class='order-num'>
+            <input type="digit" value='{{filters.toFix(oneData.nums)}}' data-item='{{value}}' style='width:50rpx;text-align:center; ' data-flg='1' bindblur='changeShop' />
+          </view>
+          <image src='../../images/jia.png' class='jia' data-flg='1' data-item='{{oneData}}' bindtap='shopJia'></image>
+        </view>
+        <!--加减  -->
+      </view>
+    </view>
+    <view class='supplier-ul'>
+      <view class='supplier-li' wx:for='{{supplierData}}' wx:key='i' wx:for-item='item' data-item='{{item}}' wx:if='{{oneData.old_supplier!=item.supplier_id}}' bindtap='changeSelect'>
+        <view class='supplier-logo'>
+          <image src='{{item.logo}}'></image>
+        </view>
+        <view class='supplier-center'>
+          <view class='name-supplier'>
+            {{item.supplier_name}}
+          </view>
+          <view>{{item.phone}}</view>
+        </view>
+        <view class='supplier-price'>
+          <text>￥{{item.offer_price}}元/{{item.offer_name}}</text>
+
+        </view>
+        <view class='supplier-img'>
+          <image wx:if='{{oneData.offer_id==item.id}}' src='../../images/duihao.png' class='supplier-img'></image>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  <!--每个菜品供应商的结束  -->
+</view>

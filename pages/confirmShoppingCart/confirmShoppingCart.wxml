@@ -1,0 +1,100 @@
+<!--pages/confirmShoppingCart/confirmShoppingCart.wxml-->
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class='fixed'>
+  <view class='confirmShoppingCart'>
+    <!-- 收获地址信息 -->
+    <view class='address'>
+      <!-- <view class='addressIco'> -->
+        <image src='../../images/address.png' class='addressIco'></image>
+      <!-- </view> -->
+      <view class='mainDetail'>
+        <view class='mainDetail-div'>
+          <view class='topLeft'>
+            <text>公司：{{addressData.name||'无'}}</text>
+          </view>
+          <view class='topLeft'>
+            <text>收货人：{{addressData.contacts||'无'}}</text>
+          </view>
+          <view class='topRight'>
+            <text>联系电话:  {{addressData.contacts_info}}</text>
+          </view>
+          <view class='bottom'>
+            <text>收货地址:  {{addressData.address||'暂无送货地址'}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='youjiantou'> -->
+      <!-- <image src='../../images/youjiantou.png'></image> -->
+      <!-- </view> -->
+    </view>
+    <!-- 期望到达时间 -->
+    <!--期望到达时间  -->
+    <view class="chooseTime">
+      <picker mode="date" value="{{date}}" start="2018-03-01" end="2020-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          <view class='hopeTime'>
+            <text>期望到达时间</text>
+          </view>
+          <view class='dateDetail'>
+            <view>
+              <text>{{date}}</text>
+            </view>
+            <image src='../../images/youjiantou.png'></image>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class='container'>
+      <!--中间主内容区域  -->
+      <!--图片都是临时弄的  -->
+      <view class='containerDetail'>
+        <view wx:for="{{listData}}" wx:key="index" wx:for-item="item" data-item='{{index}}' wx:for-index='index'>
+          <view class='containerDetailHeader'>
+            <image src='{{item.goodsImgSrc}}'></image>
+            <view class='comName'>
+              <text>{{item.supplier_name}}</text>
+            </view>
+            <view class='allNum'>
+              <text>共{{item.allNum}}件</text>
+            </view>
+            <view class='allPrice'>
+              <text>￥{{filters.toFix(item.allPrice)}}元</text>
+            </view>
+          </view>
+          <!--list部分  -->
+          <view class='list' wx:for="{{item.classifly}}" wx:key="key" wx:for-item="value" wx:for-index='m'>
+            <view class='listContainer' bindtap="changeShow" data-fatherid='{{index}}' data-selfid="{{m}}">
+              <image class="img1 {{value.carDetailIsShow?'jiantouS' :''}}" src='../../images/xiajiantou.png'></image>
+              <image class='img2' src='{{value.imgSrc}}'></image>
+              <view class='kind'>{{value.name}}</view>
+              <view class='kindNum'>x{{value.kindNum}}</view>
+              <view class='kindPrice'>￥{{filters.toFix(value.kindPrice)}}元</view>
+            </view>
+            <!-- 点击展开的部分 -->
+            <view class="openLists" wx:if="{{value.carDetailIsShow}}" wx:for="{{value.children}}" wx:key="i" wx:for-item="v">
+              <image src="{{v.thumb}}"></image>
+              <view class="openListsDis">
+                <text class='detailCaiName'>{{v.title}}</text>
+                <text class='detailCaiName'>{{v.offer_price}}元</text>
+              </view>
+              <view class='allWeight'>x{{v.nums}}</view>
+            </view>
+          </view>
+          <!-- 买家留言部分 -->
+          <view class="buyMessage">
+            <text>买家留言</text>
+            <input type="text" data-id='{{index}}' bindblur='changeRemarks' value='{{item.remarks}}' placeholder="选填，填写内容已和卖家确认" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 底部 -->
+    <view class="footer">
+      <view class="left">
+        <text class="allNum">共{{allnum}}件商品</text>
+        <text class="allMoney">(￥{{allprice}})</text>
+      </view>
+      <view class="sureBtn" bindtap='sureConfirmBtn'>提交订单</view>
+    </view>
+  </view>
+</view>

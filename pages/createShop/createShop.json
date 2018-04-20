@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "建立一个店铺",
+    "usingComponents": {
+      "dialog": "/components/Dialog/Dialog"
+    }
+}

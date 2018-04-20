@@ -1,0 +1,93 @@
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class='returnGoods'>
+  <view class='good-list'>
+    <view class='list'>
+      <image src='{{goods.product_pic}}' class='goods-img'></image>
+      <view class='good-right'>
+        <view class='goods-top'>{{goods.product_name}}</view>
+         <view>￥{{goods.price||goods.product_price}}元/{{goods.offerUnit_name||returnGoods.offerUnit_name}}</view> 
+      </view>
+      <view style='font-size:30rpx;'>x {{goods.num}}</view>
+    </view>
+
+    <view class='list'>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">退货原因:</view>
+        </view>
+        <view class="weui-cell__bd  returnNum  changeText" bindtap='showReason'>
+          <text></text>
+          <text>{{returnGoods.reason_msg}}</text>
+        </view>
+        <!-- <view class='weui-cell__rigth'>
+          <image src='../../images/youjiantou.png'></image>
+        </view> -->
+      </view>
+    </view>
+ <view class='list' wx:if="{{returnGoods.displayName.isShow=='1'}}">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">状态:</view>
+        </view>
+        <view class="weui-cell__bd  returnNum">
+          <text  style='{{returnGoods.displayName.class}}'>{{returnGoods.displayName.name}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='list'>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">申请退货数量:</view>
+        </view>
+        <view class="weui-cell__bd  returnNum">
+       <text  >{{returnGoods.num}}</text>
+        </view>
+      </view>
+    </view>
+<view class='list' >
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">同意退货数量:</view>
+        </view>
+        <view class="weui-cell__bd  returnNum">
+             <input class="weui-input" type='digit' value='{{returnGoods.agree_num}}' bindblur='numBlur' disabled='{{returnGoods.status=="reject"?false:true}}' />
+        </view>
+      </view>
+    </view>
+    <view class='list' >
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">实际退货数量:</view>
+        </view>
+        <view class="weui-cell__bd  returnNum">
+
+            <input class="weui-input" type='digit' value='{{returnGoods.true_num}}' bindblur='numTrueBlur' disabled='{{returnGoods.status=="rejecting"?false:true}}' />
+        </view>
+      </view>
+    </view>
+    <view class='list teshu'>
+      <view class="weui-label">退货说明:</view>
+      <view class="weui-cell__bd">
+        {{returnGoods.reason_desc||'无'}}
+        <!-- <textarea class="weui-input" placeholder="退货说明" value='{{reason_desc}}' bindinput='reasonDescBlur' /> -->
+      </view>
+    </view>
+
+    <view class='list teshu'>
+      <view class="weui-label">凭证:</view>
+      <view class="weui-cell__bd">
+
+        <!-- <image src='{{returnGoods.img}}'></image> -->
+
+      </view>
+    </view>
+  </view>
+
+  <view class='good-footer' wx:if="{{returnGoods.operate_list}}">
+  <block wx:for='{{returnGoods.operate_list}}' wx:key='index' wx:for-item='item'>
+  <!-- {{returnGoods.operate_list}} -->
+  <!-- {{item.name}} -->
+      <view bindtap='submitBtn'  data-item='{{item}}'>{{item.name}}</view>  
+  </block>
+</view>
+</view>

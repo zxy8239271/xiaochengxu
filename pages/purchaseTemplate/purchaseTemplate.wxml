@@ -1,0 +1,60 @@
+<!--pages/purchaseTemplate/purchaseTemplate.wxml-->
+<view class='purchaseTemplate'>
+  <!--导航栏  -->
+  <view class='navigationAdd'>
+    <image bindtap='toBuildTemplate' src='../../images/header_jia.png'></image>
+  </view>
+
+  <!-- 采购模版列表 -->
+  <view class="weui-cells weui-cells_after-title">
+    <!--日采购模版  -->
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">日采购模版</view>
+      <view class="editImageBox">
+        <image src='../../images/edit.png'></image>
+      </view>
+      <view class="delImageBox">
+        <image src='../../images/del.png'></image>
+      </view>
+      <view class="weui-cell__ft">
+        <switch checked />
+      </view>
+    </view>
+
+    <!--双日采购模版  -->
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">双日采购模版</view>
+      <view class="editImageBox">
+        <image src='../../images/edit.png'></image>
+      </view>
+      <view class="delImageBox">
+        <image src='../../images/del.png'></image>
+      </view>
+      <view class="weui-cell__ft">
+        <switch checked />
+      </view>
+    </view>
+
+
+    <!--周采购模版  -->
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">周采购模版</view>
+      <view class="editImageBox">
+        <image src='../../images/edit.png'></image>
+      </view>
+      <view class="delImageBox">
+        <image src='../../images/del.png'></image>
+      </view>
+      <view class="weui-cell__ft">
+        <switch checked />
+      </view>
+    </view>
+
+
+  </view>
+
+
+
+
+
+</view>

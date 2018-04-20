@@ -1,0 +1,201 @@
+/* pages/partGetGoods/partGetGoods.wxss */
+
+.partGetGoods {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  font-size: 26rpx;
+  background: #efeff4;
+  display: flex;
+  flex-direction: column;
+}
+
+/*顶部提示  */
+
+.topMesg {
+  width: 100%;
+  background: #fff;
+  color: #009d4d;
+  padding: 20rpx 26rpx;
+  margin-bottom: 16rpx;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+/*列表部分*/
+
+.container {
+  border-top: 1px solid #e1e1e1;
+  flex: 1;
+  background: #fff;
+  overflow: scroll;
+}
+
+.caiImg {
+  width: 120rpx;
+  height: 120rpx;
+  background: #000;
+  overflow: hidden;
+}
+
+.caiImg image {
+  width: 100%;
+}
+
+.mainLists {
+  padding: 0 26rpx;
+  background: #fff;
+  display: flex;
+  height: 180rpx;
+  border-bottom: 1px solid #e1e1e1;
+  align-items: center;
+  overflow: hidden;
+}
+
+.rightDetail {
+  height: 180rpx;
+  margin-left: 26rpx;
+}
+
+/*列表右边详情部分*/
+
+.rightDetail {
+  flex: 1;
+  background: #fff;
+}
+
+.top {
+  display: flex;
+}
+
+.top .caiName {
+  flex: 1;
+  font-size: 28rpx;
+  color: #000;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+}
+
+.top .buyNum {
+  color: #959595;
+  display: flex;
+  align-items: center;
+}
+
+/* middle */
+
+.middle {
+  height: 46rpx;
+  font-size: 26rpx;
+  color: #afafaf;
+}
+
+.middle {
+}
+
+/*bottom*/
+
+.bottom {
+  display: flex;
+  align-items: center;
+}
+
+.bottom text {
+  color: #000;
+  font-size: 26rpx;
+  margin-right: 40rpx;
+}
+
+.addNum, .delNum {
+  width: 46rpx;
+  height: 46rpx;
+}
+
+.addNum {
+  margin-right: 20rpx;
+}
+
+.delNum {
+  margin-left: 20rpx;
+  flex: 1;
+}
+
+.addNum image, .delNum image {
+  width: 46rpx;
+  height: 46rpx;
+}
+
+.editNum {
+  border: 1px solid #00954d;
+  width: 84rpx;
+  height: 38rpx;
+  min-height: 38rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5rpx;
+  color: #00954d;
+}
+
+.bottom .isSure {
+  width: 108rpx;
+  height: 50rpx;
+  border-radius: 2px;
+  font-size: 26rpx;
+  padding: 0;
+  line-height: 50rpx;
+  text-align: center;
+  background: #00954d;
+  color: #fff;
+}
+
+.bottom .notSure {
+  padding: 10px;
+  height: 48rpx;
+  border: 1px solid #00954d;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  color: #00954d;
+  background: #fff;
+}
+
+/*底部footer*/
+
+.footer {
+  height: 88rpx;
+  width: 100%;
+  background: #575656;
+  display: flex;
+  font-size: 34rpx;
+  color: #fff;
+}
+
+.footer .left {
+  flex: 1;
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.footer .left .allMoney {
+  font-size: 26rpx;
+  padding-left: 20rpx;
+}
+
+.footer .sureBtn {
+  width: 250rpx;
+  height: 100%;
+  background: #00954d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button::after{
+  border:none;
+}

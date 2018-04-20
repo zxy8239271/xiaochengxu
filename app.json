@@ -1,0 +1,88 @@
+{
+  "pages": [
+
+    "pages/homePage/homePage",
+        "pages/goodsAdd/goodsAdd",
+    "pages/returnGoods/returnGoods",
+    "pages/createShop/createShop",   
+    "pages/staffList/staffList",
+    "pages/codeWeChat/codeWeChat",
+    "pages/shoppingCart/shoppingCart",
+    "pages/inviteStaff/inviteStaff",
+    "pages/confirmShoppingCart/confirmShoppingCart",
+    "pages/supplier/supplier",
+    "pages/myClient/myClient",
+    "pages/examineReturn/examineReturn",
+    "pages/goods/goods",
+    "pages/testPhone/testPhone",
+    "pages/myHome/myHome",
+    "pages/reviseShopInfo/reviseShopInfo",
+    "pages/goodsEdit/goodsEdit",
+    "pages/goodsSupplierAdd/goodsSupplierAdd",
+    "pages/myClientDetail/myClientDetail",
+    "pages/personal/personal",
+    "pages/myOrder/myOrder",
+    "pages/myAddress/myAddress",
+    "pages/orderList/orderList",
+    "pages/partGetGoods/partGetGoods",
+    "pages/staffDetail/staffDetail",
+    "pages/chooseUnit/chooseUnit",
+    "pages/supplierDetail/supplierDetail",
+    "pages/orderSingleDetail/orderSingleDetail",
+    "pages/message/message",
+    "pages/goodsSupplier/goodsSupplier",
+    "pages/purchaseTemplate/purchaseTemplate",
+    "pages/codePage/codePage",
+    "pages/myBullOrder/myBullOrder",
+    "pages/invitePage/invitePage",
+    "components/Dialog/Dialog"
+  ],
+  "window": {
+    "backgroundTextStyle": "#fff",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "路上采供宝",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#00954d",
+    "backgroundColor": "#ffffff",
+    "bordeStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/homePage/homePage",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_s.png"
+      },
+      {
+        "pagePath": "pages/supplier/supplier",
+        "text": "供应商",
+        "iconPath": "images/supplier.png",
+        "selectedIconPath": "images/supplier_s.png"
+      },
+      {
+        "pagePath": "pages/orderList/orderList",
+        "text": "去采购",
+        "iconPath": "images/purch.png",
+        "selectedIconPath": "images/purch.png"
+      },
+      {
+        "pagePath": "pages/goods/goods",
+        "text": "商品",
+        "iconPath": "images/goods.png",
+        "selectedIconPath": "images/goods_s.png"
+      },
+      {
+        "pagePath": "pages/myHome/myHome",
+        "text": "我的",
+        "iconPath": "images/personal.png",
+        "selectedIconPath": "images/personal_s.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}

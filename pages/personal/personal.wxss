@@ -1,0 +1,114 @@
+.page {
+  width: 100%;
+  height: 100%;
+}
+
+.personal {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #efeff4;
+}
+
+.personal-li {
+  margin-top: 18rpx;
+  background: #fff;
+  width: 100%;
+}
+
+.line124 {
+  padding: 26rpx;
+  display: flex;
+  align-items: center;
+}
+
+.personal-left {
+  flex: 1;
+  font-size: 32rpx;
+  color: #000;
+}
+
+.personal-center {
+  text-align: right;
+}
+
+.personal-center text {
+  font-size: 30rpx;
+}
+
+.personal-center image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.personal-right {
+  padding-left: 30rpx;
+}
+
+.personal-right image {
+  width: 20rpx;
+  height: 30rpx;
+}
+
+.line100 {
+  padding: 10rpx 20rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  line-height: 100rpx;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+/*更改我的地址*/
+
+.bottomAddress {
+  flex: 1;
+  width: 100%;
+  border-top: 18rpx solid #efeff4;
+  background: #fff;
+  font-size: 32rpx;
+}
+
+.address {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #e1e1e1;
+   padding: 10rpx 20rpx; 
+  min-height: 40rpx;
+}
+
+.addressText {
+  height: 100%;
+  width: 160rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addressText text {
+  width: 160rpx;
+}
+
+/*中间地址部分  */
+
+.addressMain {
+  flex: 1;
+}
+
+/*右侧img  */
+
+.addressRight {
+  margin-left: 10rpx;
+  width: 14rpx;
+  min-height: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.addressRight image {
+  width: 13rpx;
+  height: 24rpx;
+}

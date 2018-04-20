@@ -1,0 +1,98 @@
+<!--logs.wxml-->
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class="orderList" wx:if='{{isShowList}}'>
+  <view class='orderList-content'>
+    <!--左侧列表的开始  -->
+    <view class='order-left'>
+      <view class='order-left-ul'>
+        <view class='order-left-li' wx:for='{{productPlevelData}}' wx:for-item="item" wx:key='{{index}}'>
+          <view bindtap='showList' data-id='{{item.id}}' class=" order-left-li-title {{showItem==item.id?'fontColor':''}}">{{item.name}}</view>
+          <view class="order-left-li-list {{showItem==item.id?'active':''}}">
+            <view wx:for='{{item.son}}' wx:key='{{i}}' wx:for-item="children" bindtap='selectItem' data-change='{{children.id}}' class="order-left-menu {{sub==children.id?'order-left-menu-select':''}}">{{children.name}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--左侧列表的结束  -->
+
+    <!--右侧列表的开始  -->
+    <view class='order-right'>
+      <!-- <view class='order-right-header'>
+        <view class='order-right-header-title'>默认</view>
+        <image src='../../images/youjiantou.png' class='order-right-img'></image>
+      </view> -->
+      <!--右边头部的结束  -->
+      <!--右边菜品的展示开始  -->
+      <view class='order-right-content'>
+
+        <scroll-view scroll-y style="height:100%" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+
+          <view class='order-right-ul'>
+            <view class='order-right-li' wx:for='{{productListData}}' wx:for-item="item" wx:key='{{index}}'>
+              <view class='order-right-content-img'>
+                <image src='{{item.thumb}}'></image>
+              </view>
+              <view class='order-right-center'>
+                <view class='lineh'>{{item.title}}</view>
+                <view class='lineh' >
+                  <view class='lineh-left' wx:if='{{item.offer_price}}'>￥{{item.offer_price}}元/{{item.offer_name}}</view>
+                  <view class='order-right-right' wx:if='{{item.is_supplier !=0}}'>
+                    <image src='../../images/jian.png' class='jian' data-item='{{item}}' bindtap='jianBtn' wx:if='{{item.num>=1}}'></image>
+                    <view class='num' wx:if='{{item.num>0}}'>
+                      <input type="digit" value='{{filters.toFix(item.num)}}' style='width:130rpx;text-align:center' data-item='{{item}}' bindblur='changNum' />
+                    </view>
+                    <!-- <text class='num'>22</text> -->
+                    <image src='../../images/jia.png' class='jia' data-item='{{item}}' bindtap='jiaBtn'></image>
+                  </view>
+                  <view wx:else style='color:red;font-size:26rpx;'>暂无供应商报价</view>
+
+                </view>
+              </view>
+
+            </view>
+          </view>
+          <!--提示  -->
+          <view class="tips1">
+            <view wx:if="{{hasMore}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+              <text>玩命的加载中...</text>
+            </view>
+            <view wx:else>
+              <text wx:if='{{  productListData.length==0}}'>此分类暂无产品</text>
+              <text wx:else>没有更多内容了</text>
+            </view>
+          </view>
+          <!--提示  -->
+        </scroll-view>
+      </view>
+      <!--右边菜品展示的结束  -->
+    </view>
+    <!--右侧列表的结束  -->
+  </view>
+  <!--脚部  -->
+  <view class='order-footer' wx:if='{{shopNum>0}}'>
+    <view class='footer-cart' bindtap='goShopCart'>
+      <image src='../../images/cart-icon.png'></image>
+      <text class='footer-cart-num'>{{shopNum}}</text>
+    </view>
+    <view class='footer-price'>
+      <!-- ￥{{filters.toFix(allPrice)}} -->
+      <!-- <image src='../../images/saoyisao.png' class='saoyisao'></image> -->
+    </view>
+    <view class='footer-right' bindtap='goShoppingCart'> 点好了</view>
+  </view>
+
+  <view class='order-footer' wx:else>
+    <view class='footer-cart  cart-black' bindtap='goShopCart'>
+      <image src='../../images/cart_black.png'></image>
+      <text class='footer-cart-num'>{{shopNum}}</text>
+    </view>
+    <view class='footer-price'>
+      <!-- ￥{{filters.toFix(allPrice)}} -->
+      <!-- <text bindtap='goShopCart'>点击查看购物车</text>  -->
+      <!-- <image src='../../images/saoyisao.png' class='saoyisao'></image> -->
+    </view>
+    <view class='footer-right-black'> 点好了</view>
+  </view>
+  <!--脚部结束  -->
+</view>
+<view wx:else class=' quanxian'>无权限查看</view>

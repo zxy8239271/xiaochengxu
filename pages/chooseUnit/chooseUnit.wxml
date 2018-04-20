@@ -1,0 +1,20 @@
+<!--pages/chooseUnit/chooseUnit.wxml-->
+<view class='chooseUnit'>
+  <!--设置监听器，当点击radio时调用-->
+
+  <radio-group class="topChoose" bindchange="listenerRadioGroup">
+    <!--label通常与radio和checkbox结合使用-->
+    <label   data-id="{{item.id}}" style="display: flex" wx:for-items="{{unitLists}}" wx:key="index" wx:for-item="item">
+      <view class='tradeName'>{{item.work}}</view>
+      <view class='jobName'>{{item.role_name}}</view>
+      <!--当isSelect==1说明从我工作的单位进入，此时不能选择切换单位，只能点击进入详情 -->
+      <!--不仅禁用 同时隐藏  -->
+      <radio disabled="{{isSelect==1}}" hidden="{{isSelect==1}}" value="{{item.id}}" checked="{{item.checked==1}}" />
+      <view bindtap="toCreateShop" wx:if="{{isSelect==1}}" class='editUnit' data-company_id="{{item.company_id}}">编辑</view>
+    </label>
+  </radio-group>
+
+  <view class='bottomCreate' bindtap="toCreateShopNull"  wx:if='{{isSelect !=0}}'>
+    <text>创建一个店铺</text>
+  </view>
+</view>

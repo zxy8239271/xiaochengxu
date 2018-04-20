@@ -1,0 +1,66 @@
+<!--pages/myClientDetail/myClientDetail.wxml-->
+<view class="myClientDetail">
+  <view class="topInfo">
+    <view class="headSculpture">
+      <image src="{{customerData.logo}}"></image>
+    </view>
+
+    <view class="nameAndPhone">
+      <text class="name">{{customerData.name}}</text>
+      <text class="phone">手机号：{{customerData.contacts_info}}</text>
+    </view>
+    <!-- <image class="twoCode" src="../../images/twoDimensionCode.png"></image>
+    <image class="skipLinks" src="../../images/youjiantou.png"></image> -->
+  </view>
+  <view class="mainInfo">
+    <view class='mainInfoList'>
+      <text class="lineTitle">姓名：</text>
+      <text class="textDetail">{{customerData.contacts}}</text>
+    </view>
+    <view class='mainInfoList'>
+      <text class="lineTitle">公司名称：</text>
+      <text class="textDetail">{{customerData.name}}</text>
+    </view>
+    <view class='mainInfoList'>
+      <text class="lineTitle">库房地址：</text>
+      <text class="textDetail">{{customerData.address}}</text>
+    </view>
+    <view class='mainInfoList'>
+      <text class="lineTitle">备用手机：</text>
+      <text class="textDetail">{{customerData.phone}}</text>
+    </view>
+    <view class='mainInfoList'>
+      <text class="lineTitle">成为我的客户日期：</text>
+      <text class="textDetail">{{customerData.create_time}}</text>
+    </view>
+    <view class='mainInfoList' wx:if="{{hezuoNum}}">
+      <text class="lineTitle">合作次数：</text>
+      <text class="textDetail">张三</text>
+    </view>
+    <view class='mainInfoList action clearfix'>
+      <text class="lineTitle">操作：</text>
+      <view class='btns '>
+        <view bindtap="delFn">删除</view>
+
+        <block wx:if="{{customerData.is_black==0}}">
+          <view bindtap="StopFn">暂停合作</view>
+          <!--暂时不要设为优选按钮  -->
+          <!-- <view hidden="true" bindtap="setFirstFn">设为优选</view> -->
+        </block>
+        <block wx:else>
+          <view bindtap="recoverFn">恢复合作</view>
+        </block>
+
+
+      </view>
+
+    </view>
+
+  </view>
+  <!-- 查看我共供给客户的商品,暂时隐藏  -->
+  <view class='bottom' hidden="true">
+    <text>查看我共供给客户的商品</text>
+  </view>
+
+
+</view>

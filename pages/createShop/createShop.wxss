@@ -1,0 +1,297 @@
+/* pages/createShop/createShop.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+}
+
+.createShop {
+  border-top: 18rpx solid #e1e1e1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainBox {
+  flex: 1;
+  overflow: scroll;
+}
+
+.line88 {
+  padding: 0 26rpx;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  width: 200rpx;
+  line-height: 88rpx;
+  text-align: right;
+}
+.leftShop{
+  padding-right: 10rpx;
+}
+.phone image {
+  width: 14rpx;
+  height: 34rpx;
+}
+
+input {
+  flex: 1;
+  padding: 0 0 0 10rpx;
+  text-align: left;
+}
+
+/*带图片的line  */
+
+.haveImg {
+  height: 150rpx;
+  display: flex;
+  padding: 0 26rpx;
+  align-items: center;
+}
+
+.leftText {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: right;
+}
+
+.zhanwei {
+  flex: 1;
+}
+
+.imgBox {
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
+  background: #999;
+}
+
+.imgBox image {
+  width: 100%;
+  background: green;
+}
+
+/*按钮  */
+
+.btnBox {
+  background: #f8f8f8;
+  height: 120rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnBox >view {
+  width: 80%;
+  height: 80rpx;
+  background: #00954d;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 30rpx;
+  color: #fff;
+}
+
+/*所有的下划线  */
+
+.mainBox>view {
+   border-bottom: 1px solid #e1e1e1; 
+}
+
+/*picker部分  */
+
+.changeAddress {
+  display: flex;
+  padding: 0 26rpx;
+  line-height: 88rpx;
+}
+
+.dis {
+  width: 200rpx;
+  text-align: right;
+}
+
+/* 是否申请连锁公司  */
+
+.linkage {
+  display: flex;
+  line-height: 88rpx;
+}
+
+.linkage view {
+  flex: 1;
+}
+
+.logo {
+  width: 200rpx;
+}
+
+.bottom {
+  width: 220rpx;
+  text-align: right;
+}
+
+.linkageLine {
+  border-bottom: 1px solid #e1e1e1;
+}
+
+/*获取验证码按钮  */
+
+.getCode {
+  padding: 0 10rpx;
+  border: 1px solid #00954d;
+  color: #00954d;
+}
+
+.alreadySend {
+  border: 1px solid #e1e1e1;
+  color: #999;
+}
+
+.passCode {
+  border: 0 none;
+}
+
+/*验证手机号  */
+
+.floatBox {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 996;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/*关闭按钮  */
+
+.floatClose {
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #e1e1e1;
+  border-radius: 50%;
+  background: #d8d8d8;
+  z-index: 998;
+  color: #333;
+}
+
+/*外面白色盒子  */
+
+.floatMainBox {
+  background: #fff;
+  width: 600rpx;
+  height: 700rpx;
+  display: flex;
+  position: absolute;
+  left: 50%;
+  margin-left: -300rpx;
+  margin-top: 150rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 内部内容盒子 */
+
+.floatContent {
+  width: 500rpx;
+  height: 650rpx;
+  position: absolute;
+  padding-top: 50rpx;
+}
+
+/* 手机号验证title */
+
+.floatTitle {
+  color: #00954d;
+  font-size: 34rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background: #f9f9f9;
+  margin-bottom: 25rpx;
+ }
+
+.floatPhone, .floatTestCode {
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+  font-size: 30rpx;
+}
+
+.floatPhone view, .floatTestCode view {
+  width: 120rpx;
+  line-height: 150rpx;
+}
+
+.floatPhone input, .floatTestCode input {
+  flex: 1;
+  height: 80rpx;
+  border: 1px solid #f8f8f8;
+}
+
+.floatTestCode .getCode {
+  background: #00954d;
+  width: 200rpx;
+  height: 82rpx;
+  line-height: 80rpx;
+  border: 0 none;
+  color: #fff;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.floatTestCode .alreadySend {
+  background: #999;
+  width: 200rpx;
+  height: 82rpx;
+  line-height: 80rpx;
+  border: 0 none;
+  color: #fff;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+
+
+.floatBtn {
+  width: 500rpx;
+  height: 80rpx;
+  background: #00954d;
+  position: absolute;
+  bottom: 50rpx;
+  left: 50%;
+  margin-left: -250rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+/* 提示  */
+
+.tishi {
+  padding: 20px 0 10px 0 ;
+  /* background: yellow; */
+  line-height: 26rpx;
+  font-size: 26rpx;
+  color: red;
+  text-align: center;
+}
+
+.tishi icon{
+  padding-top: 10rpx;
+  margin-right:10rpx;
+}
