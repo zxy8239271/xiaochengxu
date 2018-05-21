@@ -25,8 +25,8 @@ Page({
     app.netWork.postJson(app.urlConfig.orderreturnUrl, data).then(res => {
       if (res.errorNo == '0') {
         var arr=res.data;
-        console.log(arr.status)
-        
+        // console.log(arr.status)
+        console.log(res.data)
         if (arr.status =='reject'){
           arr.agree_num=arr.num;
         }

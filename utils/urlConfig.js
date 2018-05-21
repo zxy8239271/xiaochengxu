@@ -1,4 +1,4 @@
-var HTTP_URL = 'https://test.zhangxaiyue.com';//测试FEI真实
+var HTTP_URL = 'https://cgb-api.27aichi.com';
 module.exports = {
   loginUrl: HTTP_URL + '/wap/wxxcx/login',//登陆
   wxloginInitUrl: HTTP_URL + '/api/wxlogin/init',//登陆初始化

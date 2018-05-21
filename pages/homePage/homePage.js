@@ -3,16 +3,14 @@ import util from '../../utils/util.js';
 Page({
   data: {
     loginData: [],
-    qaingdan: 0,
     weijie: 0,
     daipeihuo: 0,
     daiqueren: 0,
     daipingjia: 0,
     bulldaijie: 0,
-    bullchongxia: 0,
+    bullfahuo: 0,
     bulldaishou: 0,
     bulldaishouhou: 0,
-    bulldaipingjia: 0,
     messageData: [],
     isShow: false,
     isShowSellContent: true, //默认展开我是卖家的内容
@@ -102,7 +100,6 @@ Page({
           // 如果有staff_id=则证明有店铺
           _this.orderNum();
           _this.messageList();
-          console.log(333)
         }
 
       }, 1000)
@@ -114,9 +111,9 @@ Page({
       if (res.errorNo == '0') {
         _this.setData({
           bulldaijie: res.data.taking,
-          bullchongxia: res.data.purchasing,
+          bullfahuo: res.data.purchasing,
           bulldaishou: res.data.receving,
-          bulldaipingjia: res.data.judging,
+          bulldaishouhou: res.data.judging,
         })
       }
     }).catch(res => {
@@ -218,5 +215,20 @@ Page({
     }
 
   },
+  mianfei:function(){
+    wx.showModal({
+      title: '客服电话',
+      content: '400-900-2127',
+      success: function (res) {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: '4009002127',
+          })
+          console.log('用户点击确定')
+        }
+      }
+    })
+   
+  }
 
 })

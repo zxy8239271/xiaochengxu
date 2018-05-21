@@ -84,9 +84,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var pages = getCurrentPages()    //获取加载的页面
+    var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+    var url = currentPage.route    //当前页面url
+    app.urls = url;
   },
   submit: function () {
+    wx.showLoading('加载中...');
+    var _this=this;
     var data = {
       realName: this.data.name,
       phone: this.data.phone,
@@ -95,21 +100,21 @@ Page({
     app.netWork.postJson(app.urlConfig.userSaveUrl, data).then(res => {//
       console.log(res)
       if (res.errorNo == '0') {
+        wx.hideLoading();
         wx.showToast({
           title: res.errorMsg,
           icon: 'success',
           duration: 2000,
           mask: true
         })
-        _this.loginInfo()
+        
+        _this.loginInfo();
         wx.switchTab({
           url: '../myHome/myHome'
         })
-        return
       } else {
         wx.showToast({
           title: res.errorMsg,
-          image: '../../images/warning.png',
           duration: 2000,
           mask: true
         })

@@ -104,13 +104,6 @@ App({
         }
         wx.setStorageSync('xcxVersionNumber', res_data.data.xcxVersionNumber);
         wx.hideLoading();
-        if (res_data.data.subscribe == '0') {
-          wx.setStorageSync('isOne', res_data.data.subscribe)
-          wx.reLaunch({
-            url: '../codeWeChat/codeWeChat'
-          })
-          return;
-        }
         if (!res_data.data.staff_id) {
           if (this.urls != 'pages/inviteStaff/inviteStaff') {
             wx.showModal({
@@ -153,15 +146,9 @@ App({
         }
         wx.setStorageSync('xcxVersionNumber', res_data.data.xcxVersionNumber);
         wx.setStorageSync('token', res_data.data.token);
-        if (res_data.data.subscribe == '0') {
-          wx.reLaunch({
-            url: '../codeWeChat/codeWeChat'
-          })
-          return;
-        }
         if (!res_data.data.staff_id) {
           console.log(this.urls)
-          if (this.urls != 'pages/inviteStaff/inviteStaff') {
+          if (this.urls != 'pages/inviteStaff/inviteStaff' && this.urls != 'pages/testPhone/testPhone' && this.urls != 'pages/createShop/createShop') {
             wx.showModal({
               title: '温馨提示',
               content: '您还没店铺，请先去创建店铺',
@@ -244,8 +231,84 @@ App({
     })
   },
   onShow: function () {
+    var data = {
+      open_id: wx.getStorageSync('openId')
+    };
+    var _this = this;
+    netWork.postJson(urlConfig.getLoginInfoUrl, data).then(res_data => {
+      if (res_data.errorNo == 0) {
+        wx.hideLoading();
+        _this.loginInfoData = res_data.data;
+        wx.setStorageSync('openId', res_data.data.openid_xcx);
+        if (wx.getStorageSync('xcxVersionNumber') != res_data.data.xcxVersionNumber) {
+          wx.removeStorageSync('classData');
+          wx.removeStorageSync('unitData')
+        }
+        wx.setStorageSync('xcxVersionNumber', res_data.data.xcxVersionNumber);
+        wx.setStorageSync('token', res_data.data.token);
+    
+    
+      } else if (res_data.errorNo == '10010') {
+        //否则调起授权
+        wx.login({
+          success: function (res) {
+            if (res.code) {
+              wx.getUserInfo({
+                withCredentials: true,
+                lang: 'zh_CN',
+                success: function (res_user) {
+                  var data = {
+                    code: res.code,
+                    encryptedData: res_user.encryptedData,
+                    iv: res_user.iv
+                  }
+                  _this.login(data);//同意授权 ， 将用户信息写入数据库
+                }, fail: function () {
+                  wx.showModal({
+                    title: '警告通知',
+                    content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.openSetting({
+                          success: (res) => {
+                            if (res.authSetting["scope.userInfo"]) {////如果用户重新同意了授权登录
+                              wx.login({
+                                success: function (res_login) {
+                                  if (res_login.code) {
+                                    wx.getUserInfo({
+                                      withCredentials: true,
+                                      lang: 'zh_CN',
+                                      success: function (res_user) {
+                                        console.log(res_user)
+                                        var data = {
+                                          code: res.code,
+                                          encryptedData: res_user.encryptedData,
+                                          iv: res_user.iv
+                                        }
+                                        _this.login(data);// 将用户信息写入数据库
+                                      }
+                                    })
+                                  }
+                                }
+                              });
+                            }
+                          }
+                        })
+                      }
+                    }
+                  })
+                }
+              })
+            }
+          }
+        })
 
-    this.getLoginInfo();
+      } else {
+        wx.hideLoading();
+      }
+    }).catch(res_err => {
+      console.log(res_err)
+    })
   },
   onHide: function () {
 

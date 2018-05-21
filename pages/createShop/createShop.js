@@ -1,7 +1,6 @@
 const earaInfo = require("../../utils/earaInfo.js");
 const util = require("../../utils/util.js");
-
-var app = getApp();
+ var app = getApp();
 Page({
   data: {
     // 省市相关
@@ -52,7 +51,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
- 
+    var pages = getCurrentPages()    //获取加载的页面
+    var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+    var url = currentPage.route    //当前页面url
+    app.urls = url;
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -70,7 +72,6 @@ Page({
       this.data.company_id = options.company_id;
       this.data.user_id = options.user_id;
     }
-
     // 如果是从新建进入，把regionPageArray[1]，regionPageArray[2]的数据分别未第一项的子项，第一项子项的子项
     this.data.regionPageArray[1] = this.data.regionData[0].son;
     this.data.regionPageArray[2] = this.data.regionData[0].son[0].son;
@@ -467,6 +468,7 @@ Page({
             duration: 2000,
             mask: true
           });
+          wx.setStorageSync('isChuang', true)          
           if (!app.loginInfoData.staff_id) {
             // console.log("调用_this.logiinInfo")
             _this.loginInfo();
@@ -619,6 +621,8 @@ Page({
                     duration: 2000,
                     mask: true
                   });
+                  wx.setStorageSync('isChuang', true)
+                  
                   if (!app.loginInfoData.staff_id) {
                     _this.loginInfo();
                   } else {

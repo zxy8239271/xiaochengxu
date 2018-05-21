@@ -28,7 +28,7 @@
             <!-- <text>18610374679</text> -->
             <text class='message-time'>{{item.sendtime}}</text>
           </view>
-          <view class='message-center-sure'>{{item.content}}</view>
+          <view class='message-center-sure'>{{item.companyName}}  {{item.content}}</view>
         </view>
       </view>
       <view class="tips1">

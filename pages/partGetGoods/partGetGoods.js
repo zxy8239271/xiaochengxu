@@ -271,6 +271,11 @@ Page({
           wx.redirectTo({
             url: '../myOrder/myOrder?type=' + this.data.Module + '&status='
           })
+        }else{
+          wx.showToast({
+            title: res.message,
+            duration: 2000
+          })
         }
       }).catch(res => {
         console.log("订单详情")

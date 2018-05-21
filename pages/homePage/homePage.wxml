@@ -22,7 +22,7 @@
 
 
       </view>
-      <view class='banner-middle'>免费试用</view>
+      <view class='banner-middle' bindtap='mianfei'>免费试用</view>
     </view>
     <!--banner结束  -->
     <view class='home-content'>
@@ -140,7 +140,7 @@
           <view class='content-card-w20' data-id='wapUser' data-status='preparing' bindtap='goMyOrder'>
             <view>
               <image src='../../images/chongxinxiadan.png'></image>
-              <text class='circle' wx:if='{{bullchongxia>0}}'>{{bullchongxia}}</text>
+              <text class='circle' wx:if='{{bullfahuo>0}}'>{{bullfahuo}}</text>
             </view>
             <view>
               <text>待发货</text>
@@ -209,7 +209,7 @@
                 <text>{{item.title}}</text>
               </view>
               <view class='message-content'>
-                <text>{{item.content}}</text>
+                <text>{{item.companyName}}  {{item.content}}</text>
               </view>
             </view>
           </view>

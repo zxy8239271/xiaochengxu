@@ -1,8 +1,8 @@
 {
   "pages": [
-
     "pages/homePage/homePage",
-        "pages/goodsAdd/goodsAdd",
+    "pages/supplier/supplier",    
+    "pages/goodsAdd/goodsAdd",
     "pages/returnGoods/returnGoods",
     "pages/createShop/createShop",   
     "pages/staffList/staffList",
@@ -10,7 +10,6 @@
     "pages/shoppingCart/shoppingCart",
     "pages/inviteStaff/inviteStaff",
     "pages/confirmShoppingCart/confirmShoppingCart",
-    "pages/supplier/supplier",
     "pages/myClient/myClient",
     "pages/examineReturn/examineReturn",
     "pages/goods/goods",

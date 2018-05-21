@@ -18,18 +18,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var scene = decodeURIComponent(options.scene).split('=');
+    wx.setNavigationBarTitle({
+      title: '邀请页'
+    });
     var pages = getCurrentPages()    //获取加载的页面
     var currentPage = pages[pages.length - 1]    //获取当前页面的对象
     var url = currentPage.route    //当前页面url
     app.urls = url;
-    var _this = this;
+    var _this = this;    
+    var scene = decodeURIComponent(options.scene).split('=');  //扫描二维码进入页面的参数
     console.log(options)
     console.log(scene)
-    console.log(scene[0], scene[1], scene[2], scene[4])
-    wx.setNavigationBarTitle({
-      title: '邀请页'
-    });
+    console.log(scene[0], scene[1], scene[2], scene[3])
     this.setData({
       status: scene[1]||options.id.trim(),
     })
@@ -39,13 +39,18 @@ Page({
     if (_this.data.status == '0' || _this.data.status == '2') {
       _this.supplierList()
     }
-
-    app.netWork.postJson(app.urlConfig.inviteInfoUrl, { company_id: options.company_id }).then(res => {//店铺列表
-      console.log(res)
+    app.netWork.postJson(app.urlConfig.inviteInfoUrl, { company_id: this.data.company_id  }).then(res => {//店铺列表
+      // console.log(this.data.company_id +'dahfsgah')
+      console.log(res )
       if (res.errorNo == '0') {
         _this.setData({
           company_name: res.data.name,
           logo: res.data.logo
+        })
+      }else{
+        wx.showToast({
+          title: res.errorMsg,
+          duration: 2000,
         })
       }
     }).catch(res => {

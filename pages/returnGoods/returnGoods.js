@@ -6,6 +6,7 @@ Page({
     Module: '',
     goods: [],
     num: 1,
+    real_num:1,
     id:'',
     reason_msg: '多拍',
     reason_key: '0',
@@ -21,7 +22,8 @@ Page({
     this.data.Module = options.Module;
     this.setData({
       goods: JSON.parse(options.item),
-      num: JSON.parse(options.item).real_num > 0 ? JSON.parse(options.item).real_num : JSON.parse(options.item).num
+      num: JSON.parse(options.item).real_num > 0 ? JSON.parse(options.item).real_num : JSON.parse(options.item).num,
+      real_num: JSON.parse(options.item).real_num > 0 ? JSON.parse(options.item).real_num : JSON.parse(options.item).num
     })
 
     console.log("没进if")
@@ -36,10 +38,10 @@ Page({
       app.netWork.postJson(app.urlConfig.orderreturnUrl, data).then(res => {
         console.log(res)
         if (res.errorNo == '0') {
-
           _this.setData({
             returnGoods:res.data,
             num: res.data.num,
+            real_num: res.data.num,
             reason_msg: res.data.reason_msg,
             reason_key: res.data.reason_key,
             reason_desc: res.data.reason_desc,
@@ -78,11 +80,11 @@ Page({
     })
   },
   numInput:function(e){
-    this.data.num = e.detail.value ;  
+    // this.data.num = e.detail.value ;  
   },
   numBlur: function (e) {//退货数量的填写
-  
-    if (e.detail.value > this.data.num) {
+    console.log(this.data.num)
+    if (e.detail.value > this.data.real_num) {
       wx.showToast({
         title: '退货量不能大于订购量',
         icon: 'none',
@@ -90,7 +92,7 @@ Page({
         mask: true
       })
       this.setData({
-        num: this.data.num
+        num:this.data.real_num
       })
       return;
     } else if (e.detail.value <= 0) {

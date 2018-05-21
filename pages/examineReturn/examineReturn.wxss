@@ -185,3 +185,8 @@
   height: 100rpx;
   margin-right: 20rpx;
 }
+.img-teshu{
+  height: 120rpx;
+  width: 120rpx;
+    margin-right: 20rpx;
+}

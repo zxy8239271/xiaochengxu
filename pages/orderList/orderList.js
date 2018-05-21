@@ -118,7 +118,6 @@ Page({
   },
 
   productList: function () {//产品列表
-    this.data.productListData = [];
     var _this = this;
     var data = {
       pid: this.data.showItem,
@@ -178,6 +177,7 @@ Page({
         }
       }
     })
+    this.data.productListData = [];
 
     this.productList();
   },
@@ -185,7 +185,9 @@ Page({
     this.setData({
       sub: e.currentTarget.dataset.change
     });
+
     this.data.size = 1;
+    this.data.productListData = [];
     this.productList();
   },
   upper: function (e) {
