@@ -5,7 +5,7 @@ import util from '../../utils/util.js';
 Page({
   data: {
     aaa: "",
-    showMore: false, //默认隐藏高级控制下方的内容
+    // showMore: false, //默认隐藏高级控制下方的内容
     pickerFinishNum: 0, //统计picker(分类、单位、产地)有几个计算完了
     // 商品数据
     goods: {
@@ -141,14 +141,14 @@ Page({
     });
   },
 
-  switchChange: function (e) {//高级控制（辅助采购）
-    this.setData({
-      showMore: e.detail.value
-    })
-  },
-  switch1Change: function () {
+  // switchChange: function (e) {//高级控制（辅助采购）
+  //   this.setData({
+  //     showMore: e.detail.value
+  //   })
+  // },
+  // switch1Change: function () {
 
-  },
+  // },
   bindClassColumnChange: function (e) {//分类修改事件
     // 如果滚动的是第一列
     if (e.detail.column == 0) {

@@ -215,6 +215,9 @@ scroll-view {
   display: flex;
   flex-direction: column;
    background: #fff; 
+   overflow-y:scroll;
+   height: calc(100% - 120rpx);
+
 }
 
 .listItem {

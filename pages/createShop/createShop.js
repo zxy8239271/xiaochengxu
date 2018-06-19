@@ -1,7 +1,7 @@
 const earaInfo = require("../../utils/earaInfo.js");
 const util = require("../../utils/util.js");
  var app = getApp();
-Page({
+Page({  
   data: {
     // 省市相关
     regionData: earaInfo.earaInfo[0].data, //存储省市县数据
@@ -30,7 +30,6 @@ Page({
       type: 0,  //是否连锁0个体1连锁
 
     },
-
     disabled: true,  //是否可以点击获取验证码
     count: 60,  //倒计时
     inviteType: "", // 邀请类型，邀请客户或者供应商时有此字段，0 为供应商 2 为客户

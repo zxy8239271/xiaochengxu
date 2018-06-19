@@ -8,7 +8,7 @@ Page({
   data: {
 
     loadNum: 0, //计算有几个picker已经加载完毕，如果3个全部加载完毕才允许用户操作
-    showMore: true, //默认隐藏高级控制下方的内容
+    // showMore: true, //默认隐藏高级控制下方的内容
     goodsInfo: "",  //存储所有拿过来的商品数据
     thumbIsChange: false,//标记图片被修改过
     isAction: false,  //标记表被动过防止详情没有被修改重复提交
@@ -198,14 +198,14 @@ Page({
     });
   },
 
-  switchChange: function (e) {//高级控制（辅助采购）
-    this.setData({
-      showMore: e.detail.value
-    })
-  },
-  switch1Change: function () {
+  // switchChange: function (e) {//高级控制（辅助采购）
+  //   this.setData({
+  //     showMore: e.detail.value
+  //   })
+  // },
+  // switch1Change: function () {
 
-  },
+  // },
   goEditSupplier: function () {
     util.navTo({
 

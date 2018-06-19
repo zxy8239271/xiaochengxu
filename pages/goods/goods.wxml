@@ -32,7 +32,10 @@
   </view>
   <!--fixed结束 -->
   <!--rose分类列表  -->
+ 
   <view class='classList' wx:if='{{showClass}}'>
+   <view>
+  
     <view class='item checkAll' catchtap="checkAll">
       <text class='text'>选择全部</text>
       <icon class='icon' type="success_no_circle" size="24" color="green" wx:if="{{checkAllClass}}" />
@@ -55,6 +58,8 @@
       <view class='sup-left' bindtap='supClassCancle'>取消</view>
       <view class='sup-right' bindtap='supClassSure'>确定</view>
     </view>
+  </view>
+    
   </view>
 
 

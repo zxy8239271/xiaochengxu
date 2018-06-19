@@ -36,9 +36,9 @@
               <view class='shopping-list-name'>{{value.title}}</view>
               <view class='shopping-list-price'>
                 <view class='price-shop'>￥{{value.offer_price}}元/{{value.offer_name}}</view>
-                <view class='shopping-list-edit'>
-                  <image src='../../images/chakansupplier.png' data-item='{{value}}' bindtap='changeSupplier' wx:if='{{value.is_supplier>1}}'></image>
-                  <text class='shop-supplier' data-item='{{filters.toFix(value)}}' wx:if="{{value.is_supplier>1}}" bindtap='changeSupplier'> 供应商</text>
+                <view class='shopping-list-edit'>         
+                  <image src='../../images/chakansupplier.png' data-item='{{value}}'      bindtap='changeSupplier' wx:if='{{value.is_supplier>1}}'></image>
+                  <text class='shop-supplier' data-item='{{value}}' wx:if="{{value.is_supplier>1}}" bindtap='changeSupplier'> 供应商</text>
                   <!-- <image src='../../images/edit.png'></image> -->
                   <image src='../../images/del.png' data-code='{{value.code}}' bindtap='shopDel'></image>
                 </view>

@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/inviteStaff/inviteStaff",
+    
     "pages/homePage/homePage",
     "pages/supplier/supplier",    
     "pages/goodsAdd/goodsAdd",
@@ -8,7 +10,6 @@
     "pages/staffList/staffList",
     "pages/codeWeChat/codeWeChat",
     "pages/shoppingCart/shoppingCart",
-    "pages/inviteStaff/inviteStaff",
     "pages/confirmShoppingCart/confirmShoppingCart",
     "pages/myClient/myClient",
     "pages/examineReturn/examineReturn",

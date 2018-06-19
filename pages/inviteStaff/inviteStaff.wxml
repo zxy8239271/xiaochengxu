@@ -1,5 +1,6 @@
 <view class='invite'>
   <view>
+
     <image src='{{logo}}' class='img'></image>
     <view class="section"  wx:if='{{array.length>0}}'>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key='company_name'>

@@ -25,18 +25,7 @@ module.exports = {
   },
   authFind: function (val) {   //查找權限
     return true;
-    // if (wx.getStorageSync('ownActData')) {
-    //   var value = val;
-    //   var ownActData = JSON.parse(wx.getStorageSync('ownActData'));
-    //   var i = ownActData.findIndex(function (item, index) {
-    //     return value == item
-    //   })
-    //   if (i == '-1') {
-    //     return true;
-    //   } else {
-    //     return true;
-    //   }
-    // }
+    
   },
   // 函数参数必须是字符串，因为二代身份证号码是十八位，而在javascript中，十八位的数值会超出计算范围，造成不精确的结果，导致最后两位和计算的值不一致，从而该函数出现错误。
   // 详情查看javascript的数值范围
@@ -104,5 +93,27 @@ module.exports = {
         }
       },
     });
+  },/*获取当前页带参数的url*/
+  getCurrentPageUrlWithArgs:function (){
+  var pages = getCurrentPages()    //获取加载的页面
+  var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+  var url = currentPage.route    //当前页面url
+  var options = currentPage.options    //如果要获取url中所带的参数可以查看options
+
+  //拼接url的参数
+  var urlWithArgs = url + '?'
+  for (var key in options) {
+    var value = options[key]
+    urlWithArgs += key + '=' + value + '&'
   }
+  urlWithArgs = urlWithArgs.substring(0, urlWithArgs.length - 1)
+  return urlWithArgs
+},
+  /*获取当前页url*/
+  getCurrentPageUrl: function (){
+  var pages = getCurrentPages()    //获取加载的页面
+  var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+  var url = currentPage.route    //当前页面url
+  return url
+}
 }

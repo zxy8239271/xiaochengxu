@@ -88,13 +88,13 @@
 
         </view> -->
 
-        <view class="weui-cell weui-cell_switch">
+        <!-- <view class="weui-cell weui-cell_switch">
           <view class="weui-cell__bd">高级控制（辅助采购）</view>
           <view class="weui-cell__ft">
             <switch checked='{{showMore}}' color='#00954d' bindchange="switchChange" />
           </view>
-        </view>
-        <view class="weui-cell weui-cell_input" wx:if='{{showMore}}'>
+        </view> -->
+        <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             <view class="weui-label">采购周期:</view>
           </view>

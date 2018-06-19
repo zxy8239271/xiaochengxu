@@ -433,13 +433,20 @@ Page({
         page: '1',
         page_size: '10',
       }
+      // console.log(item)
       app.netWork.postJson(app.urlConfig.productOfferUrl, data).then(res => {
         if (res.errorNo == '0') {
-          this.setData({
+          _this.setData({
             showSupplier: true,
             oneData: item,
             showdel: true,
             supplierData: res.data
+          })
+          // console.log('购物车供应商列表')
+          // console.log(res.data)
+        }else{
+          _this.setData({
+            oneData: item,
           })
         }
       }).catch(res => {
