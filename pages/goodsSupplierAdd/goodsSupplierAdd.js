@@ -6,6 +6,7 @@ Page({
     code: '',
     name: '',
     price: 1,//价格
+    supply_price:1,//门店价格
     standard: 20,//规格说明
     remarks: '',//备注
     supplierIndex: 0,//供应商
@@ -15,16 +16,16 @@ Page({
     unitArray: [],//单位选择的数组
     unitIndex: [0, 0],
     selUnitPid: [],
-    systemUnitArray: [],//系统单位
-    systemUnitIndex: [0, 0],
-    sysUnitPid: [],
-    receiptArray: [],//收货单位
-    receiptIndex: [],
-    selReceiptPid: [],
+    // systemUnitArray: [],//系统单位
+    // systemUnitIndex: [0, 0],
+    // sysUnitPid: [],
+    // receiptArray: [],//收货单位
+    // receiptIndex: [],
+    // selReceiptPid: [],
     showMore: false,
+    isStorePrice:false
 
   },
-
   // 没有供应商数据的时候跳转到邀请供应商页面
   toCodePage: function () {
     var openId = wx.getStorageSync('openId')
@@ -34,21 +35,27 @@ Page({
 
   },
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '商品管理'
-    });
+    if (app.loginInfoData.company_type=='1'){// 1、连锁公司    0 非连锁
+      if (app.loginInfoData.scope == 'store' && app.loginInfoData.scope.store_id >0 ){
+        this.setData({
+          isStorePrice: false
+        })
+      }else{
+        this.setData({
+          isStorePrice: true
+        })
+      } 
+    }
     this.data.id = options.id;
     this.data.code = options.code;
     this.setData({
       name: options.name,
       showMore: false
     })
-    var _this = this;
-
     this.supplierList();//请求供应商列表
     this.goodsClass();
   },
-  priceInput: function (e) {
+  priceInput: function (e) {//采购价格
     if (this.data.price.length >= 9) {
       wx.showToast({
         title: '价格长度不能大于8位数',
@@ -56,6 +63,15 @@ Page({
       return
     }
     this.data.price = e.detail.value;
+  },
+  supplyPriceInput:function(e){
+    if (this.data.supply_price.length >= 9) {
+      wx.showToast({
+        title: '门店价格长度不能大于8位数',
+      })
+      return
+    }
+    this.data.supply_price = e.detail.value;
   },
   supplierList: function () {//供应商列表
     wx.showLoading({
@@ -90,14 +106,7 @@ Page({
       selSupplierPid: this.data.supplierArray[e.detail.value]
     })
   },
-  bindSupplierColumnChange: function (e) { //供应商的选择
 
-  },
-  switchChange: function (e) {//高级控制（辅助采购）
-    this.setData({
-      showMore: e.detail.value
-    })
-  },
   goodsClass: function () {//单位
     wx.showLoading({
       title: '加载中',
@@ -172,88 +181,83 @@ Page({
       selUnitPid: this.data.selUnitPid
     })
   },
-  systemUnitColumnChange: function (e) {//采购系统修改事件
-    var data = {
-      systemUnitArray: this.data.systemUnitArray,
-      systemUnitIndex: this.data.systemUnitIndex
-    };
-    data.systemUnitIndex[e.detail.column] = e.detail.value;
-    if (e.detail.column == 0) {
-      data.systemUnitIndex[1] = 0;
-      if (this.data.unitData[e.detail.value].son) {
-        data.systemUnitArray[1] = this.data.unitData[e.detail.value].son;
-      } else {
-        data.systemUnitArray[1] = []
-      }
-    }
+  // systemUnitColumnChange: function (e) {//采购系统修改事件
+  //   var data = {
+  //     systemUnitArray: this.data.systemUnitArray,
+  //     systemUnitIndex: this.data.systemUnitIndex
+  //   };
+  //   data.systemUnitIndex[e.detail.column] = e.detail.value;
+  //   if (e.detail.column == 0) {
+  //     data.systemUnitIndex[1] = 0;
+  //     if (this.data.unitData[e.detail.value].son) {
+  //       data.systemUnitArray[1] = this.data.unitData[e.detail.value].son;
+  //     } else {
+  //       data.systemUnitArray[1] = []
+  //     }
+  //   }
 
-    this.setData(data);
-  },
-  systemUnitChange: function (e) {//采购系统完成事件
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    var m = e.detail.value[0],
-      n = e.detail.value[1];
-    this.data.sysUnitPid[0] = this.data.systemUnitArray[0][m];
-    if (this.data.unitData[m].son) {
-      this.data.sysUnitPid[1] = this.data.systemUnitArray[1][n]
-    } else {
-      this.data.sysUnitPid.splice(1, 1)
-    }
-    this.setData({
-      sysUnitPid: this.data.sysUnitPid
-    })
-  },
+  //   this.setData(data);
+  // },
+  // systemUnitChange: function (e) {//采购系统完成事件
+  //   console.log('picker发送选择改变，携带值为', e.detail.value)
+  //   var m = e.detail.value[0],
+  //     n = e.detail.value[1];
+  //   this.data.sysUnitPid[0] = this.data.systemUnitArray[0][m];
+  //   if (this.data.unitData[m].son) {
+  //     this.data.sysUnitPid[1] = this.data.systemUnitArray[1][n]
+  //   } else {
+  //     this.data.sysUnitPid.splice(1, 1)
+  //   }
+  //   this.setData({
+  //     sysUnitPid: this.data.sysUnitPid
+  //   })
+  // },
   // receiptArray: [],//收货单位
   // receiptIndex: [],
   // selReceiptPid: [],
-  receiptUnitColumnChange: function (e) {//采购系统修改事件
-    var data = {
-      receiptArray: this.data.receiptArray,
-      receiptIndex: this.data.receiptIndex
-    };
-    data.receiptIndex[e.detail.column] = e.detail.value;
-    if (e.detail.column == 0) {
-      data.receiptIndex[1] = 0;
-      if (this.data.unitData[e.detail.value].son) {
-        data.receiptArray[1] = this.data.unitData[e.detail.value].son;
-      } else {
-        data.receiptArray[1] = []
-      }
-    }
+  // receiptUnitColumnChange: function (e) {//采购系统修改事件
+  //   var data = {
+  //     receiptArray: this.data.receiptArray,
+  //     receiptIndex: this.data.receiptIndex
+  //   };
+  //   data.receiptIndex[e.detail.column] = e.detail.value;
+  //   if (e.detail.column == 0) {
+  //     data.receiptIndex[1] = 0;
+  //     if (this.data.unitData[e.detail.value].son) {
+  //       data.receiptArray[1] = this.data.unitData[e.detail.value].son;
+  //     } else {
+  //       data.receiptArray[1] = []
+  //     }
+  //   }
 
-    this.setData(data);
-  },
-  receiptUnitChange: function (e) {//采购系统完成事件
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    var m = e.detail.value[0],
-      n = e.detail.value[1];
-    this.data.selReceiptPid[0] = this.data.receiptArray[0][m];
-    if (this.data.unitData[m].son) {
-      this.data.selReceiptPid[1] = this.data.receiptArray[1][n]
-    } else {
-      this.data.selReceiptPid.splice(1, 1)
-    }
-    this.setData({
-      selReceiptPid: this.data.selReceiptPid
-    })
-  },
-  priceBlur: function (e) {
-    this.setData({
-      price: e.detail.value
-    })
-  },
-  standardBlur: function (e) {
-    this.setData({
-      standard: e.detail.value
-    })
-  },
-  remarksBlur: function (e) {
-    this.setData({
-      remarks: e.detail.value
-    })
-  },
+  //   this.setData(data);
+  // },
+  // receiptUnitChange: function (e) {//采购系统完成事件
+  //   console.log('picker发送选择改变，携带值为', e.detail.value)
+  //   var m = e.detail.value[0],
+  //     n = e.detail.value[1];
+  //   this.data.selReceiptPid[0] = this.data.receiptArray[0][m];
+  //   if (this.data.unitData[m].son) {
+  //     this.data.selReceiptPid[1] = this.data.receiptArray[1][n]
+  //   } else {
+  //     this.data.selReceiptPid.splice(1, 1)
+  //   }
+  //   this.setData({
+  //     selReceiptPid: this.data.selReceiptPid
+  //   })
+  // },
+ 
+  // standardBlur: function (e) {
+  //   this.setData({
+  //     standard: e.detail.value
+  //   })
+  // },
+  // remarksBlur: function (e) {
+  //   this.setData({
+  //     remarks: e.detail.value
+  //   })
+  // },
   saveBtn: function () {//保存
-    if (util.authFind('productoffer_addSupplier')) { //检验权限
       if (!this.data.selSupplierPid) {
         wx.showToast({
           title: '请选择供应商',
@@ -265,14 +269,25 @@ Page({
       }
       if (this.data.price <= 0) {
         wx.showToast({
-          title: '供应商价格应大于0元',
+          title: '采购价格应大于0元',
           icon: 'none',
           duration: 2000,
           mask: true
         })
         return
       }
-
+      if (this.data.supply_price <= 0) {
+        wx.showToast({
+          title: '门店价格应大于0元',
+          icon: 'none',
+          duration: 2000,
+          mask: true
+        })
+        return
+      }
+    if (app.loginInfoData.company_type == '0') {
+      this.data.price = this.data.supply_price;
+    }
       var _this = this;
       var data = {
         product_id: this.data.id,
@@ -280,11 +295,12 @@ Page({
         supplier_id: this.data.selSupplierPid.supplier_id,
         supplier_name: this.data.selSupplierPid.name,
         offer_price: this.data.price,
+        supply_price: this.data.supply_price,
         base_unit: this.data.sysUnitPid[1].id,
         offer_unit: this.data.selUnitPid[1].id,
-        receive_unit: this.data.selReceiptPid[1].id,
-        standard: this.data.standard,
-        remarks: this.data.remarks
+        // receive_unit: this.data.selReceiptPid[1].id,
+        // standard: this.data.standard,
+        // remarks: this.data.remarks
       }
       wx.showLoading({
         title: '加载中',
@@ -306,14 +322,5 @@ Page({
           })
         }
       })
-    } else {
-      wx.showToast({
-        title: '暂无权限',
-        image: '../../images/warning.png',
-        duration: 2000,
-        mask: true
-      })
-    }
-
   },
 })

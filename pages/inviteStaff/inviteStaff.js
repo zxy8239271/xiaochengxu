@@ -21,8 +21,7 @@ Page({
     onLoad: function(options) {
         var _this = this;
         if (options.id && options.company_id) {
-            console.log(options)
-            console.log(222)
+            // console.log(options)
             _this.data.company_id = options.company_id;
             _this.data.staff_id = options.staff_id;
             _this.data.user_id = options.user_id;
@@ -31,8 +30,8 @@ Page({
             })
         } else if (options.scene) {
             var scene = decodeURIComponent(options.scene).split('='); //扫描二维码进入页面的参      
-            console.log(scene)
-            console.log(333)
+            // console.log(scene)
+            // console.log(333)
             _this.setData({
                 status: scene[1]
             })
@@ -45,18 +44,65 @@ Page({
         wx.getSetting({
             success(res) {
                 if (res.authSetting['scope.userInfo']) { // 先去校验用户有没有授权  如果有授权则直接
-
+                  if (wx.getStorageSync('openId')){
                     loginInfo.getLoginInfo().then(res_info => {
-                         app.loginInfoData = res_info.data;
+                      console.log(555)
+                      console.log(res_info)
+
+                      app.loginInfoData = res_info.data;
+                      _this.inviteInfo();
+                      if (_this.data.status == '0' || _this.data.status == '2') {
+                        _this.supplierList();
+                      }
+                    })
+                  }else{
+                    loginInfo.wxLogin().then(wx_res => {
+                      // console.log(wx_res)
+                      loginInfo.login(wx_res).then(res_login => {
+                        app.loginInfoData = res_login.data;
                         _this.inviteInfo();
                         if (_this.data.status == '0' || _this.data.status == '2') {
-                            _this.supplierList();
+                          _this.supplierList();
                         }
-                    })
 
+                      }).catch(err => {
+
+                      })
+                    }).catch(err => {
+                      wx.showModal({
+                        title: '警告通知',
+                        content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',
+                        success: function (res) {
+                          if (res.confirm) {
+                            wx.openSetting({
+                              success: (set_res) => {
+                                if (set_res.authSetting["scope.userInfo"]) { ////如果用户重新同意了授权登录
+                                  loginInfo.wxLogin().then(wx2_res => {
+                                    loginInfo.login(wx2_res).then(res_login2 => {
+                                      app.loginInfoData = res_login2.data;
+                                      _this.inviteInfo();
+                                      if (_this.data.status == '0' || _this.data.status == '2') {
+                                        _this.supplierList();
+                                      }
+                                    })
+                                  })
+
+                                }
+                              },
+                              fail: function (res) {
+
+                              }
+                            })
+
+                          }
+                        }
+                      })
+                    })
+                  }
+              
                 } else { //否则调起授权 
                     loginInfo.wxLogin().then(wx_res => {
-                        console.log(wx_res)
+                        // console.log(wx_res)
                         loginInfo.login(wx_res).then(res_login => {
                             app.loginInfoData = res_login.data;
                             _this.inviteInfo();
@@ -97,16 +143,14 @@ Page({
                             }
                         })
                     })
-
                 }
             }
         })
-
     },
     supplierList: function() {
         var _this = this;
         app.netWork.postJson(app.urlConfig.myCompanyUrl, {}).then(res => { //店铺列表
-            console.log(res)
+            // console.log(res)
             if (res.errorNo == '0') {
                 _this.setData({
                     array: res.data
@@ -119,8 +163,10 @@ Page({
         })
     },
     inviteInfo: function() {
+        // console.log( this.data.company_id)
+        var _this=this;
         app.netWork.postJson(app.urlConfig.inviteInfoUrl, { company_id: this.data.company_id }).then(res => { //店铺列表
-            console.log(res)
+            // console.log(res)
             if (res.errorNo == '0') {
                 _this.setData({
                     company_name: res.data.name,
@@ -154,17 +200,17 @@ Page({
     sureBtn: function() {
         var _this = this;
         var staff_id = app.loginInfoData.staff_id;
-        console.log(staff_id);
+        // console.log(staff_id);
         if (staff_id) { //先判断当前登录人有没有加入到公司
             if (this.data.status == '0') { //被邀请成为供应商
-                console.log(this.data.status);
+                // console.log(this.data.status);
                 let data = {
                     company_id: this.data.company_id,
                     supplier_id: this.data.array[this.data.index].company_id,
                     user_id: app.loginInfoData.user_id
                 }
                 app.netWork.postJson(app.urlConfig.doBindSupplierUrl, data).then(res => { //
-                    console.log(res)
+                    // console.log(res)
                     if (res.errorNo == '0') {
                         wx.showToast({
                             title: res.errorMsg,

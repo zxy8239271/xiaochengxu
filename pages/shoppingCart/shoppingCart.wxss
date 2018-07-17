@@ -234,8 +234,8 @@
 
 .jia {
   float: left;
-  width: 55rpx;
-  height: 55rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .order-num {

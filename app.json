@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/homePage/homePage",   
+    "pages/supplier/supplier",
+    "pages/orderList/orderList",
+    "pages/goods/goods",
+    "pages/myHome/myHome",    
     "pages/inviteStaff/inviteStaff",
-    
-    "pages/homePage/homePage",
-    "pages/supplier/supplier",    
     "pages/goodsAdd/goodsAdd",
     "pages/returnGoods/returnGoods",
     "pages/createShop/createShop",   
@@ -13,9 +15,7 @@
     "pages/confirmShoppingCart/confirmShoppingCart",
     "pages/myClient/myClient",
     "pages/examineReturn/examineReturn",
-    "pages/goods/goods",
     "pages/testPhone/testPhone",
-    "pages/myHome/myHome",
     "pages/reviseShopInfo/reviseShopInfo",
     "pages/goodsEdit/goodsEdit",
     "pages/goodsSupplierAdd/goodsSupplierAdd",
@@ -23,7 +23,6 @@
     "pages/personal/personal",
     "pages/myOrder/myOrder",
     "pages/myAddress/myAddress",
-    "pages/orderList/orderList",
     "pages/partGetGoods/partGetGoods",
     "pages/staffDetail/staffDetail",
     "pages/chooseUnit/chooseUnit",

@@ -14,26 +14,6 @@ Page({
     photo: "", //如果没有图片就用占位图,
     isShowStaff: true,
   },
-  // onTabItemTap: function () {
-  //   if (!app.loginInfoData.staff_id) {
-  //     wx.showModal({
-  //       title: '温馨提示',
-  //       content: '您还没店铺，请先去创建店铺',
-  //       showCancel: false,
-  //       confirmText: '创建店铺',
-  //       mask: true,
-  //       success: function (res) {
-  //         if (res.confirm) {
-  //           util.navTo({
-  //             url: '../createShop/createShop',
-  //           })
-  //         } else if (res.cancel) {
-  //           console.log('用户点击取消')
-  //         }
-  //       }
-  //     })
-  //   }
-  // },
   toChooseUnit: function () {
     util.navTo({
       url: '../chooseUnit/chooseUnit?isSelect=1'
@@ -111,19 +91,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
   toPersonal: function () {
     util.navTo({
       url: "../personal/personal"

@@ -1,9 +1,3 @@
 {
-	"tabBar": {
-    "color": "#000000",
-    "selectedColor": "#00954d",
-    "backgroundColor": "#ffffff",
-    "bordeStyle": "black"
-
-  }
+"navigationBarTitleText":"菜品"
 }

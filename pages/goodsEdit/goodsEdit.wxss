@@ -31,6 +31,7 @@
   background: #00954d;
   color: white;
   height: 88rpx;
+  font-size: 34rpx;
   /* position: fixed;
   bottom: 0px; */
   width: 100%;
@@ -38,7 +39,7 @@
 }
 
 .weui-cell {
-  padding: 30rpx;
+  padding: 20rpx 30rpx;
   border-bottom: 1px solid #e1e1e1;
 }
 
@@ -54,6 +55,7 @@
 
 .weui-label {
   width: auto;
+  color: rgba(0, 0, 0, 1);
 }
 
 .img-goods {
@@ -89,12 +91,15 @@ caigoujia {
 /*删除商品 */
 
 .delGoods {
-  width: 100%;
+  width: 70%;
   height: 80rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 34rpx;
   color: #fff;
-  background: red;
+  background: rgba(187, 187, 253, 1);
+  margin:30rpx auto;
+  border-bottom: none;
+
 }

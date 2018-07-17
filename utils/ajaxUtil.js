@@ -24,7 +24,6 @@ module.exports = {
                             icon: 'none',
                             duration: 2000
                         })
-                        return
                     } else if (res.data.errorNo == '1007') {
                         _this.loginInfo()
                     }else{
@@ -59,7 +58,6 @@ module.exports = {
                             icon: 'none',
                             duration: 2000
                         })
-                        return
                     } else if (res.data.errorNo == '1007') {
                         _this.loginInfo()
                         return
@@ -137,8 +135,4 @@ module.exports = {
     })
     }
 
-}
-
-function loginInfo() {
-   
 }

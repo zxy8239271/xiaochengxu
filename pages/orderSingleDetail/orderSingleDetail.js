@@ -22,7 +22,6 @@ Page({
       Module: options.Module
     })
     // console.log(this.data.orderNo)
-    this.orderListData();
   },
   orderListData: function () {//订单详情
     wx.showLoading({
@@ -56,6 +55,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.orderListData();
 
   },
 
@@ -64,9 +64,7 @@ Page({
    */
   onHide: function () {
     console.log(111)
-
   },
-
   /**
    * 生命周期函数--监听页面卸载
    */

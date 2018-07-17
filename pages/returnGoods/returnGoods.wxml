@@ -5,7 +5,8 @@
       <image src='{{goods.product_pic}}' class='goods-img'></image>
       <view class='good-right'>
         <view class='goods-top'>{{goods.product_name}}</view>
-        <view>￥{{goods.price||goods.product_price}}元/{{goods.offerUnit_name||returnGoods.offerUnit_name}}</view>
+        <view wx:if="{{Module=='wapUser'}}">￥{{goods.supply_price||goods.product_supply_price}}元/{{goods.offerUnit_name||returnGoods.offerUnit_name}}</view>
+        <view wx:else>￥{{goods.price||goods.product_price}}元/{{goods.offerUnit_name||returnGoods.offerUnit_name}}</view>
       </view>
       <view style='font-size:30rpx;'>x {{goods.num}}</view>
     </view>
@@ -45,7 +46,7 @@
           <view class="weui-label">申请退货数量:</view>
         </view>
         <view class="weui-cell__bd  returnNum">
-          <input class="weui-input" type='digit' value='{{num}}' bindblur='numBlur' bindinput='numInput' disabled="{{goods.operate_list[0].act =='reject'?false:true}}" />
+          <input class="weui-input" type='digit' value='{{filters.toFix(num)}}' bindblur='numBlur' bindinput='numInput' disabled="{{goods.operate_list[0].act =='reject'?false:true}}" />
         </view>
       </view>
     </view>
@@ -101,10 +102,7 @@
       </view>
     </view>
   </view>
-
-
-
-  <view class='good-footer' bindtap='submitBtn'  wx:if='goods.operate_list'>
+  <view class='good-footer' bindtap='submitBtn'  wx:if='{{goods.operate_list&&goods.operate_list.length>0}}'>
     {{goods.operate_list[0].name}}
   </view>
 

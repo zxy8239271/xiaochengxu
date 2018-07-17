@@ -16,27 +16,28 @@ Page({
     allPrice: 0,
     isShowList: true,
     isChan: true,
+    isScope:false
   },
   onReady: function () {
+
   },
   /**
   * 生命周期函数--监听页面加载
   */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '菜品'
-    });
   },
   onTabItemTap: function () {
     this.data.productListData=[];
-  
   },
-  onShow: function () {
+  onShow: function () {       
     var _this = this;
     _this.setData({
       shopNum:0,
       allPrice: 0,
+      isScope: app.loginInfoData.scope == 'store' && app.loginInfoData.store_id > 0 ?true:false,
+      productListData: []
     })
+
     var data = {
       level: '0',
       type: '0'
@@ -143,9 +144,14 @@ Page({
     })
   },
   showList: function (e) {//左側的父级点击
+    if (this.data.showItem == e.currentTarget.dataset.id){
+      return false;
+    }
     var _this = this;
     this.setData({
-      showItem: e.currentTarget.dataset.id
+      showItem: e.currentTarget.dataset.id,
+      productListData : []
+      
     })
     this.data.size = 1;
     this.data.productPlevelData.filter(function (item, index) {
@@ -161,17 +167,17 @@ Page({
         }
       }
     })
-    this.data.productListData = [];
-
     this.productList();
   },
   selectItem: function (e) {//左側的子级点击
+    if (this.data.sub == e.currentTarget.dataset.change){
+      return false;
+    }
     this.setData({
-      sub: e.currentTarget.dataset.change
+      sub: e.currentTarget.dataset.change,
+      productListData:[]
     });
-
     this.data.size = 1;
-    this.data.productListData = [];
     this.productList();
   },
   upper: function (e) {
@@ -378,43 +384,44 @@ Page({
     });
   },
   goShoppingCart: function () {//点好了  提交
-    var _this = this;
-    var shopArr = JSON.parse(wx.getStorageSync('shopSelData'));
-    var shoplist = [];
-    shopArr.map(function (item, index) {
-      shoplist.push({
-        info: {
-          code: item.code,
-          title: item.title,
-          id: item.id,
-          thumb: item.thumb,
-          pid: item.pid,
-          offer_price: item.offer_price,
-          offer_name: item.offer_name,
-          supplier_name: item.supplier_name,
-          is_down: item.is_down,
-          supplier_id: item.supplier_id,
-          is_supplier: item.is_supplier,
-          offer_id: item.offer_id
-        },
-        num: item.num
-      })
-    })
-    var data = {
-      data: JSON.stringify(shoplist)
-    }
-    app.netWork.postJson(app.urlConfig.shopCarAddUrl, data).then(res => {
-      if (res.errorNo == '0') {
-        _this.data.shopSelData = [];
-        _this.data.shopData = [];
-        wx.setStorageSync('shopSelData', JSON.stringify(_this.data.shopSelData));
+    // var _this = this;
+    // var shopArr = JSON.parse(wx.getStorageSync('shopSelData'));
+    // var shoplist = [];
+    // shopArr.map(function (item, index) {
+    //   shoplist.push({
+    //     info: {
+    //       code: item.code,
+    //       title: item.title,
+    //       id: item.id,
+    //       thumb: item.thumb,
+    //       pid: item.pid,
+    //       offer_price: item.offer_price,
+    //       offer_name: item.offer_name,
+    //       supplier_name: item.supplier_name,
+    //       is_down: item.is_down,
+    //       supplier_id: item.supplier_id,
+    //       is_supplier: item.is_supplier,
+    //       offer_id: item.offer_id,
+    //       supply_price: item.supply_price
+    //     },
+    //     num: item.num
+    //   })
+    // })
+    // var data = {
+    //   data: JSON.stringify(shoplist)
+    // }
+    // app.netWork.postJson(app.urlConfig.shopCarAddUrl, data).then(res => {
+    //   if (res.errorNo == '0') {
+    //     _this.data.shopSelData = [];
+    //     _this.data.shopData = [];
+        // wx.setStorageSync('shopSelData', JSON.stringify(_this.data.shopSelData));
         util.navTo({
           url: '../shoppingCart/shoppingCart'
         })
-      }
-    }).catch(res => {
-      console.log("提交订单")
-    })
+    //   }
+    // }).catch(res => {
+    //   console.log("提交订单")
+    // })
   },
   goShopCart: function () {
     util.navTo({
@@ -427,7 +434,9 @@ Page({
    */
   onHide: function () {
     var _this = this;
-    this.data.productListData = [];
+    this.setData({
+      productListData:[]
+    })
     var shopArr = [];
     if (wx.getStorageSync('shopSelData')) {
       shopArr = JSON.parse(wx.getStorageSync('shopSelData'))
@@ -449,7 +458,8 @@ Page({
           is_down: item.is_down,
           supplier_id: item.supplier_id,
           is_supplier: item.is_supplier,
-          offer_id: item.offer_id
+          offer_id: item.offer_id,
+          supply_price: item.supply_price
         },
         num: item.num
       })

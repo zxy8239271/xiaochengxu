@@ -35,6 +35,7 @@ Page({
     animationDataDefault: {}, //存储默认的那部分动画,
     isShow: true,
     tabWidth: 0,
+    scope: false,//价格显示
   },
   // 动画
   myAnimation: function (dir) {
@@ -57,11 +58,13 @@ Page({
   onReady: function () {
 
   },
-  onLoad: function () { 
+  onLoad: function () {
     var that = this;
-   
-
-
+    if (app.loginInfoData.scope == 'store' && app.loginInfoData.store_id > 0) {
+      this.setData({
+        scope: true
+      })
+    }
     // 自动加载右滑的动画,为了让用户排斥掉其他的列，不让其同时有左滑的效果
     var animation = wx.createAnimation({
       duration: 1000,
@@ -72,39 +75,9 @@ Page({
     this.setData({
       animationDataDefault: animation.export()
     })
-    if (util.authFind('productinfo_getPlevel')) { //检验权限
-      this.goodsClass();
-    } else {
-      wx.showToast({
-        title: '暂无权限',
-        image: '../../images/warning.png',
-        duration: 2000,
-        mask: true,
-      
-      })
-    }
+
+    this.goodsClass();
   },
-  // onTabItemTap: function () {
-  //   if (!app.loginInfoData.staff_id) {
-  //     wx.showModal({
-  //       title: '温馨提示',
-  //       content: '您还没店铺，请先去创建店铺',
-  //       showCancel: false,
-  //       confirmText: '创建店铺',
-  //       mask: true,
-  //       success: function (res) {
-  //         if (res.confirm) {
-  //           util.navTo({
-  //             url: '../createShop/createShop',
-  //           })
-  //         } else if (res.cancel) {
-  //           console.log('用户点击取消')
-  //         }
-  //       }
-  //     })
-  //   }
-  // },
-  // 切换tab栏
   tabClick: function (e) {
     // console.log("切换")
     this.setData({
@@ -116,55 +89,31 @@ Page({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
     });
-    if (util.authFind('productinfo_index')) { //检验权限
-      this.goodsListData();
-    } else {
-      wx.showToast({
-        title: '暂无权限',
-        image: '../../images/warning.png',
-        duration: 2000,
-        mask: true
-      })
-    }
+    this.goodsListData();
+
   },
   //  
   toGoodsAdd: function () {
-    if (util.authFind('productinfo_add')) { //检验权限
-      util.navTo({
-        url: '../goodsAdd/goodsAdd'
-      });
-    } else {
-      wx.showToast({
-        title: '暂无权限',
-        image: '../../images/warning.png',
-        duration: 2000,
-        mask: true
-      })
-    }
+    util.navTo({
+      url: '../goodsAdd/goodsAdd'
+    });
+
   },
   // 跳转至编辑商品详情页面
   toGoodsEdit: function (e) {
-    if (util.authFind('productinfo_update')) { //检验权限
-      var resultObjToStr; //用来存储需要转到下一个页面的数据
-      if (e.currentTarget.dataset.id == "addIn") {
-        resultObjToStr = "addIn"
-      } else {
-        var resultObj = this.data.goodsData.find(function (item) {
-          return item.id == e.currentTarget.dataset.id
-        });
-        resultObjToStr = JSON.stringify(resultObj);
-      }
-      util.navTo({
-        url: '../goodsEdit/goodsEdit?item=' + resultObjToStr  //把整个对象带过去
-      });
+    var resultObjToStr; //用来存储需要转到下一个页面的数据
+    if (e.currentTarget.dataset.id == "addIn") {
+      resultObjToStr = "addIn"
     } else {
-      wx.showToast({
-        title: '暂无权限',
-        image: '../../images/warning.png',
-        duration: 2000,
-        mask: true
-      })
+      var resultObj = this.data.goodsData.find(function (item) {
+        return item.id == e.currentTarget.dataset.id
+      });
+      resultObjToStr = JSON.stringify(resultObj);
     }
+    util.navTo({
+      url: '../goodsEdit/goodsEdit?item=' + resultObjToStr  //把整个对象带过去
+    });
+
 
   },
   // 请求商品分类数据
@@ -176,7 +125,7 @@ Page({
     var _this = this;
     app.netWork.postJson(app.urlConfig.productinfoPlevelUrl, data).then(res => {
       if (res.errorNo == '0') {
-   
+
         _this.setData({
           goodClassData: res.data
         });
@@ -305,7 +254,7 @@ Page({
    */
   onShow: function () {
     // 页面进入前台都要重置
-    var _this=this;
+    var _this = this;
     wx.getSystemInfo({
       success: function (res) {
         _this.setData({

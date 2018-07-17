@@ -8,7 +8,7 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-          <view class="weui-label">*选择供应商:</view>
+          <view class="weui-label"><text class='redtips'>*</text>选择供应商:</view>
         </view>
 
         <view class="weui-cell__bd" wx:if="{{supplierArray.length==0}}" bindtap='toCodePage'>
@@ -27,22 +27,27 @@
           <image src='../../images/youjiantou.png'></image>
         </view>
       </view>
-
-      <view class="weui-cell weui-cell_input">
+ <view class="weui-cell weui-cell_input" wx:if='{{isStorePrice}}'>
         <view class="weui-cell__hd ">
-          <view class="weui-label">*供应商价格:</view>
+          <view class="weui-label"><text class='redtips'>*</text>采购价格:</view>
         </view>
         <view class="weui-cell__bd">
-          <input type='text' placeholder='请输入价格' value='{{price}}' bindblur='priceBlur'  bindinput='priceInput'></input>
+          <input type='text' placeholder='请输入价格' value='{{price}}'   bindinput='priceInput'></input>
         </view>
-        <!-- <view class='weui-cell__right'>
-          <image src='../../images/youjiantou.png'></image>
-        </view> -->
+      </view>
+
+      <view class="weui-cell weui-cell_input" >
+        <view class="weui-cell__hd ">
+          <view class="weui-label"><text class='redtips'>*</text>门店价格:</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input type='text' placeholder='请输入门店价格' value='{{supply_price}}' bindinput='supplyPriceInput'></input>
+        </view>
       </view>
 
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-          <view class="weui-label">*单位:</view>
+          <view class="weui-label"><text class='redtips'>*</text>单位:</view>
         </view>
         <view class="weui-cell__bd">
           <picker mode="multiSelector" bindchange="bindUnitChange" bindcolumnchange="bindUnitColumnChange" value="{{unitIndex}}" range="{{unitArray}}" range-key='name'>
@@ -58,13 +63,13 @@
       </view>
 
 
-      <view class="weui-cell weui-cell_switch">
+      <!-- <view class="weui-cell weui-cell_switch">
         <view class="weui-cell__bd">高级控制（辅助采购）</view>
         <view class="weui-cell__ft">
           <switch checked='{{showMore}}' color='#00954d' bindchange="switchChange" />
         </view>
-      </view>
-      <block wx:if='{{showMore}}'>
+      </view> -->
+      <!-- <block wx:if='{{showMore}}'>
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             <view class="weui-label">采购系统单位:</view>
@@ -73,7 +78,6 @@
             <picker mode="multiSelector" bindchange="systemUnitChange" bindcolumnchange="systemUnitColumnChange" value="{{systemUnitIndex}}" range="{{systemUnitArray}}" range-key='name'>
               <view class="picker">
                 {{sysUnitPid[0].name}} {{sysUnitPid[1].name}}
-                <!-- {{systemUnitArray[0][systemUnitIndex[0]].name}} {{systemUnitArray[1][systemUnitIndex[1]].name}} -->
               </view>
             </picker>
           </view>
@@ -107,9 +111,7 @@
             <input type='text' placeholder='请输入规格大小' value='{{standard}}' bindblur='standardBlur'></input>
           </view>
 
-          <!-- <view class='weui-cell__right'>
-          <image src='../../images/youjiantou.png'></image>
-        </view> -->
+         
         </view>
 
         <view class="weui-cell weui-cell_input">
@@ -120,7 +122,7 @@
             <textarea class="weui-input" placeholder="备注" value='{{remarks}}' bindblur='remarksBlur' />
           </view>
         </view>
-      </block>
+      </block>  -->
 
     </view>
   </view>

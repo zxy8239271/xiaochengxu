@@ -191,6 +191,11 @@ scroll-view {
   justify-content: center;
   align-items: center;
   padding-top: 40rpx;
+
+
+}
+.tips1 text{
+  color:#858585;
 }
 
 /*列表  */
@@ -202,6 +207,10 @@ scroll-view {
 
 .supplier-li .supplier-center {
   flex: 1;
+}
+.supplier-li  .supplier-right text{
+  color: #858585;
+  font-size: 24rpx;
 }
 
 /*全部分类列表  */
@@ -228,10 +237,15 @@ scroll-view {
 .item {
   display: flex;
   background: #f9f7f7;
-   padding:20rpx 40rpx;
-   border-bottom:1px solid #e1e1e1;
+   padding:20rpx 60rpx;
+   border-bottom:1rpx solid #e1e1e1;
 }
-
+item:last-child{
+  border-bottom: none
+}
+.son-list{
+  padding: 0px  80rpx;
+}
 .item text {
   flex: 1;
 
@@ -240,8 +254,11 @@ scroll-view {
 
 .ItemSon {
   background: #fff;
-  padding:20rpx 60rpx;
+  padding:20rpx 10rpx;
   font-size: 26rpx;
+}
+.ItemSon:last-child{
+  border-bottom: none
 }
 
 

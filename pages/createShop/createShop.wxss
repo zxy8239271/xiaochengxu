@@ -16,7 +16,10 @@ page {
 
 .mainBox {
   flex: 1;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+.timeSel{
+padding: 0px 20rpx
 }
 
 .line88 {
@@ -31,9 +34,11 @@ page {
   line-height: 88rpx;
   text-align: right;
 }
-.leftShop{
+
+.leftShop {
   padding-right: 10rpx;
 }
+
 .phone image {
   width: 14rpx;
   height: 34rpx;
@@ -102,7 +107,7 @@ input {
 /*所有的下划线  */
 
 .mainBox>view {
-   border-bottom: 1px solid #e1e1e1; 
+  border-bottom: 1px solid #e1e1e1;
 }
 
 /*picker部分  */
@@ -111,11 +116,13 @@ input {
   display: flex;
   padding: 0 26rpx;
   line-height: 88rpx;
+  align-items: center
 }
 
 .dis {
   width: 200rpx;
   text-align: right;
+
 }
 
 /* 是否申请连锁公司  */
@@ -167,8 +174,12 @@ input {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 996;
+  z-index: 999;
   background: rgba(0, 0, 0, 0.5);
+  /*调整某个手机不展示验证手机号弹框的问题  */
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 /*关闭按钮  */
@@ -196,10 +207,9 @@ input {
   width: 600rpx;
   height: 700rpx;
   display: flex;
-  position: absolute;
-  left: 50%;
-  margin-left: -300rpx;
-  margin-top: 150rpx;
+  /* position: absolute; */
+  position: relative;
+  /* left: 50%; *//* margin-left: -300rpx; *//* margin-top: 150rpx; */
   justify-content: center;
   align-items: center;
 }
@@ -209,7 +219,7 @@ input {
 .floatContent {
   width: 500rpx;
   height: 650rpx;
-  position: absolute;
+  /* position: absolute; */
   padding-top: 50rpx;
 }
 
@@ -222,7 +232,7 @@ input {
   line-height: 100rpx;
   background: #f9f9f9;
   margin-bottom: 25rpx;
- }
+}
 
 .floatPhone, .floatTestCode {
   display: flex;
@@ -264,8 +274,6 @@ input {
   font-size: 26rpx;
 }
 
-
-
 .floatBtn {
   width: 500rpx;
   height: 80rpx;
@@ -283,7 +291,7 @@ input {
 /* 提示  */
 
 .tishi {
-  padding: 20px 0 10px 0 ;
+  padding: 20px 0 10px 0;
   /* background: yellow; */
   line-height: 26rpx;
   font-size: 26rpx;
@@ -291,7 +299,7 @@ input {
   text-align: center;
 }
 
-.tishi icon{
+.tishi icon {
   padding-top: 10rpx;
-  margin-right:10rpx;
+  margin-right: 10rpx;
 }

@@ -1,5 +1,9 @@
 <!--homePage.wxml-->
 <view class=" homePage-list">
+<!-- <view wx-if='{{isShowBtn}}'>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class='shouqaun' >请先授权</button>  
+</view> -->
+          
   <!--banner开始  -->
 
   <!-- <view wx:if='{{isShow}}' class='erweima'>

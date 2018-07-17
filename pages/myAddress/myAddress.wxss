@@ -12,8 +12,8 @@
 /*选择地区部分  */
 
 .addressIcon {
-  width: 38rpx;
-  height: 50rpx;
+  width: 27rpx;
+  height: 36rpx;
 }
 
 .youjiantouIcon {

@@ -25,7 +25,7 @@
       <!--右边菜品的展示开始  -->
       <view class='order-right-content'>
 
-        <scroll-view scroll-y style="height:100%" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <scroll-view scroll-y style="height:100%" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" class='scroll-list'>
 
           <view class='order-right-ul'>
             <view class='order-right-li' wx:for='{{productListData}}' wx:for-item="item" wx:key='{{index}}'>
@@ -35,7 +35,7 @@
               <view class='order-right-center'>
                 <view class='lineh'>{{item.title}}</view>
                 <view class='lineh' >
-                  <view class='lineh-left' wx:if='{{item.offer_price}}'>￥{{item.offer_price}}元/{{item.offer_name}}</view>
+                  <view class='lineh-left' wx:if='{{item.supply_price}}'>￥<text>{{item.supply_price}}</text>元/{{item.offer_name}}</view> 
                   <view class='order-right-right' wx:if='{{item.is_supplier !=0}}'>
                     <image src='../../images/jian.png' class='jian' data-item='{{item}}' bindtap='jianBtn' wx:if='{{item.num>=1}}'></image>
                     <view class='num' wx:if='{{item.num>0}}'>

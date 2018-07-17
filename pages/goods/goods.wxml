@@ -10,8 +10,8 @@
         <image wx:else src='../../images/shangjiantou.png' bindtap='changeClass'></image>
       </view>
       <!-- <view  > -->
-        <!--做个标记data-id="add" 证明是从顶部加号进去的  -->
-        <image src='../../images/add.png' bindtap='toGoodsAdd' class='common-header-right' ></image>
+      <!--做个标记data-id="add" 证明是从顶部加号进去的  -->
+      <image src='../../images/add.png' bindtap='toGoodsAdd' class='common-header-right'></image>
       <!-- </view> -->
 
     </view>
@@ -32,34 +32,37 @@
   </view>
   <!--fixed结束 -->
   <!--rose分类列表  -->
- 
+
   <view class='classList' wx:if='{{showClass}}'>
-   <view>
-  
-    <view class='item checkAll' catchtap="checkAll">
-      <text class='text'>选择全部</text>
-      <icon class='icon' type="success_no_circle" size="24" color="green" wx:if="{{checkAllClass}}" />
+    <view>
+
+      <view class='item checkAll' catchtap="checkAll">
+        <text class='text'>选择全部</text>
+        <icon class='icon' type="success_no_circle" size="24" color="green" wx:if="{{checkAllClass}}" />
+      </view>
+
+      <view class='listItem' wx:for='{{goodClassData}}' wx:key='index' wx:for-item='item'>
+        <view class='item' catchtap="checkPic" data-item='{{item}}'>
+          <text class='text'>{{item.name}}</text>
+          <icon class='icon' type="success_no_circle" size="24" color="green" wx:if="{{item.name==linshiPidObj.name}}" />
+        </view>
+        <!--内部循环子集,父级被选中时才展示子级 -->
+        <view class='son-list'>
+          <view class='item ItemSon' wx:for="{{item.son}}" wx:key='key' wx:for-item='itemSon' data-item='{{itemSon}}' catchtap="checkCid" wx:if="{{item.name==linshiPidObj.name}}">
+            <text class='text'>{{itemSon.name}}</text>
+            <icon class='icon' type="success_no_circle" size="22" color="green" wx:if="{{itemSon.name==linshiCidObj.name}}" />
+          </view>
+        </view>
+
+      </view>
+
+      <!--下方的点击确认  -->
+      <view class='sup-btn'>
+        <view class='sup-left' bindtap='supClassCancle'>取消</view>
+        <view class='sup-right' bindtap='supClassSure'>确定</view>
+      </view>
     </view>
 
-    <view class='listItem' wx:for='{{goodClassData}}' wx:key='index' wx:for-item='item'>
-      <view class='item' catchtap="checkPic" data-item='{{item}}'>
-        <text class='text'>{{item.name}}</text>
-        <icon class='icon' type="success_no_circle" size="24" color="green" wx:if="{{item.name==linshiPidObj.name}}" />
-      </view>
-      <!--内部循环子集,父级被选中时才展示子级 -->
-      <view class='item ItemSon' wx:for="{{item.son}}" wx:key='key' wx:for-item='itemSon' data-item='{{itemSon}}' catchtap="checkCid" wx:if="{{item.name==linshiPidObj.name}}">
-        <text class='text'>{{itemSon.name}}</text>
-        <icon class='icon' type="success_no_circle" size="22" color="green" wx:if="{{itemSon.name==linshiCidObj.name}}" />
-      </view>
-    </view>
-
-    <!--下方的点击确认  -->
-    <view class='sup-btn'>
-      <view class='sup-left' bindtap='supClassCancle'>取消</view>
-      <view class='sup-right' bindtap='supClassSure'>确定</view>
-    </view>
-  </view>
-    
   </view>
 
 
@@ -71,7 +74,7 @@
 
   <!--供应商列表  -->
 
-  <scroll-view scroll-y='isScroll' style="height:100%" bindscrolltoupper="upper" bindscrolltolower="lower"  scroll-top="100">
+  <scroll-view scroll-y='isScroll' style="height:100%" bindscrolltoupper="upper" bindscrolltolower="lower" scroll-top="100">
     <view class='supplier-ul'>
       <view class='supplier-li' animation="{{touchStartId==item.id? animationData : animationDataDefault}}" wx:for="{{goodsData}}" wx:key="{{i}}" wx:for-item='item' bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchhEnd" data-id="{{item.id}}">
         <view class='swipeLeft'>
@@ -82,10 +85,12 @@
           <!--中间  -->
           <view class='supplier-center'>
             <view class='supplier-center-top'>
-              <text>{{item.title}}</text>
+              <text>{{item.title}} </text>
+              <text wx:if="{{item.spec}}">({{item.spec}})</text>
             </view>
             <view class='supplier-center-bottom'>
-              <text wx:if='{{item.is_supplier>0}}'>￥{{item.offer_price}}元/{{item.offer_name}}</text>
+              <text wx:if='{{item.supply_price}}'>￥{{item.supply_price}}元/{{item.offer_name}}</text>
+               <!-- <text wx:else>￥{{item.offer_price}}元/{{item.offer_name}}</text>  -->
             </view>
           </view>
 

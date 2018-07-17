@@ -4,7 +4,7 @@
     <!--店铺logo  -->
     <view class='haveImg'>
       <view class='left logo'>
-        *店铺logo：</view>
+        <text class='redtips'>*</text>店铺logo：</view>
       <view class='zhanwei'></view>
       <view class='imgBox' bindtap='chooseLogoImg'>
         <image src='{{shopInfo.logo}}'></image>
@@ -13,18 +13,18 @@
     <!--店铺名称  -->
     <view class='line88'>
       <view class='left'>
-        <text>* 店铺名称：</text>
+        <text class='redtips'>*</text>店铺名称：
       </view>
       <input placeholder='请输入店铺名称' type='text' value='{{shopInfo.name}}' bindinput='nameInput' bindblur='nameBlur' />
     </view>
-   
+
     <!--手机号,只展示,不操作  -->
     <view class='line88 phone'>
       <view class='left'>
         <text>手机号：</text>
       </view>
-      <input type='text' disabled='true' placeholder='请输入手机号' value='{{shopInfo.phone}}' bindtap='showFloatBox'/>
-        </view>
+      <input type='text' disabled='true' placeholder='请输入手机号' value='{{shopInfo.phone}}' bindtap='showFloatBox' />
+    </view>
 
     <!--备用手机号  -->
     <view class='line88'>
@@ -49,12 +49,28 @@
 
     </view>
     <view class="line88">
-      <view class='left'><text class='leftShop'>店铺地址 :</text>
+      <view class='left'>
+        <text class='leftShop'>店铺地址 :</text>
       </view>
-
       <input type='text' class='textarea' bindinput='addressInput' bindblur="addressBlur" value="{{shopInfo.address}}" placeholder='请输入详细地址'></input>
-
     </view>
+
+
+
+    <!-- <view class="line88 ">
+      <view class='left'>
+        <text class='leftShop'>收货时段:</text>
+      </view>
+      <picker mode="time" value="{{startTime}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+      <view>{{startTime}}</view>
+      </picker>
+     <text class='timeSel'>至</text>
+      <picker mode="time" value="{{endTime}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+      <view>{{endTime}}</view>
+      </picker>
+    </view> -->
+
+
 
     <!--是否申请连锁公司  -->
     <view class="line88 linkage">
@@ -115,32 +131,32 @@
   <view class="btnBox">
     <view bindtap="saveFn">创建店铺</view>
   </view>
-    <!--fixed部分,遮罩盒子验证手机号 -->
-    <view class='floatBox' wx:if="{{isShowFloatBox}}">
-      <view class='floatMainBox'>
-        <view class='floatContent'>
-          <view class='floatTitle'>手机号验证</view>
-          <view class='floatPhone'>
-            <view>手机号:</view>
-            <input type='text' placeholder='请输入手机号' value='{{floatPhone}}' bindblur='floatPhoneBlur' bindinput='floatPhoneInput'  />
-          </view>
-          <view class='floatTestCode'>
-            <view>验证码:</view>
-            <input type='text' value='{{code}}' bindinput='codeInput' bindblur='codeBlur' />
-            <view wx:if="{{disabled}}" class='getCode' bindtap='getCode'>获取验证码</view>
-            <view wx:else class='getCode alreadySend'>{{count}}s后重新发送</view>
-          </view>
-
-          <view class='tishi' wx:if="{{msg!=''}}">
-            <icon type="warn" size="12" color="red" />{{msg}}
-          </view>
-
-          <view class='floatBtn' catchtap='testCode'>确  认</view>
+  <!--fixed部分,遮罩盒子验证手机号 -->
+  <view class='floatBox' wx:if="{{isShowFloatBox}}">
+    <view class='floatMainBox'>
+      <view class='floatContent'>
+        <view class='floatTitle'>手机号验证</view>
+        <view class='floatPhone'>
+          <view>手机号:</view>
+          <input type='text' placeholder='请输入手机号' value='{{floatPhone}}' bindblur='floatPhoneBlur' bindinput='floatPhoneInput' />
         </view>
-        <!--关闭按钮  -->
-        <view class="floatClose" catchtap='closeFloatBox'>X</view>
+        <view class='floatTestCode'>
+          <view>验证码:</view>
+          <input type='text' value='{{code}}' bindinput='codeInput' bindblur='codeBlur' />
+          <view wx:if="{{disabled}}" class='getCode' bindtap='getCode'>获取验证码</view>
+          <view wx:else class='getCode alreadySend'>{{count}}s后重新发送</view>
+        </view>
+
+        <view class='tishi' wx:if="{{msg!=''}}">
+          <icon type="warn" size="12" color="red" />{{msg}}
+        </view>
+
+        <view class='floatBtn' catchtap='testCode'>确 认</view>
       </view>
+      <!--关闭按钮  -->
+      <view class="floatClose" catchtap='closeFloatBox'>X</view>
     </view>
+  </view>
 
 
 

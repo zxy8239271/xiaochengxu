@@ -1,4 +1,4 @@
-var HTTP_URL = 'https://cgb-api.27aichi.com';
+var HTTP_URL = 'https://dev-cgb-api.27aichi.com';
 module.exports = {
   loginUrl: HTTP_URL + '/wap/wxxcx/login',//登陆
   wxloginInitUrl: HTTP_URL + '/api/wxlogin/init',//登陆初始化
@@ -70,7 +70,7 @@ module.exports = {
   // myqrCodeUrl: HTTP_URL + '/wap/my/myqr',//我的邀请码
   myqrCodeUrl: HTTP_URL + '/wap/my/myXcxQr',
   messageListUrl: HTTP_URL + '/wap/message/index',//消息列表
-  getUnitUrl: HTTP_URL + "/api/unit/index",//获取产品单位
+  getUnitUrl: HTTP_URL + "/wap/unit/index",//获取产品单位
   getShopDetail: HTTP_URL + "/wap/my/staffinfo", //获得店铺的详情
   inviteInfoUrl: HTTP_URL +'/wap/scan/inviteInfo',//邀请人信息
   doBindSupplierUrl: HTTP_URL + '/wap/scan/doBindSupplier',//邀请供应商

@@ -1,19 +1,33 @@
 const earaInfo = require("../../utils/earaInfo.js");
 const util = require("../../utils/util.js");
- var app = getApp();
-Page({  
+var app = getApp();
+Page({
   data: {
     // 省市相关
     regionData: earaInfo.earaInfo[0].data, //存储省市县数据
-    regionPageArray: [earaInfo.earaInfo[0].data, [], []], //展示在页面的省市县数据
-    regionIndex: [0, 0, 0],  //展示省市县各级的下标，相对于regionArray
+    regionPageArray: [earaInfo.earaInfo[0].data, [],
+      []
+    ], //展示在页面的省市县数据
+    regionIndex: [0, 0, 0], //展示省市县各级的下标，相对于regionArray
     regionResultIndex: [0, 0, 0], //最终展示在页面上的省市县的下标
-    regionResult: [{ region_id: 2, parent_id: 1, region_name: "北京" }, { region_id: 52, parent_id: 2, region_name: "北京" }, { region_id: 500, parent_id: 52, region_name: "东城区" }],  //初始默认展示的省市县
+    regionResult: [{
+      region_id: 2,
+      parent_id: 1,
+      region_name: "北京"
+    }, {
+      region_id: 52,
+      parent_id: 2,
+      region_name: "北京"
+    }, {
+      region_id: 500,
+      parent_id: 52,
+      region_name: "东城区"
+    }], //初始默认展示的省市县
     shopInfo: {
       company_id: "", //存储店铺company_id
       address: "", //详细地址
       city: "", //市code
-      city_name: "",  //市名字
+      city_name: "", //市名字
       phone: "", //电话 
       county: "", //县code
       county_name: "", //县
@@ -21,38 +35,41 @@ Page({
       provinces: "", //省code
       provinces_name: "", //省名字
       phone_bak: "", //备用电话
-      logo: "",//店铺logo图片
-      license_pic: "../../images/placeholder.png",//营业执照照片
+      logo: "", //店铺logo图片
+      license_pic: "../../images/placeholder.png", //营业执照照片
       ID_pic: "../../images/placeholder.png", //法人身份证照片
       license_code: "", //营业执照号
       person: "", //法人姓名
       ID_number: "", //法人身份证号
-      type: 0,  //是否连锁0个体1连锁
+      type: 0, //是否连锁0个体1连锁
+
 
     },
-    disabled: true,  //是否可以点击获取验证码
-    count: 60,  //倒计时
+    disabled: true, //是否可以点击获取验证码
+    count: 60, //倒计时
     inviteType: "", // 邀请类型，邀请客户或者供应商时有此字段，0 为供应商 2 为客户
     company_id: "", //邀请人的公司id
     user_id: "", //邀请人的用户id
-    flag: true,//标记是否可以点击创建店铺
+    flag: true, //标记是否可以点击创建店铺
     floatFlag: true, //标记是否可以点击验证码确认按钮
     floatSend: true, //控制发送验证码的开关
     msg: "", //装载验证手机号时的提示信息
     isShowFloatBox: false, //控制是否显示手机号验证的盒子
     floatPhone: "", //记录手机号验证中的电话是多少
-    code: "",//手机验证码
-    timer: null //定时器
+    code: "", //手机验证码
+    timer: null, //定时器
+    startTime: '8:00',
+    endTime: '10:00'
 
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var pages = getCurrentPages()    //获取加载的页面
-    var currentPage = pages[pages.length - 1]    //获取当前页面的对象
-    var url = currentPage.route    //当前页面url
+  onLoad: function(options) {
+    var pages = getCurrentPages() //获取加载的页面
+    var currentPage = pages[pages.length - 1] //获取当前页面的对象
+    var url = currentPage.route //当前页面url
     app.urls = url;
     wx.showLoading({
       title: '加载中',
@@ -87,7 +104,7 @@ Page({
   },
 
   // 滚动产地picker
-  bindRegionColumnChange: function (e) {//產地修改事件
+  bindRegionColumnChange: function(e) { //產地修改事件
     // console.log(e.detail.column,e.detail.value)
     // 如果滚动的是第0列
     if (e.detail.column == 0) {
@@ -109,7 +126,7 @@ Page({
   },
 
   // 产地滚动后点击确认
-  bindRegionChange: function (e) {//產地修改完成
+  bindRegionChange: function(e) { //產地修改完成
     this.data.regionResultIndex = this.data.regionIndex;
     // 更新展示在页面上的数据
     this.data.regionResult[0] = this.data.regionPageArray[0][this.data.regionResultIndex[0]]
@@ -125,14 +142,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     // console.log(app);
 
   },
@@ -140,28 +157,28 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
@@ -172,12 +189,12 @@ Page({
 
 
   // 输入店铺名称
-  nameInput: function (e) {
+  nameInput: function(e) {
     this.data.shopInfo.name = e.detail.value.trim();
   },
 
   // 店铺名称失去焦点事件
-  nameBlur: function (e) {
+  nameBlur: function(e) {
     this.setData({
       shopInfo: this.data.shopInfo
     })
@@ -187,26 +204,26 @@ Page({
 
 
   // 备用手机号输入事件
-  phoneBakInput: function (e) {
+  phoneBakInput: function(e) {
     this.data.shopInfo.phone_bak = e.detail.value.trim();
     // console.log("备用手机号输入事件");
   },
 
   //  备用手机号失去焦点事件
-  phoneBakBlur: function (e) {
+  phoneBakBlur: function(e) {
     this.setData({
       shopInfo: this.data.shopInfo
     });
     // console.log("备用手机号失去焦点事件")
   },
   // 用户地址输入事件
-  addressInput: function (e) {
+  addressInput: function(e) {
     this.data.shopInfo.address = e.detail.value.trim();
     // console.log("用户地址输入事件");
     // console.log(this.data.shopInfo.address)
   },
   // 用户地址失去焦点事件
-  addressBlur: function (e) {
+  addressBlur: function(e) {
     this.setData({
       shopInfo: this.data.shopInfo
     });
@@ -215,7 +232,7 @@ Page({
   },
 
   // 是否申请连锁公司
-  typeChange: function (e) {
+  typeChange: function(e) {
     // console.log(e.detail.value);
     var shopInfo = this.data.shopInfo;
 
@@ -231,48 +248,48 @@ Page({
 
   },
   // 营业执照号输入事件
-  licenseCodeInput: function (e) {
+  licenseCodeInput: function(e) {
     this.data.shopInfo.license_code = e.detail.value.trim();
   },
 
   // 营业执照号失去焦点事件
-  licenseCodeBlur: function (e) {
+  licenseCodeBlur: function(e) {
     this.setData({
       shopInfo: this.data.shopInfo
     });
   },
 
   // 法人姓名输入事件
-  personInput: function (e) {
+  personInput: function(e) {
     this.data.shopInfo.person = e.detail.value.trim();
   },
 
   // 法人姓名失去焦点事件
-  personBlur: function (e) {
+  personBlur: function(e) {
     this.setData({
       shopInfo: this.data.shopInfo
     });
   },
 
   // 法人身份证号输入事件
-  IdNumberInput: function (e) {
+  IdNumberInput: function(e) {
     this.data.shopInfo.ID_number = e.detail.value.trim();
   },
   // 法人身份证号失去焦点事件
-  IdNumberBlur: function (e) {
+  IdNumberBlur: function(e) {
     this.setData({
       shopInfo: this.data.shopInfo
     });
   },
 
   // 店铺logo选择图片
-  chooseLogoImg: function () {
+  chooseLogoImg: function() {
     var _this = this;
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         // var tempFilePath = res.tempFilePaths[0];
 
@@ -289,13 +306,13 @@ Page({
     })
   },
   // licenseImg:"",//营业执照照片
-  chooseLicenseImg: function () {
+  chooseLicenseImg: function() {
     var _this = this;
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         // var tempFilePath = res.tempFilePaths[0];
 
@@ -309,13 +326,13 @@ Page({
     })
   },
   // idCardImg: "" //法人身份证照片
-  chooseIdCardImg: function () {
+  chooseIdCardImg: function() {
     var _this = this;
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         // var tempFilePath = res.tempFilePaths[0];
 
@@ -330,7 +347,7 @@ Page({
 
 
   // 保存事件
-  saveFn: function () {
+  saveFn: function() {
     var _this = this;
     // 验证店铺名称不能为空
     if (this.data.shopInfo.name.trim() == "") {
@@ -380,7 +397,7 @@ Page({
     // 请求参数
     var data = {};
 
-    var filePath = [];//存储所有要图片
+    var filePath = []; //存储所有要图片
     data.name = this.data.shopInfo.name;
     data.phone = this.data.shopInfo.phone;
     data.phone_bak = this.data.shopInfo.phone_bak;
@@ -417,7 +434,7 @@ Page({
       });
     }
   },
-  loginInfo: function () {
+  loginInfo: function() {
     var data = {
       open_id: wx.getStorageSync('openId')
     };
@@ -426,7 +443,7 @@ Page({
         app.loginInfoData = res_data.data
         wx.setStorageSync('openId', res_data.data.openid_xcx);
         wx.setStorageSync('token', res_data.data.token);
-        setTimeout(function () {
+        setTimeout(function() {
           wx.switchTab({
             url: '../myHome/myHome'
           });
@@ -442,7 +459,7 @@ Page({
 
 
   // 是否上传过logo都需要走的逻辑部分
-  theEnd: function (data, filePath) {
+  theEnd: function(data, filePath) {
     var _this = this;
     // 当type为0时直接调用
     if (_this.data.shopInfo.type == 0) {
@@ -467,14 +484,14 @@ Page({
             duration: 2000,
             mask: true
           });
-          wx.setStorageSync('isChuang', true)          
+          wx.setStorageSync('isChuang', true)
           if (!app.loginInfoData.staff_id) {
             // console.log("调用_this.logiinInfo")
             _this.loginInfo();
           } else {
             // console.log("跳转页面")
 
-            setTimeout(function () {
+            setTimeout(function() {
               wx.switchTab({
                 url: '../myHome/myHome'
               });
@@ -621,12 +638,12 @@ Page({
                     mask: true
                   });
                   wx.setStorageSync('isChuang', true)
-                  
+
                   if (!app.loginInfoData.staff_id) {
                     _this.loginInfo();
                   } else {
                     // 跳转到单位列表-只可编辑
-                    setTimeout(function () {
+                    setTimeout(function() {
                       wx.switchTab({
                         url: '../myHome/myHome'
                       });
@@ -663,7 +680,7 @@ Page({
 
   },
   // 点击手机号显示浮动的盒子
-  showFloatBox: function () {
+  showFloatBox: function() {
     clearInterval(this.data.timer);
     this.setData({
       count: 60,
@@ -676,7 +693,7 @@ Page({
   },
 
   // 关闭浮动的盒子
-  closeFloatBox: function () {
+  closeFloatBox: function() {
     clearInterval(this.data.timer); //清除定时器
     this.setData({
       isShowFloatBox: false,
@@ -685,12 +702,12 @@ Page({
     })
   },
   // 浮动盒子手机号输入事件
-  floatPhoneInput: function (e) {
+  floatPhoneInput: function(e) {
     this.data.floatPhone = e.detail.value.trim();
   },
 
   // 浮动盒子手机号失去焦点事件
-  floatPhoneBlur: function () {
+  floatPhoneBlur: function() {
     this.setData({
       floatPhone: this.data.floatPhone
     });
@@ -698,19 +715,19 @@ Page({
 
   // 输入验证码事件
 
-  codeInput: function (e) {
+  codeInput: function(e) {
     this.data.code = e.detail.value.trim();
   },
 
   // 验证码失去焦点
-  codeBlur: function () {
+  codeBlur: function() {
     this.setData({
       code: this.data.code
     });
   },
 
   //点击获取验证码按钮
-  getCode: function () {
+  getCode: function() {
     var _this = this;
     // 如果手机号没写
     if (this.data.floatPhone == "") {
@@ -718,7 +735,7 @@ Page({
         msg: "请输入手机号"
       })
 
-      setTimeout(function () {
+      setTimeout(function() {
         _this.setData({
           msg: ""
         })
@@ -731,7 +748,7 @@ Page({
       this.setData({
         msg: "手机号已验证过"
       });
-      setTimeout(function () {
+      setTimeout(function() {
         _this.setData({
           msg: ""
         })
@@ -750,7 +767,7 @@ Page({
 
       clearInterval(_this.data.timer); //清除定时器
       // 开启定时器
-      _this.data.timer = setInterval(function () {
+      _this.data.timer = setInterval(function() {
         // 从第60秒开始就不允许点击获取验证码按钮
         var count = _this.data.count;
         count--;
@@ -762,7 +779,7 @@ Page({
         if (count <= 0) {
           clearInterval(_this.data.timer); //清除定时器
           _this.setData({
-            disabled: true,   //让按钮可以再次点击
+            disabled: true, //让按钮可以再次点击
             count: 60,
           })
         }
@@ -798,7 +815,7 @@ Page({
         msg: "请输入正确的11位手机号"
       });
 
-      setTimeout(function () {
+      setTimeout(function() {
         _this.setData({
           msg: ""
         });
@@ -807,7 +824,7 @@ Page({
   },
 
   // 发送请求验证验证码是否正确
-  testCode: function () {
+  testCode: function() {
 
     var _this = this;
 
@@ -816,7 +833,7 @@ Page({
       _this.setData({
         msg: "请输入手机号"
       });
-      setTimeout(function () {
+      setTimeout(function() {
         _this.setData({
           msg: ""
         })
@@ -829,7 +846,7 @@ Page({
       _this.setData({
         msg: "请输入正确的11位手机号"
       });
-      setTimeout(function () {
+      setTimeout(function() {
         _this.setData({
           msg: ""
         })
@@ -842,7 +859,7 @@ Page({
       _this.setData({
         msg: "请输入验证码"
       });
-      setTimeout(function () {
+      setTimeout(function() {
         _this.setData({
           msg: ""
         })
@@ -851,12 +868,12 @@ Page({
     }
 
     // 如果验证码位数或者不全是数字
-    var re = new RegExp(/^[0-9]{6}$/);     // ^表示开始  $表示结束  
+    var re = new RegExp(/^[0-9]{6}$/); // ^表示开始  $表示结束  
     if (re.test(this.data.code) == false) {
       _this.setData({
         msg: "请输入正确的验证码"
       });
-      setTimeout(function () {
+      setTimeout(function() {
         _this.setData({
           msg: ""
         })
@@ -890,7 +907,7 @@ Page({
           _this.setData({
             shopInfo: _this.data.shopInfo,
             isShowFloatBox: false, //关闭弹框
-            disabled: true,   //让按钮可以再次点击
+            disabled: true, //让按钮可以再次点击
             count: 60,
           });
 
@@ -902,7 +919,7 @@ Page({
             floatFlag: true
           });
 
-          setTimeout(function () {
+          setTimeout(function() {
             _this.setData({
               msg: ""
             })

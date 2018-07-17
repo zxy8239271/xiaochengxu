@@ -1,4 +1,4 @@
-
+var app = getApp();
 module.exports = {
   unique: function (array) {//数组去重
     var r = [];
@@ -24,6 +24,7 @@ module.exports = {
     }
   },
   authFind: function (val) {   //查找權限
+    console.log(app)
     return true;
     
   },

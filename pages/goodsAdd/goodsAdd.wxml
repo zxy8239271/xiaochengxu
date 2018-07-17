@@ -1,127 +1,108 @@
 <view class='goodsAdd'>
   <!-- <form bindsubmit="saveGoods" report-submit> -->
-    <view class='form-list'>
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">*商品名称:</view>
-          </view>
-          <view class="weui-cell__bd">
-            <input class="weui-input" type='text' placeholder="请输入商品名称" value='{{goods.goodsName}}' bindinput="changeGoodsName" bindblur='changeGoodsNameBlur' />
-          </view>
-        </view>
-        <view class="weui-cell weui-cell_select">
-          <view class="weui-cell__hd weui-cell__hd_in-select-after">
-            <view class="weui-label">*分类:</view>
-          </view>
-          <view class="weui-cell__bd">
-            <picker mode="multiSelector" bindchange="bindClassChange" bindcolumnchange="bindClassColumnChange" value="{{classIndex}}" range="{{classPageArray}}" range-key='name'>
+  <view class='form-list'>
 
-              <view class="picker">
-                <!--只展示了一级  -->
-                {{classResult[0].name}} {{classResult[1].name}}
-              </view>
-            </picker>
-          </view>
-        </view>
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">*单位:</view>
-          </view>
-          <view class="weui-cell__bd">
-            <!--bindUnitChange是用户点击确认后触发的  -->
-            <!--bindUnitColumnChange是用户滚动触发的  -->
-            <picker mode="multiSelector" bindchange="bindUnitChange" bindcolumnchange="bindUnitColumnChange" value="{{unitIndex}}" range="{{unitPageArray}}" range-key='name'>
-              <view class="picker">
 
-                <!--需要被选中的项  -->
-                {{unitResult[1].name}}
-              </view>
-            </picker>
-            <!-- <input class="weui-input" placeholder="请输入qq" type='text' /> -->
-          </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text class='redtips'>*</text>商品名称:</view>
         </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type='text' placeholder="请输入商品名称" value='{{goods.goodsName}}' bindinput="changeGoodsName" />
+        </view>
+      </view>
 
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">*产地:</view>
-          </view>
-          <view class="weui-cell__bd">
-            <picker mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="bindRegionColumnChange" value="{{regionIndex}}" range="{{regionPageArray}}" range-key='region_name'>
-              <view class="picker">
-                {{regionResult[0].region_name}} {{regionResult[1].region_name}} {{regionResult[2].region_name}}
-              </view>
-            </picker>
-            <!-- <input class="weui-input" placeholder="请输入qq" type='text' /> -->
-          </view>
-        </view>
 
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">详细地址:</view>
-          </view>
-          <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="详细地址" type='textarea' value='{{goods.address}}' bindinput="changeAddress" bindblur='sureChangeAddress' />
-          </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">
+            <text class='redtips'>*</text>分类:</view>
         </view>
-        <!--商品缩略图  -->
-        <view class="weui-cell weui-cell_input">
-          <image src='{{goods.goodsImg}}' class='img-goods' catchtap='chooseWxImage'></image>
-        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" bindchange="bindClassChange" bindcolumnchange="bindClassColumnChange" value="{{classIndex}}" range="{{classPageArray}}" range-key='name'>
 
-        <view class="weui-cell weui-cell_switch">
-          <view wx:if="{{goods.is_down==0}}" class="weui-cell__bd">状态:已上架</view>
-          <view wx:else class="weui-cell__bd">状态:已下架</view>
-          <view class="weui-cell__ft">
-            <switch checked="{{goods.is_down==0 ? true : false }}" color='#00954d' bindchange="changeIsDown" />
-          </view>
+            <view class="picker">
+              <!--只展示了一级  -->
+              {{classResult[0].name}} {{classResult[1].name}}
+            </view>
+          </picker>
         </view>
-<!--添加商品页面隐藏采购价  -->
-        <!-- <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">采购价:</view>
-          </view>
-          <view class="weui-cell__bd caigoujia">
-            <text>￥ {{goods.offer_price}}元/</text>
-            <text> {{goods.offer_name}}</text>
-          </view>
+      </view>
 
-        </view> -->
 
-        <!-- <view class="weui-cell weui-cell_switch">
-          <view class="weui-cell__bd">高级控制（辅助采购）</view>
-          <view class="weui-cell__ft">
-            <switch checked='{{showMore}}' color='#00954d' bindchange="switchChange" />
-          </view>
-        </view> -->
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">采购周期:</view>
-          </view>
-          <view class="weui-cell__bd caigou">
-            <input class="weui-input" placeholder="请输入采购周期" type='text' value="{{goods.Purchasecycle}}" bindinput='changePurchasecycle' bindblur='changePurchasecycleBlur' />
-          </view>
-          <!--隐藏问号图片  -->
-          <!-- <view class="weui-cell__bd wenhao">
-            <image src='../../images/wenhao.png'></image>
-          </view> -->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">
+            <text class='redtips'>*</text>单位:</view>
         </view>
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            <view class="weui-label">备注:</view>
-          </view>
-          <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="备注" type='textarea' value='{{goods.description}}' bindinput='changeDescription' bindblur='changeDescriptionBlur' />
-          </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" bindchange="bindUnitChange" bindcolumnchange="bindUnitColumnChange" value="{{unitIndex}}" range="{{unitPageArray}}" range-key='name'>
+            <view class="picker">
+              <!--需要被选中的项  -->
+              {{unitResult[1].name}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">规格:</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type='text' placeholder="请输入商品规格" value='{{goods.spec}}' bindinput="changeSpec"  />
+        </view>
+      </view>
+      <!-- <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">产地: </view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="bindRegionColumnChange" value="{{regionIndex}}" range="{{regionPageArray}}" range-key='region_name'>
+            <view class="picker">
+              {{regionResult[0].region_name}} {{regionResult[1].region_name}} {{regionResult[2].region_name}}
+            </view>
+          </picker>
+        </view>
+      </view> -->
+
+      <!-- <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">详细地址:</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="详细地址" type='textarea' value='{{goods.address}}' bindinput="changeAddress" />
+        </view>
+      </view> -->
+      <!--商品缩略图  -->
+      <view class="weui-cell weui-cell_input">
+        <image src='{{goods.goodsImg}}' class='img-goods' catchtap='chooseWxImage'></image>
+      </view>
+
+      <view class="weui-cell weui-cell_switch">
+        <view wx:if="{{goods.is_down==0}}" class="weui-cell__bd">状态:已上架</view>
+        <view wx:else class="weui-cell__bd">状态:已下架</view>
+        <view class="weui-cell__ft">
+          <switch checked="{{goods.is_down==0 ? true : false }}" color='#00954d' bindchange="changeIsDown" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">备注:</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="备注" type='textarea' value='{{goods.description}}' bindinpu='changeDescription' />
         </view>
       </view>
     </view>
+  </view>
 
 
-     <view class="btn-area" data-type="add" bindtap='saveGoods'>
-      新增商品
-    </view> 
-    <!-- <button formType="submit">Submit</button> -->
+  <view class="btn-area" data-type="add" bindtap='saveGoods'>
+    新增商品
+  </view>
+  <!-- <button formType="submit">Submit</button> -->
   <!-- </form> -->
 
 </view>

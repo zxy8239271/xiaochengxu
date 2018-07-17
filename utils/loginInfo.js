@@ -40,7 +40,6 @@ module.exports = {
             netWork.postJson(urlConfig.loginUrl, dataJson).then(res_data => {
                 if (res_data.errorNo == 0) {
                   wx.hideLoading();
-
                     wx.setStorageSync('openId', res_data.data.openid_xcx);
                     wx.setStorageSync('token', res_data.data.token);
                     if (wx.getStorageSync('xcxVersionNumber') != res_data.data.xcxVersionNumber) {
@@ -49,6 +48,7 @@ module.exports = {
                     }
                     wx.setStorageSync('xcxVersionNumber', res_data.data.xcxVersionNumber);
                     if (!res_data.data.staff_id) {
+                      if (util.getCurrentPageUrl() != 'pages/inviteStaff/inviteStaff' && util.getCurrentPageUrl() != 'pages/testPhone/testPhone' && util.getCurrentPageUrl() != 'pages/createShop/createShop') {
                         wx.showModal({
                             title: '温馨提示',
                             content: '您还没店铺，请先去创建店铺',
@@ -65,7 +65,8 @@ module.exports = {
                                 }
                             }
                         })
-                        return;
+                        // return;
+                    }
                     }
                 }
                 resolve(res_data)
@@ -83,6 +84,7 @@ module.exports = {
                 open_id: wx.getStorageSync('openId')
             };
             var _this = this;
+            console.log('openid' + wx.getStorageSync('openId'))
             netWork.postJson(urlConfig.getLoginInfoUrl, data).then(res_data => {
                 if (res_data.errorNo == 0) {
                     wx.setStorageSync('openId', res_data.data.openid_xcx);
@@ -110,7 +112,6 @@ module.exports = {
                                     }
                                 }
                             })
-                            return;
                         }
                     }
                 }

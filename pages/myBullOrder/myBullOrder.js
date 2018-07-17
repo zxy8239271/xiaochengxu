@@ -213,12 +213,8 @@ Page({
           that.setData({
             rejectData: allArr
           });
-          setTimeout(function () {
-            that.setData({
-              hasMore: false,
-            });
-          }, 2000)
-          if (res.data.length == 0) {
+         
+          if (that.data.rejectData.length ==res.total) {
             that.setData({
               hasMore: false,
             });
@@ -243,12 +239,8 @@ Page({
           that.setData({
             orderData: allArr
           });
-          setTimeout(function () {
-            that.setData({
-              hasMore: false,
-            });
-          }, 2000)
-          if (res.data.length == 0) {
+          
+          if (that.data.orderData.length ==res.total) {
             that.setData({
               hasMore: false,
             });

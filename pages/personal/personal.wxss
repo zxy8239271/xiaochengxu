@@ -76,6 +76,7 @@
   border-bottom: 1px solid #e1e1e1;
    padding: 10rpx 20rpx; 
   min-height: 40rpx;
+  line-height: 100rpx;
 }
 
 .addressText {

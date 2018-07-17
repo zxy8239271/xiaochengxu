@@ -35,7 +35,9 @@
             <view class='shopping-list-center '>
               <view class='shopping-list-name'>{{value.title}}</view>
               <view class='shopping-list-price'>
-                <view class='price-shop'>￥{{value.offer_price}}元/{{value.offer_name}}</view>
+                <view class='price-shop' wx:if='{{value.supply_price}}'>￥<text> {{value.supply_price}}</text>
+                 <!-- <text wx:else> {{value.offer_price}}</text> -->
+                  元/{{value.offer_name}}</view>
                 <view class='shopping-list-edit'>         
                   <image src='../../images/chakansupplier.png' data-item='{{value}}'      bindtap='changeSupplier' wx:if='{{value.is_supplier>1}}'></image>
                   <text class='shop-supplier' data-item='{{value}}' wx:if="{{value.is_supplier>1}}" bindtap='changeSupplier'> 供应商</text>
@@ -81,7 +83,8 @@
         <view class='shopping-list-center '>
           <view class='shopping-list-name'>{{oneData.title}}</view>
           <view class='shopping-list-price'>
-            <view class='price-shop'>￥{{oneData.offer_price}}元/{{oneData.offer_name}}</view>
+            <view class='price-shop'>￥<text> {{oneData.supply_price}}</text> 
+            元/{{oneData.offer_name}}</view>
             <view class='shopping-list-edit'>
               <image src='../../images/del.png' data-code='{{oneData.code}}' bindtap='shopDel'></image>
             </view>
@@ -92,7 +95,7 @@
         <view class='order-right-right'>
           <image src='../../images/jian.png' class='jian' data-item='{{oneData}}' data-flg='1' bindtap='shopJian' wx:if="{{oneData.nums>0}}"></image>
           <view class='order-num'>
-            <input type="digit" value='{{filters.toFix(oneData.nums)}}' data-item='{{value}}' style='width:50rpx;text-align:center; ' data-flg='1' bindblur='changeShop' />
+            <input type="digit" value='{{filters.toFix(oneData.nums)}}' data-item='{{value}}' style='width:80rpx;text-align:center; ' data-flg='1' bindblur='changeShop' />
           </view>
           <image src='../../images/jia.png' class='jia' data-flg='1' data-item='{{oneData}}' bindtap='shopJia'></image>
         </view>
@@ -111,7 +114,7 @@
           <view>{{item.phone}}</view>
         </view>
         <view class='supplier-price'>
-          <text>￥{{item.offer_price}}元/{{item.offer_name}}</text>
+          <text>￥{{item.supply_price}}元/{{item.offer_name}}</text>
 
         </view>
         <view class='supplier-img'>

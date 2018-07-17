@@ -4,14 +4,14 @@
   <view class='supplierDetail-ul'>
     <view class='supplierDetail-li line124'>
       <!-- <view class='supplierHeader-left'> -->
-        <image src='{{supplierDetail.logo}}'></image>
+      <image src='{{supplierDetail.logo}}'></image>
       <!-- </view> -->
       <view class='supplierHeader-center'>
         <view class='supplierHeader-div'>
           <view class='supplierHeader-p'>
             <text>{{supplierDetail.name}}</text>
           </view>
-          <view class='supplierHeader-p font26'  data-phone='{{supplierDetail.contacts_info}}' bindtap='call'>
+          <view class='supplierHeader-p font26' data-phone='{{supplierDetail.contacts_info}}' bindtap='call'>
             <text>手机号:{{supplierDetail.contacts_info}}</text>
           </view>
         </view>
@@ -51,14 +51,20 @@
         <view class='supplierDetail-center'>
           <text>{{supplierDetail.stock_addr}}</text>
         </view>
-
       </view>
-
+      <view class='line100'>
+        <view class='supplierDetail-left'>
+          <text>配送类型:</text>
+        </view>
+        <view class='supplierDetail-center'>
+          <text>T+{{supplierDetail.delay}}</text>
+        </view>
+      </view>
       <view class='line100'>
         <view class='supplierDetail-left'>
           <text>备用手机号:</text>
         </view>
-        <view class='supplierDetail-center'  data-phone='{{supplierDetail.phone_bak}}'  bindtap='call'>
+        <view class='supplierDetail-center' data-phone='{{supplierDetail.phone_bak}}' bindtap='call'>
           <text>{{supplierDetail.phone_bak}}</text>
         </view>
       </view>
@@ -112,7 +118,7 @@
         <view class='supplierDetail-center textright'>
           <text class='supplier-btn' data-item='{{supplierDetail}}' bindtap='delSupplier'>删除</text>
           <!-- <text class='supplier-btn' data-item='{{supplierDetail}}' bindtap='selSupplier'>设为优选</text> -->
-          <text class='supplier-btn' data-item='{{supplierDetail}}'  bindtap='stopSupplier'  >{{supplierDetail.is_black==0?'暂停合作':'恢复合作'}}</text>
+          <text class='supplier-btn' data-item='{{supplierDetail}}' bindtap='stopSupplier'>{{supplierDetail.is_black==0?'暂停合作':'恢复合作'}}</text>
           <!-- <text class='supplier-btn stop'   wx:if='{{supplierDetail.is_black==1}}' ></text> -->
         </view>
       </view>

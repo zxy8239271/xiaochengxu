@@ -187,6 +187,7 @@
   justify-content: center;
   font-size: 34rpx;
   padding-top: 30rpx;
+  color: #858585;
 }
 
 .addSupplier image {

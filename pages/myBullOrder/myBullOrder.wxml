@@ -38,7 +38,7 @@
             </view>
            <view class='reject-li-bottom'>
               <!-- hahha -->
-              <view class='reject-li-bottom-right'>共计{{item.num}}件商品  总价 <text>{{item.total_price}}元</text> </view>
+              <view class='reject-li-bottom-right'>共计{{item.num}}件商品  总价 <text>{{item.total_supply_price}}元</text> </view>
               <text class='greenBorder btn'  data-item='{{item}}' bindtap='goReturn' > 退货详情</text>
             </view>
           </view>
@@ -50,7 +50,7 @@
             <view class='myorder-li-title'>
               <view class='myorder-li-title-left'>
                 <text>供应商:{{item.company_name}}</text>
-                <image data-phone='{{item.supplier_phone}}' src='../../images/phone.png' bindtap='callPhone'></image>
+                <image data-phone='{{item.company_phone}}' src='../../images/phone.png' bindtap='callPhone'></image>
               </view>
               <view class='myorder-li-title-right' style='{{item.displayName.class}}'>{{item.displayName.name}}</view>
             </view>
@@ -60,9 +60,9 @@
             </view>
             <view class='myorder-price'>
               <text>共{{item.productsnum}}件商品</text>
-              <text class='price'>总价:{{item.price}}元</text>
+              <text class='price'>总价:{{item.supply_price}}元</text>
               <text class='time-right'>{{item.add_time}}</text> </view>
-            <view class='myorder-btn-list' wx:if='{{item.subAction_list.isShow==1}}' style='{{item.subAction_list.class}}'>{{item.subAction_list.name}}</view>
+            <!-- <view class='myorder-btn-list' wx:if='{{item.subAction_list.isShow==1}}' style='{{item.subAction_list.class}}'>{{item.subAction_list.name}}</view> -->
             <view class='myorder-btn-list' wx:if='{{item.operate_list.length>0}}'>
               <text wx:for='{{item.operate_list}}' wx:for-item='value' wx:key='val' data-orderid='{{item.order_sn}}' data-value='{{value}}' wx:if='{{value.isShow==1}}' bindtap='orderTaking' class='greenBorder'>{{value.name}}</text>
             </view>

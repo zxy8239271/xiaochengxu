@@ -21,6 +21,7 @@ Page({
     var _this = this;
     this.data.Module = options.Module;
     this.setData({
+      Module: options.Module,
       goods: JSON.parse(options.item),
       num: JSON.parse(options.item).real_num > 0 ? JSON.parse(options.item).real_num : JSON.parse(options.item).num,
       real_num: JSON.parse(options.item).real_num > 0 ? JSON.parse(options.item).real_num : JSON.parse(options.item).num
@@ -83,8 +84,8 @@ Page({
     // this.data.num = e.detail.value ;  
   },
   numBlur: function (e) {//退货数量的填写
-    console.log(this.data.num)
-    if (e.detail.value > this.data.real_num) {
+    console.log(e.detail.value, this.data.real_num)
+    if (util.toFix(e.detail.value) - this.data.real_num>0 ) {
       wx.showToast({
         title: '退货量不能大于订购量',
         icon: 'none',
@@ -108,15 +109,13 @@ Page({
       return;
     } else {
       this.setData({
-        num: e.detail.value
+        num: util.toFix(e.detail.value) 
       })
     }
 
   },
   reasonDescBlur: function (e) {
-    this.setData({
-      reason_desc: e.detail.value
-    })
+    this.data.reason_desc=e.detail.value;
   },
   imgUpload: function () {
     var _this = this;

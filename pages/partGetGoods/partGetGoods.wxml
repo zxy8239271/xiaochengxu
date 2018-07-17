@@ -23,7 +23,8 @@
           </view>
         </view>
         <view class='middle'>
-          <text> ￥{{item.real_price}}元/{{item.receiveUnit_name}}</text>
+        <text wx:if="{{Module=='wapUser'}}"> ￥{{item.supply_price}}元/{{item.receiveUnit_name}}</text>
+           <text wx:else> ￥{{item.real_price}}元/{{item.receiveUnit_name}}</text> 
         </view>
         <view class='bottom'>
           <text>{{Module=='wapUser'?'实际到货':'接单量'}}</text>
@@ -31,7 +32,7 @@
             <!-- 如果后面的按钮是已确认则不出现加号和减号的按钮 -->
             <image data-id="{{item.id}}" bindtap="delNumFn" wx:if="{{!item.is_sure}}" src="../../images/jian.png"></image>
           </view>
-          <input disabled="{{item.is_sure}}" data-id="{{item.id}}" bindinput="valueChangeFn" class='editNum' type='text' value="{{item.real_num}}" />
+          <input  data-id="{{item.id}}"  class='editNum' type='text' value="{{item.real_num}}"  disabled='true'/>
           <view class='delNum'>
             <image data-id="{{item.id}}" bindtap="addNumFn" wx:if="{{!item.is_sure &&item.real_num<=item.num}}" src="../../images/jia.png"></image>
           </view>
@@ -45,7 +46,10 @@
   <view class="footer" >
     <view class="left">
       <text class="allNum">共{{lists.data.length}}件商品</text>
-      <text class="allMoney">(￥{{filters.toFix(lists.price)}})</text>
+      <text class="allMoney">
+      <text wx:if="{{Module=='wapUser'}}">(￥{{filters.toFix(lists.supply_price)}})</text>
+      <text wx:else>(￥{{filters.toFix(lists.price)}})</text>
+      </text>
     </view>
     <view class="sureBtn" bindtap='sureGoodsTake' wx:if="{{Module=='wapSupplier'}}">{{textBtn}}</view>
   </view>

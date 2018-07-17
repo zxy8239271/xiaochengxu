@@ -71,10 +71,11 @@ Page({
   },
   changeRemarks: function (e) {
     var index = e.currentTarget.dataset.id;
-    var up = "listData[" + index + "].remarks"; //先用一个变量，把(listData[0].son[0].carDetailIsShow)用字符串拼接起来
-    this.setData({
-      [up]: e.detail.value
-    })
+    // var up = "listData[" + index + "].remarks"; //先用一个变量，把(listData[0].son[0].carDetailIsShow)用字符串拼接起来
+    this.data.listData[index].remarks = e.detail.value
+    // this.setData({
+    //   [up]: e.detail.value
+    // })
   },
 
   /**
@@ -138,7 +139,7 @@ console.log(res)
       var data = {
         info: JSON.stringify(arr),
         allprice: this.data.allprice,
-        time: this.data.date,
+        // time: this.data.date,
       }
       app.netWork.postJson(app.urlConfig.createOrderUrl, data).then(res => {
         console.log(res);
@@ -153,7 +154,7 @@ console.log(res)
             success: function (res) {
               if (res.confirm) {
                 wx.redirectTo({
-                  url: "../myBullOrder/myBullOrder?type=wapUser"
+                  url: "../myBullOrder/myBullOrder?type=wapUser&status=taking"
                 })
               } else if (res.cancel) {
                 wx.switchTab({

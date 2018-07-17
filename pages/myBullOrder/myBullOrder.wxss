@@ -173,7 +173,7 @@
   height: 100rpx;
   margin-right: 20rpx;
   border: 1px solid #e1e1e1;
-  border-radius: 100rpx;
+  /* border-radius: 100rpx; */
 }
 
 .myorder-price {

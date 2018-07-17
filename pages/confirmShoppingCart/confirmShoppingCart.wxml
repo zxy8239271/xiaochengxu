@@ -29,7 +29,7 @@
     </view>
     <!-- 期望到达时间 -->
     <!--期望到达时间  -->
-    <view class="chooseTime">
+    <!-- <view class="chooseTime">
       <picker mode="date" value="{{date}}" start="2018-03-01" end="2020-09-01" bindchange="bindDateChange">
         <view class="picker">
           <view class='hopeTime'>
@@ -43,7 +43,8 @@
           </view>
         </view>
       </picker>
-    </view>
+    </view> -->
+    
     <view class='container'>
       <!--中间主内容区域  -->
       <!--图片都是临时弄的  -->
@@ -75,7 +76,7 @@
               <image src="{{v.thumb}}"></image>
               <view class="openListsDis">
                 <text class='detailCaiName'>{{v.title}}</text>
-                <text class='detailCaiName'>{{v.offer_price}}元</text>
+                <text class='detailCaiName'>{{v.supply_price}}元</text>
               </view>
               <view class='allWeight'>x{{v.nums}}</view>
             </view>
@@ -83,7 +84,7 @@
           <!-- 买家留言部分 -->
           <view class="buyMessage">
             <text>买家留言</text>
-            <input type="text" data-id='{{index}}' bindblur='changeRemarks' value='{{item.remarks}}' placeholder="选填，填写内容已和卖家确认" />
+            <input type="text" data-id='{{index}}'  bindinput='changeRemarks' value='{{item.remarks}}' placeholder="选填，填写内容已和卖家确认" />
           </view>
         </view>
       </view>

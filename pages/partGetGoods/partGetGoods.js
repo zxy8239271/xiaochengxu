@@ -50,7 +50,6 @@ Page({
         _this.setData({
           lists: res.data
         })
-
         setTimeout(function () {
           wx.hideLoading()
         }, 2000)
